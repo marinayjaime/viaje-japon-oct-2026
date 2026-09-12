@@ -433,12 +433,51 @@
        funcionando a pantalla completa aunque su contenedor (main) esté
        oculto. */
     .app { grid-template-columns: 1fr; grid-template-rows: 1fr; }
-    aside { border-right: none; grid-row: 1; grid-column: 1; }
-    main { visibility: hidden; grid-row: 1; grid-column: 1; }
+    aside { border-right: none; grid-row: 1; grid-column: 1; background: var(--paper-2); }
+    main { visibility: hidden; grid-row: 1; grid-column: 1; overflow: hidden; min-width: 0; }
     .info-overlay { visibility: visible; position: fixed; inset: 0; padding: 28px 24px; }
     h1 { font-size: 24px; }
     .info-title { font-size: 32px; }
     .info-todo li { font-size: 14px; }
+
+    /* Lista de paradas como tarjetas, para leer de un vistazo en el móvil */
+    .timeline { display: flex; flex-direction: column; gap: 10px; padding: 6px 14px 28px; }
+    .section-title { padding: 10px 4px 0; }
+    .stop {
+      grid-template-columns: 40px 1fr auto;
+      gap: 12px;
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-left: 3px solid transparent;
+      border-radius: 14px;
+      padding: 14px 14px 14px 12px;
+      box-shadow: 0 1px 4px rgba(27, 31, 42, 0.08);
+    }
+    .stop.active { box-shadow: 0 2px 10px rgba(200, 74, 40, 0.2); }
+    .stop-num {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--persimmon);
+      color: var(--paper);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 500;
+      padding-top: 0;
+    }
+    .stop.optional .stop-num {
+      background: transparent;
+      color: var(--muted);
+      border: 2px dashed var(--border-strong);
+    }
+    .stop-name { font-size: 18px; }
+    .stop-detail { font-size: 12px; }
+    .stop-nights strong { font-size: 22px; }
+
+    /* El trayecto entre tarjetas queda como una línea fina, no una tarjeta */
+    .leg { grid-template-columns: 40px 1fr auto; padding: 2px 14px; opacity: 0.8; }
   }
 </style>
 </head>
@@ -840,7 +879,7 @@ function initMap() {
 
   optionalStops.forEach(o => {
     const el = document.createElement('div');
-    el.className = 'stop';
+    el.className = 'stop optional';
     el.style.opacity = '0.75';
     el.innerHTML = `
       <div class="stop-num" style="font-style:italic">${o.label}</div>
