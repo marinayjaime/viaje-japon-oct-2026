@@ -546,20 +546,24 @@
       address: "701-1 Myodenjicho, Shimogyo-ku, Kioto, 600-8472, Japón"
     },
     {
-      n: 4, name: "Shirakawa-go", dates: "10 → 12 oct", nights: 2,
-      lat: 36.2578, lng: 136.9066,
-      notes: "Sustituye a Koyasan (retirado) y al primer tramo de Kanazawa, fusionados en esta parada (sept 2026). Se llega desde Kioto vía Thunderbird a Tsuruga + Hokuriku Shinkansen a Kanazawa + bus a Shirakawa-go (~3h15-3h30 aprox., sin verificar horarios exactos). Alojamiento urgente: pocos minshuku tradicionales, se agotan con antelación. Kanazawa se ve desde aquí como excursión de día (bus ~1h15).",
+      n: 4, name: "Kanazawa", dates: "10 → 12 oct", nights: 2,
+      lat: 36.5597, lng: 136.6520,
+      notes: "Sustituye a Shirakawa-go, que pasa a ser excursión de día desde Takayama (sept 2026). Se llega desde Kioto vía Thunderbird a Tsuruga (~1h) + Hokuriku Shinkansen a Kanazawa (~35 min), total ~2h aprox.",
       todo: [
-        "Casas gassho-zukuri",
-        "Mirador Shiroyama",
-        "Casa Wada-ke"
+        "Kenrokuen",
+        "Castillo de Kanazawa",
+        "Higashi Chaya",
+        "Mercado Omicho",
+        "21st Century Museum"
       ],
-      hotel: "Por definir", booked: false
+      hotel: "Smile Hotel Kanazawa Nishiguchi Ekimae (reservado)", booked: true,
+      bookingUrl: "https://www.booking.com/hotel/jp/sumairuhoterujin-ze-xi-kou-yi-qian.es.html",
+      address: "3-2-37 Hirooka, Kanazawa, Ishikawa, Japón"
     },
     {
       n: 5, name: "Takayama", dates: "12 → 14 oct", nights: 2,
       lat: 36.1461, lng: 137.2522,
-      notes: "Pasa de 1 a 2 noches (sept 2026): Kanazawa desaparece como parada con noche y una de sus 2 noches se traslada aquí. Se llega desde Shirakawa-go en bus Nohi (~50 min) y se sigue a Narai-juku vía Matsumoto.",
+      notes: "Pasa de 1 a 2 noches (sept 2026): Kanazawa desaparece como parada con noche y una de sus 2 noches se traslada aquí. Se llega desde Kanazawa en bus Nohi (~2h15) y se sigue a Narai-juku vía Matsumoto. Posible excursión a Shirakawa-go desde aquí (bus Nohi ~50 min).",
       todo: [
         "Casco antiguo Sanmachi Suji",
         "Takayama Jinya",
@@ -609,15 +613,13 @@
       ]
     },
     {
-      name: "Kanazawa", label: "Kn", tag: "Excursión desde Shirakawa-go · planificada",
-      lat: 36.5597, lng: 136.6520,
-      notes: "Kanazawa deja de tener noche propia (sept 2026). Se visita en un día desde Shirakawa-go (bus ~1h15).",
+      name: "Shirakawa-go", label: "Sh", tag: "Excursión desde Takayama · planificada",
+      lat: 36.2578, lng: 136.9066,
+      notes: "Pasa a ser excursión de día desde Takayama (sept 2026), en vez de parada con noche. Bus Nohi ~50 min.",
       todo: [
-        "Kenrokuen",
-        "Castillo de Kanazawa",
-        "Higashi Chaya",
-        "Mercado Omicho",
-        "21st Century Museum"
+        "Casas gassho-zukuri",
+        "Mirador Shiroyama",
+        "Casa Wada-ke"
       ]
     },
     {
@@ -668,8 +670,8 @@
   const legs = [
     { from: 1, to: 2, mode: "Bus Fujikyu desde Shinjuku", time: "1h45" },
     { from: 2, to: 3, mode: "Bus a Mishima + shinkansen", time: "~3h30" },
-    { from: 3, to: 4, mode: "Thunderbird a Tsuruga + Hokuriku Shinkansen a Kanazawa + bus a Shirakawa-go", time: "~3h15-3h30 aprox." },
-    { from: 4, to: 5, mode: "Bus Nohi", time: "~50 min" },
+    { from: 3, to: 4, mode: "Thunderbird a Tsuruga + Hokuriku Shinkansen a Kanazawa", time: "~2h aprox." },
+    { from: 4, to: 5, mode: "Bus Nohi", time: "~2h15" },
     { from: 5, to: 6, mode: "Bus Nohi/Alpico a Matsumoto + tren local a Narai", time: "~3h-3h15 aprox." },
     { from: 6, to: 7, mode: "Tren local a Shiojiri + Limited Express Azusa", time: "~3h" }
   ];
