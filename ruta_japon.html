@@ -7,7 +7,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,300;9..144,0,400;9..144,0,500;9..144,0,600;9..144,1,300;9..144,1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 <style>
   :root {
     --paper: #F1E9D6;
@@ -260,17 +259,6 @@
     background: var(--paper-2);
   }
   #map { width: 100%; height: 100%; }
-  .leaflet-container {
-    background: #E8DFC7;
-    font-family: 'Inter', sans-serif;
-  }
-  .leaflet-control-attribution {
-    background: rgba(241, 233, 214, 0.85) !important;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 9px !important;
-    color: var(--muted) !important;
-  }
-  .leaflet-control-attribution a { color: var(--persimmon) !important; }
 
   .marker-pin {
     width: 32px;
@@ -509,7 +497,7 @@
   </main>
 </div>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCl5G7U2D1vEvL1GQChWJKRaqNr3OGvaV0&language=es&libraries=marker&callback=initMap" async defer></script>
 <script>
   const stops = [
     {
@@ -686,13 +674,17 @@
     { from: 6, to: 7, mode: "Tren local a Shiojiri + Limited Express Azusa", time: "~3h" }
   ];
 
-  const map = L.map('map', { zoomControl: true, scrollWheelZoom: true, attributionControl: true })
-    .setView([36.2, 137.5], 6);
+function initMap() {
 
-  L.tileLayer('https://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
-    attribution: '&copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, NGA, EPA, USDA',
-    maxZoom: 19
-  }).addTo(map);
+  const map = new google.maps.Map(document.getElementById('map'), {
+    center: { lat: 36.2, lng: 137.5 },
+    zoom: 6,
+    mapId: 'DEMO_MAP_ID',
+    zoomControl: true,
+    streetViewControl: false,
+    mapTypeControl: false,
+    fullscreenControl: false
+  });
 
   const overlay = document.getElementById('info-overlay');
   const overlayContent = document.getElementById('info-content');
@@ -756,41 +748,39 @@
   const stopEls = {};
 
   stops.forEach((s, i) => {
-    const icon = L.divIcon({
-      className: '',
-      html: `<div class="marker-pin" data-n="${s.n}">${s.n}</div>`,
-      iconSize: [32, 32],
-      iconAnchor: [16, 16]
+    const pinEl = document.createElement('div');
+    pinEl.className = 'marker-pin';
+    pinEl.dataset.n = s.n;
+    pinEl.textContent = s.n;
+    const m = new google.maps.marker.AdvancedMarkerElement({
+      map, position: { lat: s.lat, lng: s.lng }, content: pinEl
     });
-    const m = L.marker([s.lat, s.lng], { icon }).addTo(map);
-    m.on('mouseover', () => showInfo(s, false));
-    m.on('mouseout', () => hideInfo(false));
-    m.on('click', () => { focusStop(i); showInfo(s, false, true); });
+    pinEl.addEventListener('mouseenter', () => showInfo(s, false));
+    pinEl.addEventListener('mouseleave', () => hideInfo(false));
+    pinEl.addEventListener('click', () => { focusStop(i); showInfo(s, false, true); });
     markerMap[i] = m;
   });
 
   optionalStops.forEach(o => {
-    const icon = L.divIcon({
-      className: '',
-      html: `<div class="marker-pin optional">${o.label}</div>`,
-      iconSize: [32, 32],
-      iconAnchor: [16, 16]
+    const pinEl = document.createElement('div');
+    pinEl.className = 'marker-pin optional';
+    pinEl.textContent = o.label;
+    new google.maps.marker.AdvancedMarkerElement({
+      map, position: { lat: o.lat, lng: o.lng }, content: pinEl
     });
-    const m = L.marker([o.lat, o.lng], { icon }).addTo(map);
-    m.on('mouseover', () => showInfo(o, true));
-    m.on('mouseout', () => hideInfo(false));
-    m.on('click', () => showInfo(o, true, true));
+    pinEl.addEventListener('mouseenter', () => showInfo(o, true));
+    pinEl.addEventListener('mouseleave', () => hideInfo(false));
+    pinEl.addEventListener('click', () => showInfo(o, true, true));
   });
 
-  const routeCoords = stops.map(s => [s.lat, s.lng]);
-  L.polyline(routeCoords, {
-    color: '#C84A28',
-    weight: 2,
-    opacity: 0.85,
-    dashArray: '6, 8',
-    lineCap: 'round',
-    lineJoin: 'round'
-  }).addTo(map);
+  const dashSymbol = { path: 'M 0,-1 0,1', strokeOpacity: 1, scale: 3 };
+  new google.maps.Polyline({
+    path: stops.map(s => ({ lat: s.lat, lng: s.lng })),
+    strokeOpacity: 0,
+    strokeColor: '#C84A28',
+    icons: [{ icon: dashSymbol, offset: '0', repeat: '14px' }],
+    map
+  });
 
   const tl = document.getElementById('timeline');
   const legByFrom = {};
@@ -884,7 +874,8 @@
     stopEls[i].classList.add('active');
     document.querySelectorAll('.marker-pin').forEach(el => el.classList.remove('active'));
     const s = stops[i];
-    map.flyTo([s.lat, s.lng], 10, { duration: 1.2 });
+    map.panTo({ lat: s.lat, lng: s.lng });
+    map.setZoom(10);
     setTimeout(() => {
       const pin = document.querySelector(`.marker-pin[data-n="${s.n}"]`);
       if (pin) pin.classList.add('active');
@@ -969,6 +960,7 @@
     countdownEl.textContent = `Viaje completado`;
   }
 
+}
 </script>
 
 </body>
