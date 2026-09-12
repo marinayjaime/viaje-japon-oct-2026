@@ -25,7 +25,6 @@ Este archivo contiene el contexto completo del proyecto para retomar la planific
 
 Priorizan **experiencias culturales tradicionales** por encima de hoteles estándar:
 - Ryokan tradicional donde tenga sentido (Kawaguchiko, Takayama)
-- Shukubo (monasterio) en Koyasan — reserva más urgente
 - Kioto: se optó finalmente por hotel estándar (Agora Kyoto Karasuma) en vez de machiya
 - Hoteles funcionales en ciudades donde el alojamiento aporta poco culturalmente (Tokio, Osaka)
 
@@ -40,7 +39,7 @@ Priorizan **experiencias culturales tradicionales** por encima de hoteles están
 | 1 | 3–5 oct | 2 | Tokio (Shinjuku) | ✅ Hotel Kabuki reservado |
 | 2 | 5–6 oct | 1 | Kawaguchiko | ✅ Tsunagaru Camp Resort QOONEL+ reservado |
 | 3 | 6–10 oct | 4 | Kioto | ✅ Agora Kyoto Karasuma reservado · 1 día a Nara |
-| 4 | 10–11 oct | 1 | Koyasan | Pendiente (shukubo) ⚠️ URGENTE |
+| 4 | 10–11 oct | 1 | **POR DEFINIR** (antes Koyasan) | ⏳ Pendiente decidir destino |
 | 5 | 11–12 oct | 1 | Kanazawa | Pendiente |
 | 6 | 12–13 oct | 1 | Takayama | ✅ Ryokan Asunaro reservado |
 | 7 | 13–15 oct | 2 | Kanazawa | Pendiente |
@@ -70,8 +69,8 @@ Priorizan **experiencias culturales tradicionales** por encima de hoteles están
 |---|---|---|
 | Tokio → Kawaguchiko | Bus Fujikyu desde Shinjuku | 1h45 |
 | Kawaguchiko → Kioto | Bus a Mishima + shinkansen | ~3h30 |
-| Kioto → Koyasan | Kioto → Namba + Nankai Koya + funicular | ~2h45 |
-| Koyasan → Kanazawa | Baja a Osaka (de paso) + Thunderbird/shinkansen vía Tsuruga | ~5h |
+| Kioto → (por definir) | — | — |
+| (por definir) → Kanazawa | — | — |
 | Kanazawa → Takayama | Bus Nohi | ~2h15 |
 | Takayama → Kanazawa | Bus Nohi | ~2h15 |
 | Kanazawa → Tokio | Hokuriku Shinkansen directo | ~2h30 |
@@ -84,7 +83,7 @@ Priorizan **experiencias culturales tradicionales** por encima de hoteles están
 
 ## Prioridades de reserva (por orden)
 
-1. **Shukubo en Koyasan** (10 oct) — pocas plazas, meses de antelación
+1. **Decidir destino de la parada 4** (10-11 oct, antes Koyasan) — sin esto no se puede reservar alojamiento ni transporte de ese tramo
 2. **Alojamiento en Kanazawa** (11-12 oct y 13-15 oct, 3 noches en total) — opción ryokan tradicional
 3. Hotel última noche(s) en Tokio (15-17 oct) — puede esperar
 
@@ -126,18 +125,19 @@ Mapa standalone en `ruta_japon.html` (ver el archivo para el estado actual de ma
 - **Shirakawa-go se hace como excursión de día desde Kanazawa** (antes desde Takayama).
 - **Ruta Kanazawa → Tokio:** shinkansen Hokuriku directo (~2h30), sustituye al antiguo Wide View Hida.
 - **Takayama recupera noche propia (sept 2026):** al reservar Ryokan Asunaro (12-13 oct), Takayama vuelve a ser parada con noche en vez de excursión de día. El bloque Kanazawa se divide en 11-12 oct (1 noche) y 13-15 oct (2 noches).
+- **Koyasan retirado del itinerario (sept 2026):** la parada 4 (10-11 oct, 1 noche) pasa a "por definir". No se ha dado motivo ni sustituto todavía.
 - **Nombre del usuario:** Jaime (Marina es la pareja). No inventar apellidos ni otros datos.
 
 ---
 
 ## Cosas pendientes concretas
 
-1. Cerrar shukubo Koyasan (urgente)
+1. Decidir destino de la parada 4 (10-11 oct, antes Koyasan) — bloquea alojamiento y transporte de ese tramo
 2. Cerrar alojamiento en Kanazawa (11-12 oct y 13-15 oct, 3 noches en total)
 3. Decidir si Shirakawa-go se hace desde Kanazawa o desde Takayama
 4. Definir contenido de POIs para Kanazawa y Takayama (Jaime irá pasando imágenes)
-5. Cuando toque: reservas de trenes y buses (Fujikyu, shinkansen Mishima-Kioto, Nankai Koya, Thunderbird+Hokuriku, Hokuriku Kanazawa-Tokio, buses Nohi Kanazawa↔Takayama y a Shirakawa-go)
-6. Verificar si compensa algún pase regional (Hokuriku Arch Pass encaja bien: Tokio–Kanazawa–Osaka; valorar también Kansai para Koyasan/Nara)
+5. Cuando toque: reservas de trenes y buses (Fujikyu, shinkansen Mishima-Kioto, Hokuriku Kanazawa-Tokio, buses Nohi Kanazawa↔Takayama y a Shirakawa-go), pendiente definir tramo Kioto↔parada 4↔Kanazawa
+6. Verificar si compensa algún pase regional (Hokuriku Arch Pass encaja bien: Tokio–Kanazawa–Osaka; valorar también Kansai para Nara)
 
 ---
 

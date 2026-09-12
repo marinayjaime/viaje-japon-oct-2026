@@ -1,6 +1,6 @@
 # Itinerario · 3–17 octubre 2026
 
-14 noches, 8 paradas. Reorganizado (jul 2026): Kanazawa como base de la zona norte (Takayama y Shirakawa-go como excursiones de día), Kioto a 4 noches con día a Nara, Osaka sin noche (de paso) y Tokio a 4 noches (2+2). Actualizado (sept 2026): Takayama recupera noche propia (Ryokan Asunaro, 12-13 oct); el bloque Kanazawa se divide en dos tramos (11-12 y 13-15 oct).
+14 noches, 8 paradas. Reorganizado (jul 2026): Kanazawa como base de la zona norte (Takayama y Shirakawa-go como excursiones de día), Kioto a 4 noches con día a Nara, Osaka sin noche (de paso) y Tokio a 4 noches (2+2). Actualizado (sept 2026): Takayama recupera noche propia (Ryokan Asunaro, 12-13 oct); el bloque Kanazawa se divide en dos tramos (11-12 y 13-15 oct); Koyasan se retira del itinerario y la parada 4 (10-11 oct) queda POR DEFINIR.
 
 ---
 
@@ -35,16 +35,9 @@ Bus a Mishima (~1h40) + shinkansen a Kioto (~1h50). Total ~3h30 con transbordo.
 - Alojamiento: **Agora Kyoto Karasuma** ✅ reservado — 701-1 Myodenjicho, Shimogyo-ku, Kioto, 600-8472, Japón
 - Contenido en `pois.md` (hay más del que cabe: priorizar en su momento).
 
-### → Kioto → Koyasan · 10 oct
-Kioto → Namba (~45 min) + Nankai Koya Line + funicular. Total ~2h45. Existe **Koyasan World Heritage Ticket**.
-
-### Parada 4 · Koyasan · 10–11 oct · 1 noche ⭐
-- **Shukubo (monasterio budista).**
-- Okunoin, Danjo Garan, cena shojin-ryori, ceremonia matutina.
-- **Reserva urgente:** pocas plazas, meses de antelación.
-
-### → Koyasan → Kanazawa · 11 oct
-Baja a Osaka (~2h) — **se ve Osaka de paso** (comida / Dotonbori) — + Thunderbird a Tsuruga + Hokuriku Shinkansen a Kanazawa. Día largo de traslado (~5h en total).
+### Parada 4 · POR DEFINIR (antes Koyasan) · 10–11 oct · 1 noche ⚠️
+- Koyasan se retiró del itinerario (sept 2026). Sin destino ni alojamiento decidido.
+- Bloquea también el transporte de este tramo (Kioto → ? → Kanazawa).
 
 ### Parada 5 · Kanazawa · 11–12 oct · 1 noche
 - Kenrokuen, castillo, Higashi Chaya, mercado Omicho, 21st Century Museum.
