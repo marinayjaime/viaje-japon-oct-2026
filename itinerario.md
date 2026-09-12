@@ -1,6 +1,6 @@
 # Itinerario · 3–17 octubre 2026
 
-14 noches, 8 paradas. Reorganizado (jul 2026): Kanazawa como base de la zona norte (Takayama y Shirakawa-go como excursiones de día), Kioto a 4 noches con día a Nara, Osaka sin noche (de paso) y Tokio a 4 noches (2+2). Actualizado (sept 2026): Takayama recupera noche propia (Ryokan Asunaro, 12-13 oct); el bloque Kanazawa se divide en dos tramos (11-12 y 13-15 oct); Koyasan se retira del itinerario y la parada 4 (10-11 oct) queda POR DEFINIR.
+14 noches, 7 paradas. Reorganizado (jul 2026): Kanazawa como base de la zona norte (Takayama y Shirakawa-go como excursiones de día), Kioto a 4 noches con día a Nara, Osaka sin noche (de paso) y Tokio a 4 noches (2+2). Actualizado (sept 2026): Takayama recupera noche propia (Ryokan Asunaro, 12-13 oct). Koyasan se retira del itinerario; esa parada se fusiona con el primer tramo de Kanazawa para formar una parada nueva: **Shirakawa-go, 10-12 oct, 2 noches** (deja de ser excursión de día). Kanazawa queda en un único tramo (13-15 oct).
 
 ---
 
@@ -35,33 +35,32 @@ Bus a Mishima (~1h40) + shinkansen a Kioto (~1h50). Total ~3h30 con transbordo.
 - Alojamiento: **Agora Kyoto Karasuma** ✅ reservado — 701-1 Myodenjicho, Shimogyo-ku, Kioto, 600-8472, Japón
 - Contenido en `pois.md` (hay más del que cabe: priorizar en su momento).
 
-### Parada 4 · POR DEFINIR (antes Koyasan) · 10–11 oct · 1 noche ⚠️
-- Koyasan se retiró del itinerario (sept 2026). Sin destino ni alojamiento decidido.
-- Bloquea también el transporte de este tramo (Kioto → ? → Kanazawa).
+### → Kioto → Shirakawa-go · 10 oct
+Thunderbird Kioto→Tsuruga + Hokuriku Shinkansen Tsuruga→Kanazawa (~2h) + bus Kanazawa→Shirakawa-go (~1h15). Total ~3h15-3h30 aproximado, sin verificar horarios exactos de conexión.
 
-### Parada 5 · Kanazawa · 11–12 oct · 1 noche
-- Kenrokuen, castillo, Higashi Chaya, mercado Omicho, 21st Century Museum.
-- Pendiente: alojamiento.
+### Parada 4 · Shirakawa-go · 10–12 oct · 2 noches ⚠️
+- Sustituye a Koyasan (retirado) y al primer tramo de Kanazawa, fusionados en esta parada (sept 2026).
+- Aldea UNESCO gassho-zukuri: casas gassho-zukuri, mirador Shiroyama, Casa Wada-ke.
+- Pendiente: alojamiento — pocos minshuku tradicionales, se agotan con antelación. **Urgente.**
 
-### → Kanazawa → Takayama · 12 oct
-Bus Nohi (~2h15).
+### → Shirakawa-go → Takayama · 12 oct
+Bus Nohi (~50 min).
 
-### Parada 6 · Takayama · 12–13 oct · 1 noche ⭐
+### Parada 5 · Takayama · 12–13 oct · 1 noche ⭐
 - Sanmachi Suji, Takayama Jinya, morning market.
-- Posible excursión a Shirakawa-go desde aquí (bus Nohi ~50 min) en vez de desde Kanazawa — sin decidir.
 - Alojamiento: **Ryokan Asunaro** ✅ reservado — 2-96-2 Hatsudamachi, Takayama, Gifu, Japón. Onsen propio, cena kaiseki con wagyu de Hida, casa tradicional del s. XVI trasladada desde Niigata.
 
 ### → Takayama → Kanazawa · 13 oct
 Bus Nohi (~2h15).
 
-### Parada 7 · Kanazawa · 13–15 oct · 2 noches
-- Resto de Kanazawa ciudad y/o **día a Shirakawa-go** (bus ~1h15) si no se hizo desde Takayama.
+### Parada 6 · Kanazawa · 13–15 oct · 2 noches
+- Kenrokuen, castillo, Higashi Chaya, mercado Omicho, 21st Century Museum.
 - Pendiente: alojamiento.
 
 ### → Kanazawa → Tokio · 15 oct
 **Hokuriku Shinkansen directo** (~2h30).
 
-### Parada 8 · Tokio (Asakusa/Ueno) · 15–17 oct · 2 noches
+### Parada 7 · Tokio (Asakusa/Ueno) · 15–17 oct · 2 noches
 - Zona con acceso directo al Skyliner a Narita (~40 min).
 - Zonas pendientes de Tokio, compras, cena de despedida. Opción día a Kamakura.
 - Pendiente: hotel funcional en Ueno o Asakusa.

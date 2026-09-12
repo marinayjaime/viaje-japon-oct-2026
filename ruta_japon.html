@@ -540,27 +540,20 @@
       address: "701-1 Myodenjicho, Shimogyo-ku, Kioto, 600-8472, Japón"
     },
     {
-      n: 4, name: "Por definir", dates: "10 → 11 oct", nights: 1,
-      lat: 34.2132, lng: 135.5863,
-      notes: "Koyasan se retiró del itinerario (sept 2026). Destino y alojamiento pendientes de decidir. La posición en el mapa es un marcador provisional (ubicación de Koyasan) hasta que se decida el destino real.",
+      n: 4, name: "Shirakawa-go", dates: "10 → 12 oct", nights: 2,
+      lat: 36.2578, lng: 136.9066,
+      notes: "Sustituye a Koyasan (retirado) y al primer tramo de Kanazawa, fusionados en esta parada (sept 2026). Se llega desde Kioto vía Thunderbird a Tsuruga + Hokuriku Shinkansen a Kanazawa + bus a Shirakawa-go (~3h15-3h30 aprox., sin verificar horarios exactos). Alojamiento urgente: pocos minshuku tradicionales, se agotan con antelación.",
       todo: [
-        "Sin plan todavía"
+        "Casas gassho-zukuri",
+        "Mirador Shiroyama",
+        "Casa Wada-ke"
       ],
       hotel: "Por definir", booked: false
     },
     {
-      n: 5, name: "Kanazawa", dates: "11 → 12 oct", nights: 1,
-      lat: 36.5597, lng: 136.6520,
-      notes: "Primer tramo en Kanazawa. Al llegar desde Koyasan se pasa por Osaka (comida/Dotonbori de paso). El bloque Kanazawa se reparte en dos tramos porque la noche del 12-13 se pasa en Takayama.",
-      todo: [
-        "Kanazawa ciudad: Kenrokuen, Castillo, Higashi Chaya, Mercado Omicho, 21st Century Museum"
-      ],
-      hotel: "Por definir", booked: false
-    },
-    {
-      n: 6, name: "Takayama", dates: "12 → 13 oct", nights: 1,
+      n: 5, name: "Takayama", dates: "12 → 13 oct", nights: 1,
       lat: 36.1461, lng: 137.2522,
-      notes: "Recupera noche propia (sept 2026) al reservarse el ryokan. Se llega y se vuelve a Kanazawa en bus Nohi (~2h15 cada trayecto). Posible base para Shirakawa-go (bus ~50 min) en vez de hacerlo desde Kanazawa — sin decidir.",
+      notes: "Se llega desde Shirakawa-go en bus Nohi (~50 min) y se sigue a Kanazawa en bus Nohi (~2h15).",
       todo: [
         "Casco antiguo Sanmachi Suji",
         "Takayama Jinya",
@@ -571,17 +564,16 @@
       address: "2-96-2 Hatsudamachi, Takayama, Gifu, Japón"
     },
     {
-      n: 7, name: "Kanazawa", dates: "13 → 15 oct", nights: 2,
+      n: 6, name: "Kanazawa", dates: "13 → 15 oct", nights: 2,
       lat: 36.5597, lng: 136.6520,
-      notes: "Segundo tramo en Kanazawa, tras volver de Takayama. Día a Shirakawa-go (bus ~1h15) si no se hizo desde Takayama.",
+      notes: "Único tramo en Kanazawa, tras volver de Takayama.",
       todo: [
-        "Resto de Kanazawa ciudad: Kenrokuen, Castillo, Higashi Chaya, Mercado Omicho, 21st Century Museum",
-        "DÍA A SHIRAKAWA-GO (si no se hizo desde Takayama): aldea UNESCO gassho-zukuri (bus ~1h15)"
+        "Kanazawa ciudad: Kenrokuen, Castillo, Higashi Chaya, Mercado Omicho, 21st Century Museum"
       ],
       hotel: "Por definir", booked: false
     },
     {
-      n: 8, name: "Tokio", dates: "15 → 17 oct", nights: 2,
+      n: 7, name: "Tokio", dates: "15 → 17 oct", nights: 2,
       lat: 35.7186, lng: 139.7959,
       notes: "Dos últimas noches, zona Asakusa/Ueno para el Skyliner. Vuelo 17 oct 11:10.",
       todo: [
@@ -607,19 +599,9 @@
       ]
     },
     {
-      name: "Shirakawa-go", label: "Sh", tag: "Excursión de día · planificada",
-      lat: 36.2578, lng: 136.9066,
-      notes: "Aldea UNESCO gassho-zukuri. Excursión de día desde Kanazawa (bus ~1h15) o desde Takayama (bus ~50 min) — sin decidir todavía qué base se usa.",
-      todo: [
-        "Casas gassho-zukuri",
-        "Mirador Shiroyama",
-        "Casa Wada-ke"
-      ]
-    },
-    {
-      name: "Osaka", label: "Os", tag: "De paso, sin noche",
+      name: "Osaka", label: "Os", tag: "Opcional, sin noche",
       lat: 34.6658, lng: 135.5010,
-      notes: "Sin noche. Se pasa por Osaka al ir de Koyasan a Kanazawa (comida / Dotonbori). Podría verse un rato.",
+      notes: "Sin noche. Ya no está de paso en la ruta actual (antes se pasaba yendo de Koyasan a Kanazawa; esa ruta ya no existe). Requeriría un desvío deliberado si se quiere ver.",
       todo: [
         "Dotonbori",
         "Castillo de Osaka (si da tiempo)"
@@ -664,11 +646,10 @@
   const legs = [
     { from: 1, to: 2, mode: "Bus Fujikyu desde Shinjuku", time: "1h45" },
     { from: 2, to: 3, mode: "Bus a Mishima + shinkansen", time: "~3h30" },
-    { from: 3, to: 4, mode: "Por definir", time: "?" },
-    { from: 4, to: 5, mode: "Por definir", time: "?" },
+    { from: 3, to: 4, mode: "Thunderbird a Tsuruga + Hokuriku Shinkansen a Kanazawa + bus a Shirakawa-go", time: "~3h15-3h30 aprox." },
+    { from: 4, to: 5, mode: "Bus Nohi", time: "~50 min" },
     { from: 5, to: 6, mode: "Bus Nohi", time: "~2h15" },
-    { from: 6, to: 7, mode: "Bus Nohi", time: "~2h15" },
-    { from: 7, to: 8, mode: "Hokuriku Shinkansen directo", time: "~2h30" }
+    { from: 6, to: 7, mode: "Hokuriku Shinkansen directo", time: "~2h30" }
   ];
 
   const map = L.map('map', { zoomControl: true, scrollWheelZoom: true, attributionControl: true })

@@ -24,7 +24,7 @@ Este archivo contiene el contexto completo del proyecto para retomar la planific
 ## Filosofía de alojamiento
 
 Priorizan **experiencias culturales tradicionales** por encima de hoteles estándar:
-- Ryokan tradicional donde tenga sentido (Kawaguchiko, Takayama)
+- Ryokan tradicional donde tenga sentido (Kawaguchiko, Takayama, Shirakawa-go)
 - Kioto: se optó finalmente por hotel estándar (Agora Kyoto Karasuma) en vez de machiya
 - Hoteles funcionales en ciudades donde el alojamiento aporta poco culturalmente (Tokio, Osaka)
 
@@ -32,26 +32,28 @@ Priorizan **experiencias culturales tradicionales** por encima de hoteles están
 
 ---
 
-## Itinerario actual (14 noches, 8 paradas)
+## Itinerario actual (14 noches, 7 paradas)
 
 | # | Fechas | Noches | Base | Estado alojamiento |
 |---|---|---|---|---|
 | 1 | 3–5 oct | 2 | Tokio (Shinjuku) | ✅ Hotel Kabuki reservado |
 | 2 | 5–6 oct | 1 | Kawaguchiko | ✅ Tsunagaru Camp Resort QOONEL+ reservado |
 | 3 | 6–10 oct | 4 | Kioto | ✅ Agora Kyoto Karasuma reservado · 1 día a Nara |
-| 4 | 10–11 oct | 1 | **POR DEFINIR** (antes Koyasan) | ⏳ Pendiente decidir destino |
-| 5 | 11–12 oct | 1 | Kanazawa | Pendiente |
-| 6 | 12–13 oct | 1 | Takayama | ✅ Ryokan Asunaro reservado |
-| 7 | 13–15 oct | 2 | Kanazawa | Pendiente |
-| 8 | 15–17 oct | 2 | Tokio (Asakusa/Ueno) | Pendiente |
+| 4 | 10–12 oct | 2 | Shirakawa-go | ⏳ Pendiente ⚠️ plazas muy limitadas |
+| 5 | 12–13 oct | 1 | Takayama | ✅ Ryokan Asunaro reservado |
+| 6 | 13–15 oct | 2 | Kanazawa | Pendiente |
+| 7 | 15–17 oct | 2 | Tokio (Asakusa/Ueno) | Pendiente |
 
 **Cambio de estructura (julio 2026):** Takayama deja de ser parada con noche y pasa a excursión de día desde Kanazawa (junto con Shirakawa-go). Osaka pierde la noche (se ve de paso entre Koyasan y Kanazawa). Kioto pasa a 4 noches (incluye día a Nara). Tokio pasa a 4 noches repartidas 2+2. Kanazawa → Tokio ahora es shinkansen Hokuriku directo (~2h30).
 
-**Cambio de estructura (sept 2026):** Takayama recupera noche propia (12-13 oct, Ryokan Asunaro) al reservarse ese alojamiento. El bloque Kanazawa (11-15 oct) se parte en dos tramos: 11-12 oct (1 noche) y 13-15 oct (2 noches), con la noche en Takayama en medio. Total de noches del bloque norte no cambia (4).
+**Cambio de estructura (sept 2026, v1):** Takayama recupera noche propia (12-13 oct, Ryokan Asunaro) al reservarse ese alojamiento. El bloque Kanazawa (11-15 oct) se parte en dos tramos: 11-12 oct (1 noche) y 13-15 oct (2 noches), con la noche en Takayama en medio.
+
+**Cambio de estructura (sept 2026, v2):** Koyasan (parada 4, "por definir") y el primer tramo de Kanazawa (11-12 oct) se eliminan como paradas independientes y se fusionan en una sola: **Shirakawa-go, 10-12 oct, 2 noches**. Takayama (12-13 oct) no se toca, sigue con el Ryokan Asunaro reservado. El resto del itinerario se recorre: Kanazawa pasa a un único tramo de 13-15 oct (2 noches, ya no dividido). Total de paradas baja de 8 a 7.
 
 **Excursiones de día PLANIFICADAS (ya dentro del itinerario, sin noche):**
 - **Nara** — uno de los 4 días de Kioto (~45 min en tren).
-- **Shirakawa-go** — desde Kanazawa o desde Takayama (bus ~1h15 / ~50 min respectivamente); con Takayama ahora con noche propia, podría hacerse desde allí en vez de desde Kanazawa — sin decidir todavía.
+
+**Shirakawa-go deja de ser excursión de día:** ahora es parada propia con 2 noches (10-12 oct), no excursión desde Kanazawa/Takayama.
 
 **Excursiones de día OPCIONALES (posibilidades, no decididas):**
 - **Kobe** — desde la zona de Osaka (~20-30 min).
@@ -69,22 +71,17 @@ Priorizan **experiencias culturales tradicionales** por encima de hoteles están
 |---|---|---|
 | Tokio → Kawaguchiko | Bus Fujikyu desde Shinjuku | 1h45 |
 | Kawaguchiko → Kioto | Bus a Mishima + shinkansen | ~3h30 |
-| Kioto → (por definir) | — | — |
-| (por definir) → Kanazawa | — | — |
-| Kanazawa → Takayama | Bus Nohi | ~2h15 |
+| Kioto → Shirakawa-go | Thunderbird Kioto→Tsuruga + Hokuriku Shinkansen Tsuruga→Kanazawa (~2h) + bus Kanazawa→Shirakawa-go (~1h15) | ~3h15-3h30 (aprox., sin verificar horarios exactos) |
+| Shirakawa-go → Takayama | Bus Nohi | ~50 min |
 | Takayama → Kanazawa | Bus Nohi | ~2h15 |
 | Kanazawa → Tokio | Hokuriku Shinkansen directo | ~2h30 |
-
-**Excursión de día a Shirakawa-go** (desde Kanazawa o desde Takayama, sin decidir todavía):
-| Kanazawa → Shirakawa-go | Bus Nohi/Hokutetsu | ~1h15 |
-| Takayama → Shirakawa-go | Bus Nohi | ~50 min |
 
 ---
 
 ## Prioridades de reserva (por orden)
 
-1. **Decidir destino de la parada 4** (10-11 oct, antes Koyasan) — sin esto no se puede reservar alojamiento ni transporte de ese tramo
-2. **Alojamiento en Kanazawa** (11-12 oct y 13-15 oct, 3 noches en total) — opción ryokan tradicional
+1. **Alojamiento en Shirakawa-go** (10-12 oct, 2 noches) — el pueblo tiene muy pocos minshuku/alojamientos tradicionales en casas gassho-zukuri, se agotan con antelación
+2. **Alojamiento en Kanazawa** (13-15 oct, 2 noches)
 3. Hotel última noche(s) en Tokio (15-17 oct) — puede esperar
 
 **Takayama (12-13 oct) — ✅ resuelto:** Ryokan Asunaro reservado.
@@ -124,20 +121,20 @@ Mapa standalone en `ruta_japon.html` (ver el archivo para el estado actual de ma
 - **Reorganización (jul 2026):** Kanazawa pasa a ser base de 4 noches para Takayama y Shirakawa-go como excursiones de día. Takayama deja de tener noche propia. Osaka pierde la noche (de paso). Kioto sube a 4 noches (con día a Nara). Tokio sube a 4 noches (2+2).
 - **Shirakawa-go se hace como excursión de día desde Kanazawa** (antes desde Takayama).
 - **Ruta Kanazawa → Tokio:** shinkansen Hokuriku directo (~2h30), sustituye al antiguo Wide View Hida.
-- **Takayama recupera noche propia (sept 2026):** al reservar Ryokan Asunaro (12-13 oct), Takayama vuelve a ser parada con noche en vez de excursión de día. El bloque Kanazawa se divide en 11-12 oct (1 noche) y 13-15 oct (2 noches).
-- **Koyasan retirado del itinerario (sept 2026):** la parada 4 (10-11 oct, 1 noche) pasa a "por definir". No se ha dado motivo ni sustituto todavía.
+- **Takayama recupera noche propia (sept 2026):** al reservar Ryokan Asunaro (12-13 oct), Takayama vuelve a ser parada con noche en vez de excursión de día.
+- **Koyasan retirado del itinerario (sept 2026):** la parada 4 pasó primero a "por definir".
+- **Shirakawa-go pasa a ser parada con 2 noches (sept 2026):** sustituye a la parada "por definir" (antes Koyasan) y al primer tramo de Kanazawa (11-12 oct), fusionados en una sola parada de 10-12 oct. Deja de ser excursión de día. Kanazawa vuelve a ser un único tramo (13-15 oct, 2 noches). Takayama no se ve afectado, sigue con su reserva.
 - **Nombre del usuario:** Jaime (Marina es la pareja). No inventar apellidos ni otros datos.
 
 ---
 
 ## Cosas pendientes concretas
 
-1. Decidir destino de la parada 4 (10-11 oct, antes Koyasan) — bloquea alojamiento y transporte de ese tramo
-2. Cerrar alojamiento en Kanazawa (11-12 oct y 13-15 oct, 3 noches en total)
-3. Decidir si Shirakawa-go se hace desde Kanazawa o desde Takayama
-4. Definir contenido de POIs para Kanazawa y Takayama (Jaime irá pasando imágenes)
-5. Cuando toque: reservas de trenes y buses (Fujikyu, shinkansen Mishima-Kioto, Hokuriku Kanazawa-Tokio, buses Nohi Kanazawa↔Takayama y a Shirakawa-go), pendiente definir tramo Kioto↔parada 4↔Kanazawa
-6. Verificar si compensa algún pase regional (Hokuriku Arch Pass encaja bien: Tokio–Kanazawa–Osaka; valorar también Kansai para Nara)
+1. Cerrar alojamiento en Shirakawa-go (10-12 oct, 2 noches) — urgente, pocas plazas
+2. Cerrar alojamiento en Kanazawa (13-15 oct, 2 noches)
+3. Definir contenido de POIs para Kanazawa, Takayama y Shirakawa-go (Jaime irá pasando imágenes)
+4. Cuando toque: reservas de trenes y buses (Fujikyu, shinkansen Mishima-Kioto, Thunderbird+Hokuriku Kioto-Kanazawa, Hokuriku Kanazawa-Tokio, buses Nohi Kanazawa↔Takayama↔Shirakawa-go) — verificar horarios exactos del tramo Kioto→Shirakawa-go
+5. Verificar si compensa algún pase regional (Hokuriku Arch Pass encaja bien: Tokio–Kanazawa–Osaka; valorar también Kansai para Nara)
 
 ---
 
