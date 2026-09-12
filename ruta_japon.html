@@ -718,6 +718,27 @@ function initMap() {
     fullscreenControl: false
   });
 
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+
+  // En iPhone, los enlaces https://www.google.com/maps abren primero Safari.
+  // Si tienen la app de Google Maps instalada, probamos el esquema
+  // comgooglemaps:// (abre la app directamente) y si no reacciona
+  // (no está instalada), caemos al enlace web normal.
+  function attachSmartMapsClick(el, appUrl, webUrl) {
+    if (!isIOS) return;
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      let opened = false;
+      const onHide = () => { opened = true; };
+      document.addEventListener('visibilitychange', onHide, { once: true });
+      window.location.href = appUrl;
+      setTimeout(() => {
+        document.removeEventListener('visibilitychange', onHide);
+        if (!opened) window.open(webUrl, '_blank', 'noopener');
+      }, 1000);
+    });
+  }
+
   const overlay = document.getElementById('info-overlay');
   const overlayContent = document.getElementById('info-content');
   let hideTimer = null;
@@ -742,7 +763,7 @@ function initMap() {
           ? `<a href="${place.bookingUrl.replace(/&/g, '&amp;')}" target="_blank" rel="noopener" class="info-cta">${place.booked ? 'Ver reserva' : 'Ver hotel'}</a>`
           : '');
     const directionsCta = place.address
-      ? `<a href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(place.address)}" target="_blank" rel="noopener" class="info-cta">Cómo llegar</a>`
+      ? `<a href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(place.address)}" target="_blank" rel="noopener" class="info-cta" data-directions="1">Cómo llegar</a>`
       : '';
     overlayContent.innerHTML = `
       <button class="info-close" aria-label="Cerrar">×</button>
@@ -754,6 +775,14 @@ function initMap() {
       <div class="info-cta-row">${bookingCta}${directionsCta}</div>
     `;
     overlayContent.querySelector('.info-close').addEventListener('click', closeInfo);
+    const dirLink = overlayContent.querySelector('[data-directions]');
+    if (dirLink) {
+      attachSmartMapsClick(
+        dirLink,
+        `comgooglemaps://?daddr=${encodeURIComponent(place.address)}`,
+        dirLink.href
+      );
+    }
     overlay.classList.add('visible');
   }
 
@@ -860,6 +889,11 @@ function initMap() {
         legEl.href = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(originParam)}&destination=${encodeURIComponent(destParam)}&travelmode=transit`;
         legEl.target = '_blank';
         legEl.rel = 'noopener';
+        attachSmartMapsClick(
+          legEl,
+          `comgooglemaps://?saddr=${encodeURIComponent(originParam)}&daddr=${encodeURIComponent(destParam)}&directionsmode=transit`,
+          legEl.href
+        );
       }
       legEl.innerHTML = `
         <div class="leg-icon">↓</div>
