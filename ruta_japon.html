@@ -575,18 +575,39 @@
       hotel: "Shukubo por definir", booked: false
     },
     {
-      n: 5, name: "Kanazawa", dates: "11 → 15 oct", nights: 4,
+      n: 5, name: "Kanazawa", dates: "11 → 12 oct", nights: 1,
       lat: 36.5597, lng: 136.6520,
-      notes: "Base de 3 días completos: Kanazawa + Takayama + Shirakawa-go. Al llegar desde Koyasan se pasa por Osaka (comida/Dotonbori de paso).",
+      notes: "Primer tramo en Kanazawa. Al llegar desde Koyasan se pasa por Osaka (comida/Dotonbori de paso). El bloque Kanazawa se reparte en dos tramos porque la noche del 12-13 se pasa en Takayama.",
       todo: [
-        "Kanazawa ciudad: Kenrokuen, Castillo, Higashi Chaya, Mercado Omicho, 21st Century Museum",
-        "DÍA A TAKAYAMA: Sanmachi Suji, Takayama Jinya, morning market (bus ~2h15)",
-        "DÍA A SHIRAKAWA-GO: aldea UNESCO gassho-zukuri (bus ~1h15)"
+        "Kanazawa ciudad: Kenrokuen, Castillo, Higashi Chaya, Mercado Omicho, 21st Century Museum"
       ],
       hotel: "Por definir", booked: false
     },
     {
-      n: 6, name: "Tokio", dates: "15 → 17 oct", nights: 2,
+      n: 6, name: "Takayama", dates: "12 → 13 oct", nights: 1,
+      lat: 36.1461, lng: 137.2522,
+      notes: "Recupera noche propia (sept 2026) al reservarse el ryokan. Se llega y se vuelve a Kanazawa en bus Nohi (~2h15 cada trayecto). Posible base para Shirakawa-go (bus ~50 min) en vez de hacerlo desde Kanazawa — sin decidir.",
+      todo: [
+        "Casco antiguo Sanmachi Suji",
+        "Takayama Jinya",
+        "Morning market (Miyagawa o Jinya-mae)"
+      ],
+      hotel: "Ryokan Asunaro (reservado)", booked: true,
+      bookingUrl: "https://www.booking.com/hotel/jp/ryokan-asunaro.en.html",
+      address: "2-96-2 Hatsudamachi, Takayama, Gifu, Japón"
+    },
+    {
+      n: 7, name: "Kanazawa", dates: "13 → 15 oct", nights: 2,
+      lat: 36.5597, lng: 136.6520,
+      notes: "Segundo tramo en Kanazawa, tras volver de Takayama. Día a Shirakawa-go (bus ~1h15) si no se hizo desde Takayama.",
+      todo: [
+        "Resto de Kanazawa ciudad: Kenrokuen, Castillo, Higashi Chaya, Mercado Omicho, 21st Century Museum",
+        "DÍA A SHIRAKAWA-GO (si no se hizo desde Takayama): aldea UNESCO gassho-zukuri (bus ~1h15)"
+      ],
+      hotel: "Por definir", booked: false
+    },
+    {
+      n: 8, name: "Tokio", dates: "15 → 17 oct", nights: 2,
       lat: 35.7186, lng: 139.7959,
       notes: "Dos últimas noches, zona Asakusa/Ueno para el Skyliner. Vuelo 17 oct 11:10.",
       todo: [
@@ -612,19 +633,9 @@
       ]
     },
     {
-      name: "Takayama", label: "Ta", tag: "Excursión desde Kanazawa · planificada",
-      lat: 36.1461, lng: 137.2522,
-      notes: "Excursión de día desde Kanazawa (bus Nohi ~2h15 por trayecto). Planificada.",
-      todo: [
-        "Casco antiguo Sanmachi Suji",
-        "Takayama Jinya",
-        "Morning market (Miyagawa o Jinya-mae)"
-      ]
-    },
-    {
-      name: "Shirakawa-go", label: "Sh", tag: "Excursión desde Kanazawa · planificada",
+      name: "Shirakawa-go", label: "Sh", tag: "Excursión de día · planificada",
       lat: 36.2578, lng: 136.9066,
-      notes: "Aldea UNESCO gassho-zukuri. Excursión de día desde Kanazawa (bus ~1h15). Planificada.",
+      notes: "Aldea UNESCO gassho-zukuri. Excursión de día desde Kanazawa (bus ~1h15) o desde Takayama (bus ~50 min) — sin decidir todavía qué base se usa.",
       todo: [
         "Casas gassho-zukuri",
         "Mirador Shiroyama",
@@ -681,7 +692,9 @@
     { from: 2, to: 3, mode: "Bus a Mishima + shinkansen", time: "~3h30" },
     { from: 3, to: 4, mode: "Kioto → Namba + Nankai Koya + funicular", time: "~2h45" },
     { from: 4, to: 5, mode: "Baja a Osaka + Thunderbird/shinkansen vía Tsuruga", time: "~5h" },
-    { from: 5, to: 6, mode: "Hokuriku Shinkansen directo", time: "~2h30" }
+    { from: 5, to: 6, mode: "Bus Nohi", time: "~2h15" },
+    { from: 6, to: 7, mode: "Bus Nohi", time: "~2h15" },
+    { from: 7, to: 8, mode: "Hokuriku Shinkansen directo", time: "~2h30" }
   ];
 
   const map = L.map('map', { zoomControl: true, scrollWheelZoom: true, attributionControl: true })

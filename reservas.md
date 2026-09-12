@@ -8,10 +8,12 @@
 | 2 | Tsunagaru Camp Resort QOONEL+ (5-6 oct, 1 noche) | ✅ Reservado | — | [Booking](https://www.booking.com/hotel/jp/tunagarukiyanpurizotoqoonel.html) |
 | 3 | Agora Kyoto Karasuma (6-10 oct, 4 noches) | ✅ Reservado | — | [Booking](https://www.booking.com/hotel/jp/agora-kyoto-karasuma.es.html) |
 | 4 | Shukubo Koyasan (10-11 oct, 1 noche) | ⏳ Pendiente ⚠️ URGENTE | — | — |
-| 5 | Alojamiento Kanazawa (11-15 oct, 4 noches) | ⏳ Pendiente | — | — |
-| 6 | Hotel Tokio final (15-17 oct, 2 noches) | ⏳ Pendiente | — | — |
+| 5 | Alojamiento Kanazawa (11-12 oct, 1 noche) | ⏳ Pendiente | — | — |
+| 6 | Ryokan Asunaro, Takayama (12-13 oct, 1 noche) | ✅ Reservado | — | [Booking](https://www.booking.com/hotel/jp/ryokan-asunaro.en.html) |
+| 7 | Alojamiento Kanazawa (13-15 oct, 2 noches) | ⏳ Pendiente | — | — |
+| 8 | Hotel Tokio final (15-17 oct, 2 noches) | ⏳ Pendiente | — | — |
 
-> Osaka ya no tiene noche: se ve de paso entre Koyasan y Kanazawa. Takayama y Shirakawa-go son excursiones de día desde Kanazawa.
+> Osaka ya no tiene noche: se ve de paso entre Koyasan y Kanazawa. Shirakawa-go es excursión de día (desde Kanazawa o desde Takayama, sin decidir). Takayama recuperó noche propia (sept 2026) al reservarse Ryokan Asunaro.
 
 ---
 
@@ -30,10 +32,14 @@ Reservar vía **koyasan-shukubo.net/en** o Booking/Agoda.
 ### 2. Alojamiento Kawaguchiko (5 oct)
 Prioridad: vistas al Fuji. Zona norte del lago. Rango 100-180 €/noche.
 
-### 3. Alojamiento Kanazawa (11-15 oct, 4 noches)
-Base de la zona norte (excursiones a Takayama y Shirakawa-go). Al ser 4 noches, buena para invertir en experiencia:
+### 3. Alojamiento Kanazawa (11-12 oct y 13-15 oct, 3 noches en total)
+Se divide en dos tramos porque la noche del 12-13 oct se pasa en Takayama (Ryokan Asunaro, ya reservado):
 - Opción ryokan tradicional en Higashi Chaya.
 - O mezcla ryokan + hotel funcional bien situado (cerca de estación para los buses).
+- Nota logística: al dividirse en dos tramos, valorar si conviene el mismo alojamiento en ambos (dejar maletas) o dos reservas distintas.
+
+### Takayama (12-13 oct) — ✅ resuelto
+**Ryokan Asunaro** reservado — 2-96-2 Hatsudamachi, Takayama, Gifu, Japón. Onsen propio, cena kaiseki con wagyu de Hida, casa tradicional del s. XVI trasladada desde Niigata.
 
 ### 4. Kioto — ✅ resuelto
 Agora Kyoto Karasuma reservado (6-10 oct).
@@ -52,8 +58,9 @@ Asakusa o Ueno para acceso al Skyliner (Nohga Hotel, Mimaru Ueno, Almont Ueno).
 | Shinkansen Mishima → Kioto | 6 oct | JR | Compra próxima a la fecha |
 | Kioto → Koyasan | 10 oct | Namba + Nankai + funicular | Considerar Koyasan World Heritage Ticket |
 | Koyasan → Osaka (de paso) → Kanazawa | 11 oct | Nankai + Thunderbird + Hokuriku Shinkansen (vía Tsuruga) | Reservar asiento Thunderbird/shinkansen |
-| Bus Kanazawa → Takayama (día) | 12-14 oct | Nohi Bus | Ida/vuelta, reservar; pocas frecuencias |
-| Bus Kanazawa → Shirakawa-go (día) | 12-14 oct | Nohi/Hokutetsu | Ida/vuelta, reservar |
+| Bus Kanazawa → Takayama | 12 oct | Nohi Bus | ~2h15, reservar; pocas frecuencias |
+| Bus Takayama → Kanazawa | 13 oct | Nohi Bus | ~2h15, reservar |
+| Bus a Shirakawa-go (día) | 12 o 13 oct | Nohi/Hokutetsu | Desde Kanazawa (~1h15) o desde Takayama (~50 min); pendiente decidir base |
 | Hokuriku Shinkansen Kanazawa → Tokio | 15 oct | JR | Directo ~2h30, reservar asiento |
 | Skyliner Ueno → Narita | 17 oct | Keisei | Se puede comprar en el día |
 
