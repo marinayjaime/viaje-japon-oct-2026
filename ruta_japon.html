@@ -1016,8 +1016,6 @@ function initMap() {
       </div>
     `;
     el.addEventListener('click', () => { focusStop(i); showInfo(s, false, true); });
-    el.addEventListener('mouseenter', () => showInfo(s, false));
-    el.addEventListener('mouseleave', () => hideInfo(false));
     tl.appendChild(el);
     stopEls[i] = el;
   });
@@ -1044,8 +1042,6 @@ function initMap() {
       </div>
     `;
     el.addEventListener('click', () => showInfo(o, true, true));
-    el.addEventListener('mouseenter', () => showInfo(o, true));
-    el.addEventListener('mouseleave', () => hideInfo(false));
     tl.appendChild(el);
   });
 
