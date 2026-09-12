@@ -4,6 +4,10 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Japón · Jaime + Marina · Oct 2026</title>
+<link rel="icon" href="icon-japan-180.png" />
+<link rel="apple-touch-icon" href="icon-japan-180.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-title" content="Japón" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,300;9..144,0,400;9..144,0,500;9..144,0,600;9..144,1,300;9..144,1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -120,21 +124,13 @@
   }
 
   .roadmap-section { border-bottom: 1px solid var(--border); padding: 0 20px 14px; }
+
+  /* Desplegable propio (no <select> nativo): en iOS/Android el <select>
+     abre el picker del sistema y no se puede maquetar, así que la lista
+     de opciones se construye a mano para que también lleve el diseño
+     de la web. */
   .roadmap-select-wrap { position: relative; }
-  .roadmap-select-wrap::after {
-    content: '▾';
-    position: absolute;
-    right: 14px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--muted);
-    pointer-events: none;
-    font-size: 12px;
-  }
   .roadmap-select {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
     width: 100%;
     font-family: 'JetBrains Mono', monospace;
     font-size: 13px;
@@ -148,12 +144,53 @@
     cursor: pointer;
     box-shadow: 0 1px 3px rgba(27, 31, 42, 0.08);
     transition: border-color 0.15s, box-shadow 0.15s;
+    text-align: left;
+    display: block;
+    position: relative;
+  }
+  .roadmap-select::after {
+    content: '▾';
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted);
+    font-size: 12px;
   }
   .roadmap-select:hover { border-color: var(--persimmon); }
-  .roadmap-select:focus {
+  .roadmap-select:focus,
+  .roadmap-select.open {
     outline: none;
     border-color: var(--persimmon);
     box-shadow: 0 0 0 3px rgba(200, 74, 40, 0.15);
+  }
+  .roadmap-select-label.placeholder { color: var(--muted); }
+  .roadmap-select-menu {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(100% + 6px);
+    z-index: 20;
+    background: var(--paper);
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(27, 31, 42, 0.18);
+    max-height: 260px;
+    overflow-y: auto;
+    padding: 6px;
+  }
+  .roadmap-select-option {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--ink);
+    padding: 9px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .roadmap-select-option:hover,
+  .roadmap-select-option.highlighted {
+    background: var(--paper-2);
+    color: var(--persimmon);
   }
 
   /* Bloque "preparar para el siguiente destino" dentro del panel grande */
@@ -559,7 +596,10 @@
     <div class="roadmap-section">
       <div class="section-title">¿Dónde estás?</div>
       <div class="roadmap-select-wrap">
-        <select class="roadmap-select" id="roadmap-select"></select>
+        <button type="button" class="roadmap-select" id="roadmap-select" aria-haspopup="listbox" aria-expanded="false">
+          <span class="roadmap-select-label placeholder" id="roadmap-select-label">Selecciona una parada</span>
+        </button>
+        <div class="roadmap-select-menu" id="roadmap-select-menu" role="listbox" hidden></div>
       </div>
     </div>
 
@@ -960,17 +1000,14 @@ function initMap() {
 
   // Selector "¿Dónde estás?": al elegir una parada, abre el panel grande
   // con su roadmap (qué ver, alojamiento y cómo preparar el siguiente salto).
-  const roadmapSelect = document.getElementById('roadmap-select');
+  // Es un desplegable hecho a mano (no <select> nativo) porque en
+  // iOS/Android el <select> abre el picker del sistema, que no se puede
+  // maquetar con CSS.
+  const roadmapSelectBtn = document.getElementById('roadmap-select');
+  const roadmapSelectLabel = document.getElementById('roadmap-select-label');
+  const roadmapSelectMenu = document.getElementById('roadmap-select-menu');
 
-  const placeholderOpt = document.createElement('option');
-  placeholderOpt.value = '';
-  placeholderOpt.textContent = 'Selecciona una parada';
-  placeholderOpt.disabled = true;
-  placeholderOpt.selected = true;
-  roadmapSelect.appendChild(placeholderOpt);
-
-  // Calcula qué parada toca hoy para marcarla en el desplegable, sin
-  // preseleccionarla (así elegirla también dispara el evento "change").
+  // Calcula qué parada toca hoy para marcarla en el desplegable
   const roadmapTripStart = new Date('2026-10-03T00:00:00+09:00');
   let todayStopIndex = -1;
   const roadmapNow = new Date();
@@ -985,16 +1022,39 @@ function initMap() {
   }
 
   stops.forEach((s, i) => {
-    const opt = document.createElement('option');
-    opt.value = i;
-    opt.textContent = i === todayStopIndex ? `${s.name} (hoy)` : s.name;
-    roadmapSelect.appendChild(opt);
+    const optEl = document.createElement('div');
+    optEl.className = 'roadmap-select-option';
+    optEl.setAttribute('role', 'option');
+    optEl.dataset.i = i;
+    optEl.textContent = i === todayStopIndex ? `${s.name} (hoy)` : s.name;
+    optEl.addEventListener('click', () => {
+      roadmapSelectLabel.textContent = s.name;
+      roadmapSelectLabel.classList.remove('placeholder');
+      closeRoadmapMenu();
+      focusStop(i);
+      showInfo(s, false, true, true);
+    });
+    roadmapSelectMenu.appendChild(optEl);
   });
 
-  roadmapSelect.addEventListener('change', () => {
-    const i = Number(roadmapSelect.value);
-    focusStop(i);
-    showInfo(stops[i], false, true, true);
+  function openRoadmapMenu() {
+    roadmapSelectMenu.hidden = false;
+    roadmapSelectBtn.classList.add('open');
+    roadmapSelectBtn.setAttribute('aria-expanded', 'true');
+  }
+  function closeRoadmapMenu() {
+    roadmapSelectMenu.hidden = true;
+    roadmapSelectBtn.classList.remove('open');
+    roadmapSelectBtn.setAttribute('aria-expanded', 'false');
+  }
+  roadmapSelectBtn.addEventListener('click', () => {
+    if (roadmapSelectMenu.hidden) openRoadmapMenu();
+    else closeRoadmapMenu();
+  });
+  document.addEventListener('click', (e) => {
+    if (!roadmapSelectBtn.contains(e.target) && !roadmapSelectMenu.contains(e.target)) {
+      closeRoadmapMenu();
+    }
   });
 
   const sectionTitle = document.createElement('div');
