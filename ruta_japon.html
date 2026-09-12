@@ -120,19 +120,38 @@
   }
 
   .roadmap-section { border-bottom: 1px solid var(--border); padding: 0 20px 14px; }
+  .roadmap-select-wrap { position: relative; }
+  .roadmap-select-wrap::after {
+    content: '▾';
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted);
+    pointer-events: none;
+    font-size: 12px;
+  }
   .roadmap-select {
+    appearance: none;
+    -webkit-appearance: none;
     width: 100%;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
+    font-size: 13px;
     letter-spacing: 0.02em;
     color: var(--ink);
     background: var(--paper);
     border: 1px solid var(--border-strong);
-    border-radius: 6px;
-    padding: 9px 12px;
+    border-radius: 8px;
+    padding: 11px 36px 11px 14px;
     cursor: pointer;
+    transition: border-color 0.15s, box-shadow 0.15s;
   }
   .roadmap-select:hover { border-color: var(--persimmon); }
+  .roadmap-select:focus {
+    outline: none;
+    border-color: var(--persimmon);
+    box-shadow: 0 0 0 3px rgba(200, 74, 40, 0.15);
+  }
 
   /* Bloque "preparar para el siguiente destino" dentro del panel grande */
   .rm-label {
@@ -536,7 +555,9 @@
 
     <div class="roadmap-section">
       <div class="section-title">¿Dónde estás?</div>
-      <select class="roadmap-select" id="roadmap-select"></select>
+      <div class="roadmap-select-wrap">
+        <select class="roadmap-select" id="roadmap-select"></select>
+      </div>
     </div>
 
     <div class="timeline" id="timeline"></div>
@@ -937,28 +958,35 @@ function initMap() {
   // Selector "¿Dónde estás?": al elegir una parada, abre el panel grande
   // con su roadmap (qué ver, alojamiento y cómo preparar el siguiente salto).
   const roadmapSelect = document.getElementById('roadmap-select');
-  stops.forEach((s, i) => {
-    const opt = document.createElement('option');
-    opt.value = i;
-    opt.textContent = s.name;
-    roadmapSelect.appendChild(opt);
-  });
 
-  // Por defecto, deja preseleccionada la parada que toca según la fecha de hoy
+  const placeholderOpt = document.createElement('option');
+  placeholderOpt.value = '';
+  placeholderOpt.textContent = '¿Dónde estás?';
+  placeholderOpt.disabled = true;
+  placeholderOpt.selected = true;
+  roadmapSelect.appendChild(placeholderOpt);
+
+  // Calcula qué parada toca hoy para marcarla en el desplegable, sin
+  // preseleccionarla (así elegirla también dispara el evento "change").
   const roadmapTripStart = new Date('2026-10-03T00:00:00+09:00');
-  let defaultStopIndex = 0;
+  let todayStopIndex = -1;
   const roadmapNow = new Date();
   if (roadmapNow >= roadmapTripStart) {
     let cursor = new Date(roadmapTripStart);
     for (let idx = 0; idx < stops.length; idx++) {
-      defaultStopIndex = idx;
       const endCursor = new Date(cursor);
       endCursor.setDate(endCursor.getDate() + stops[idx].nights);
-      if (roadmapNow < endCursor) break;
+      if (roadmapNow < endCursor) { todayStopIndex = idx; break; }
       cursor = endCursor;
     }
   }
-  roadmapSelect.value = defaultStopIndex;
+
+  stops.forEach((s, i) => {
+    const opt = document.createElement('option');
+    opt.value = i;
+    opt.textContent = i === todayStopIndex ? `${s.name} (hoy)` : s.name;
+    roadmapSelect.appendChild(opt);
+  });
 
   roadmapSelect.addEventListener('change', () => {
     const i = Number(roadmapSelect.value);
