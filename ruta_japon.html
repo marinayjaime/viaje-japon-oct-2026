@@ -119,55 +119,22 @@
     padding: 14px 20px 8px;
   }
 
-  .roadmap-section { border-bottom: 1px solid var(--border); padding-bottom: 12px; }
-  .roadmap-selector {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    padding: 0 20px 10px;
-  }
-  .rm-chip {
+  .roadmap-section { border-bottom: 1px solid var(--border); padding: 0 20px 14px; }
+  .roadmap-select {
+    width: 100%;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 0.02em;
     color: var(--ink);
-    background: transparent;
-    border: 1px solid var(--border-strong);
-    border-radius: 20px;
-    padding: 5px 12px;
-    cursor: pointer;
-    transition: background 0.15s, color 0.15s, border-color 0.15s;
-  }
-  .rm-chip:hover { border-color: var(--persimmon); color: var(--persimmon); }
-  .rm-chip.active {
-    background: var(--persimmon);
-    border-color: var(--persimmon);
-    color: var(--paper);
-  }
-  .roadmap-card {
-    margin: 0 20px;
     background: var(--paper);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--persimmon);
-    border-radius: 10px;
-    padding: 16px 18px;
+    border: 1px solid var(--border-strong);
+    border-radius: 6px;
+    padding: 9px 12px;
+    cursor: pointer;
   }
-  .rm-header { margin-bottom: 14px; }
-  .rm-title {
-    font-family: 'Fraunces', serif;
-    font-weight: 500;
-    font-size: 20px;
-    color: var(--ink);
-    letter-spacing: -0.01em;
-  }
-  .rm-dates {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: var(--muted);
-    margin-top: 4px;
-    letter-spacing: 0.02em;
-  }
-  .rm-block { margin-top: 16px; }
+  .roadmap-select:hover { border-color: var(--persimmon); }
+
+  /* Bloque "preparar para el siguiente destino" dentro del panel grande */
   .rm-label {
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
@@ -183,29 +150,20 @@
     text-transform: uppercase;
     color: var(--muted);
   }
-  .rm-hotel-name {
-    font-family: 'Fraunces', serif;
-    font-size: 15px;
-    color: var(--ink);
-  }
   .rm-transport {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
+    font-size: 12px;
     color: var(--muted);
-    margin-bottom: 10px;
+    margin-bottom: 4px;
   }
   .rm-next-hotel {
-    font-size: 13px;
+    font-size: 14px;
     color: var(--ink);
-    margin: 10px 0 6px;
+    margin: 14px 0 4px;
   }
-  .rm-cta-row { display: flex; flex-wrap: wrap; gap: 8px; }
-  .rm-cta-row .info-cta { margin-top: 8px; padding: 8px 14px; font-size: 10px; }
-  .roadmap-card .info-todo-title { margin-bottom: 8px; }
-  .roadmap-card .info-todo li { font-size: 13px; padding: 8px 0 8px 20px; }
   .rm-next {
-    margin-top: 18px;
-    padding-top: 14px;
+    margin-top: 28px;
+    padding-top: 20px;
     border-top: 1px dashed var(--border);
   }
 
@@ -604,8 +562,7 @@
 
     <div class="roadmap-section">
       <div class="section-title">¿Dónde estás?</div>
-      <div class="roadmap-selector" id="roadmap-selector"></div>
-      <div class="roadmap-card" id="roadmap-card"></div>
+      <select class="roadmap-select" id="roadmap-select"></select>
     </div>
 
     <div class="timeline" id="timeline"></div>
@@ -859,7 +816,7 @@ function initMap() {
   let hideTimer = null;
   let pinned = false;
 
-  function showInfo(place, isOptional, pin) {
+  function showInfo(place, isOptional, pin, extended) {
     clearTimeout(hideTimer);
     if (pin) pinned = true;
     const statusTag = place.partial ? ' · reserva parcial' : (place.booked ? ' · reservado' : '');
@@ -873,6 +830,41 @@ function initMap() {
     const directionsCta = place.address
       ? `<a href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(place.address)}" target="_blank" rel="noopener" class="info-cta" data-directions="1">Cómo llegar</a>`
       : '';
+
+    // Vista extendida (desde el selector "¿Dónde estás?"): añade un bloque
+    // con cómo preparar el salto al siguiente destino.
+    let nextBlock = '';
+    if (extended && !isOptional) {
+      const idx = stops.indexOf(place);
+      const next = stops[idx + 1];
+      const leg = legByFrom[place.n];
+      if (next) {
+        const originParam = place.address || `${place.lat},${place.lng}`;
+        const destParam = next.address || `${next.lat},${next.lng}`;
+        const webUrl = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(originParam)}&destination=${encodeURIComponent(destParam)}&travelmode=transit`;
+        nextBlock = `
+          <div class="rm-next">
+            <div class="rm-label">Preparar para ${next.name}</div>
+            ${leg ? `<div class="rm-transport">${leg.mode} · ${leg.time}</div>` : ''}
+            <div class="info-cta-row">
+              <a href="${webUrl}" target="_blank" rel="noopener" class="info-cta" data-rm-directions="1">Cómo llegar</a>
+            </div>
+            <div class="rm-next-hotel">
+              <span class="rm-label-inline">Alojamiento en ${next.name}:</span> ${next.hotel} ${statusBadgeHtml(next)}
+            </div>
+            <div class="info-cta-row">${bookingButtonsHtml(next)}</div>
+          </div>
+        `;
+      } else {
+        nextBlock = `
+          <div class="rm-next">
+            <div class="rm-label">Vuelta a casa</div>
+            <div class="rm-transport">Vuelo de salida: 17 oct 2026, 11:10 desde Narita (NRT)</div>
+          </div>
+        `;
+      }
+    }
+
     overlayContent.innerHTML = `
       <button class="info-close" aria-label="Cerrar">×</button>
       <div class="info-eyebrow">${eyebrow}</div>
@@ -881,6 +873,7 @@ function initMap() {
       <div class="info-todo-title">Qué ver / hacer</div>
       <ul class="info-todo">${place.todo.map(t => `<li>${t}</li>`).join('')}</ul>
       <div class="info-cta-row">${bookingCta}${directionsCta}</div>
+      ${nextBlock}
     `;
     overlayContent.querySelector('.info-close').addEventListener('click', closeInfo);
     const dirLink = overlayContent.querySelector('[data-directions]');
@@ -889,6 +882,18 @@ function initMap() {
         dirLink,
         `comgooglemaps://?daddr=${encodeURIComponent(place.address)}`,
         dirLink.href
+      );
+    }
+    const nextDirLink = overlayContent.querySelector('[data-rm-directions]');
+    if (nextDirLink) {
+      const idx = stops.indexOf(place);
+      const next = stops[idx + 1];
+      const originParam = place.address || `${place.lat},${place.lng}`;
+      const destParam = next.address || `${next.lat},${next.lng}`;
+      attachSmartMapsClick(
+        nextDirLink,
+        `comgooglemaps://?saddr=${encodeURIComponent(originParam)}&daddr=${encodeURIComponent(destParam)}&directionsmode=transit`,
+        nextDirLink.href
       );
     }
     overlay.classList.add('visible');
@@ -955,96 +960,17 @@ function initMap() {
   const legByFrom = {};
   legs.forEach(l => legByFrom[l.from] = l);
 
-  // Selector "¿Dónde estás?" + roadmap extendido de la parada elegida
-  const roadmapSelector = document.getElementById('roadmap-selector');
-  const roadmapCard = document.getElementById('roadmap-card');
-
-  function renderRoadmap(i) {
-    const s = stops[i];
-    const next = stops[i + 1];
-    const leg = legByFrom[s.n];
-
-    const hotelBlock = `
-      <div class="rm-block">
-        <div class="rm-label">Alojamiento</div>
-        <div class="rm-hotel-name">${s.hotel}</div>
-        <div class="rm-cta-row">${bookingButtonsHtml(s)}</div>
-      </div>
-    `;
-
-    const todoBlock = `
-      <div class="rm-block">
-        <div class="info-todo-title">Qué ver / hacer</div>
-        <ul class="info-todo">${s.todo.map(t => `<li>${t}</li>`).join('')}</ul>
-      </div>
-    `;
-
-    let nextBlock;
-    if (next) {
-      const originParam = s.address || `${s.lat},${s.lng}`;
-      const destParam = next.address || `${next.lat},${next.lng}`;
-      const webUrl = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(originParam)}&destination=${encodeURIComponent(destParam)}&travelmode=transit`;
-      nextBlock = `
-        <div class="rm-block rm-next">
-          <div class="rm-label">Preparar para ${next.name}</div>
-          ${leg ? `<div class="rm-transport">${leg.mode} · ${leg.time}</div>` : ''}
-          <div class="rm-cta-row">
-            <a href="${webUrl}" target="_blank" rel="noopener" class="info-cta" data-rm-directions="1">Cómo llegar</a>
-          </div>
-          <div class="rm-next-hotel">
-            <span class="rm-label-inline">Alojamiento en ${next.name}:</span> ${next.hotel} ${statusBadgeHtml(next)}
-          </div>
-          <div class="rm-cta-row">${bookingButtonsHtml(next)}</div>
-        </div>
-      `;
-    } else {
-      nextBlock = `
-        <div class="rm-block rm-next">
-          <div class="rm-label">Vuelta a casa</div>
-          <div class="rm-transport">Vuelo de salida: 17 oct 2026, 11:10 desde Narita (NRT)</div>
-        </div>
-      `;
-    }
-
-    roadmapCard.innerHTML = `
-      <div class="rm-header">
-        <div class="rm-title">${s.name} ${statusBadgeHtml(s)}</div>
-        <div class="rm-dates">${s.dates} · ${s.nights} ${s.nights === 1 ? 'noche' : 'noches'}</div>
-      </div>
-      ${hotelBlock}
-      ${todoBlock}
-      ${nextBlock}
-    `;
-
-    if (next) {
-      const dirLink = roadmapCard.querySelector('[data-rm-directions]');
-      if (dirLink) {
-        const originParam = s.address || `${s.lat},${s.lng}`;
-        const destParam = next.address || `${next.lat},${next.lng}`;
-        attachSmartMapsClick(
-          dirLink,
-          `comgooglemaps://?saddr=${encodeURIComponent(originParam)}&daddr=${encodeURIComponent(destParam)}&directionsmode=transit`,
-          dirLink.href
-        );
-      }
-    }
-
-    document.querySelectorAll('.rm-chip').forEach(c => c.classList.remove('active'));
-    const chip = document.querySelector(`.rm-chip[data-i="${i}"]`);
-    if (chip) chip.classList.add('active');
-  }
-
+  // Selector "¿Dónde estás?": al elegir una parada, abre el panel grande
+  // con su roadmap (qué ver, alojamiento y cómo preparar el siguiente salto).
+  const roadmapSelect = document.getElementById('roadmap-select');
   stops.forEach((s, i) => {
-    const chip = document.createElement('button');
-    chip.type = 'button';
-    chip.className = 'rm-chip';
-    chip.dataset.i = i;
-    chip.textContent = `${String(s.n).padStart(2, '0')} ${s.name}`;
-    chip.addEventListener('click', () => renderRoadmap(i));
-    roadmapSelector.appendChild(chip);
+    const opt = document.createElement('option');
+    opt.value = i;
+    opt.textContent = `${String(s.n).padStart(2, '0')} · ${s.name}`;
+    roadmapSelect.appendChild(opt);
   });
 
-  // Por defecto, selecciona la parada en la que "estás" según la fecha de hoy
+  // Por defecto, deja preseleccionada la parada que toca según la fecha de hoy
   const roadmapTripStart = new Date('2026-10-03T00:00:00+09:00');
   let defaultStopIndex = 0;
   const roadmapNow = new Date();
@@ -1058,7 +984,13 @@ function initMap() {
       cursor = endCursor;
     }
   }
-  renderRoadmap(defaultStopIndex);
+  roadmapSelect.value = defaultStopIndex;
+
+  roadmapSelect.addEventListener('change', () => {
+    const i = Number(roadmapSelect.value);
+    focusStop(i);
+    showInfo(stops[i], false, true, true);
+  });
 
   const sectionTitle = document.createElement('div');
   sectionTitle.className = 'section-title';
