@@ -134,16 +134,19 @@
   .roadmap-select {
     appearance: none;
     -webkit-appearance: none;
+    -moz-appearance: none;
     width: 100%;
     font-family: 'JetBrains Mono', monospace;
     font-size: 13px;
     letter-spacing: 0.02em;
     color: var(--ink);
-    background: var(--paper);
+    background-color: var(--paper);
     border: 1px solid var(--border-strong);
+    border-left: 3px solid var(--persimmon);
     border-radius: 8px;
     padding: 11px 36px 11px 14px;
     cursor: pointer;
+    box-shadow: 0 1px 3px rgba(27, 31, 42, 0.08);
     transition: border-color 0.15s, box-shadow 0.15s;
   }
   .roadmap-select:hover { border-color: var(--persimmon); }
