@@ -9,19 +9,18 @@
 | 3 | Agora Kyoto Karasuma (6-10 oct, 4 noches) | ✅ Reservado | — | [Booking](https://www.booking.com/hotel/jp/agora-kyoto-karasuma.es.html) |
 | 4 | Smile Hotel Kanazawa Nishiguchi Ekimae (10-12 oct, 2 noches) | ✅ Reservado | — | [Booking](https://www.booking.com/hotel/jp/sumairuhoterujin-ze-xi-kou-yi-qian.es.html) |
 | 5a | Ryokan Asunaro, Takayama (noche 12-13 oct) | ✅ Reservado | — | [Booking](https://www.booking.com/hotel/jp/ryokan-asunaro.en.html) |
-| 5b | Takayama, noche 13-14 oct | ⏳ Pendiente ⚠️ URGENTE | — | — |
+| 5b | Hostel Fish in a River, Takayama (noche 13-14 oct) | ✅ Reservado | — | [Booking](https://www.booking.com/hotel/jp/hostel-fish-in-a-river.es.html) |
 | 6 | Alojamiento Narai-juku (14-15 oct, 1 noche) | ⏳ Pendiente | — | — |
 | 7 | Hotel Tokio final (15-17 oct, 2 noches) | ⏳ Pendiente | — | — |
 
-> Koyasan se retiró del itinerario (sept 2026); Kanazawa y Shirakawa-go se han intercambiado varias veces desde entonces. Estado final: **Kanazawa** es la parada 4 (10-12 oct, 2 noches). **Shirakawa-go** es excursión de día desde Takayama (bus ~50 min). Takayama tiene 2 noches (12-14 oct); Narai-juku es parada nueva (14-15 oct). **Ojo:** el Ryokan Asunaro reservado solo cubre la noche 12-13 de Takayama; falta la 13-14.
+> Koyasan se retiró del itinerario (sept 2026); Kanazawa y Shirakawa-go se han intercambiado varias veces desde entonces. Estado final: **Kanazawa** es la parada 4 (10-12 oct, 2 noches). **Shirakawa-go** es excursión de día desde Takayama (bus ~50 min). Takayama tiene 2 noches (12-14 oct), ambas reservadas en alojamientos distintos. Narai-juku es parada nueva (14-15 oct), pendiente de alojamiento.
 
 ---
 
 ## Orden de prioridad
 
-### 1. Takayama, noche 13-14 oct — MÁS URGENTE
-**Ryokan Asunaro** ✅ reservado solo para la noche 12-13 — 2-96-2 Hatsudamachi, Takayama, Gifu, Japón. Onsen propio, cena kaiseki con wagyu de Hida, casa tradicional del s. XVI trasladada desde Niigata.
-Falta reservar la noche 13-14 (misma zona o alojamiento distinto).
+### 1. Alojamiento Narai-juku (14-15 oct, 1 noche) — MÁS URGENTE (única parada sin resolver)
+Pueblo de posta pequeño (Kiso Valley); alojamiento tradicional tipo minshuku, sin opciones concretas verificadas todavía.
 
 ### 2. Alojamiento Kawaguchiko (5 oct)
 Prioridad: vistas al Fuji. Zona norte del lago. Rango 100-180 €/noche.
@@ -29,8 +28,9 @@ Prioridad: vistas al Fuji. Zona norte del lago. Rango 100-180 €/noche.
 ### Kanazawa (10-12 oct, 2 noches) — ✅ resuelto
 **Smile Hotel Kanazawa Nishiguchi Ekimae** — 3-2-37 Hirooka, Kanazawa, Ishikawa, Japón. A 4 min a pie de la salida oeste de la estación de Kanazawa.
 
-### 3. Alojamiento Narai-juku (14-15 oct, 1 noche)
-Pueblo de posta pequeño (Kiso Valley); alojamiento tradicional tipo minshuku, sin opciones concretas verificadas todavía.
+### Takayama (12-14 oct, 2 noches) — ✅ resuelto
+**Ryokan Asunaro** (noche 12-13) — 2-96-2 Hatsudamachi, Takayama, Gifu, Japón. Onsen propio, cena kaiseki con wagyu de Hida, casa tradicional del s. XVI trasladada desde Niigata.
+**Hostel Fish in a River** (noche 13-14) — 2-16-2 Showa-cho, 506-0053, Takayama, Japón.
 
 ### Kioto — ✅ resuelto
 Agora Kyoto Karasuma reservado (6-10 oct).

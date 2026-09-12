@@ -45,11 +45,12 @@ Thunderbird Kioto→Tsuruga (~1h) + Hokuriku Shinkansen Tsuruga→Kanazawa (~35 
 ### → Kanazawa → Takayama · 12 oct
 Bus Nohi (~2h15).
 
-### Parada 5 · Takayama · 12–14 oct · 2 noches ⭐⚠️
+### Parada 5 · Takayama · 12–14 oct · 2 noches ⭐
 - Sanmachi Suji, Takayama Jinya, morning market.
 - Pasa de 1 a 2 noches (sept 2026), absorbiendo una de las noches liberadas de Kanazawa.
 - Posible excursión a Shirakawa-go desde aquí (bus Nohi ~50 min).
-- Alojamiento: **Ryokan Asunaro** ✅ reservado, pero **solo cubre la noche 12-13**. Falta reservar la noche 13-14. — 2-96-2 Hatsudamachi, Takayama, Gifu, Japón. Onsen propio, cena kaiseki con wagyu de Hida, casa tradicional del s. XVI trasladada desde Niigata.
+- Alojamiento noche 12-13: **Ryokan Asunaro** ✅ reservado — 2-96-2 Hatsudamachi, Takayama, Gifu, Japón. Onsen propio, cena kaiseki con wagyu de Hida, casa tradicional del s. XVI trasladada desde Niigata.
+- Alojamiento noche 13-14: **Hostel Fish in a River** ✅ reservado — 2-16-2 Showa-cho, 506-0053, Takayama, Japón.
 
 ### → Takayama → Narai-juku · 14 oct
 Bus Nohi/Alpico Takayama↔Matsumoto (~2h33, reserva obligatoria, verificar si opera en octubre) + tren local JR Chuo Matsumoto→Narai (~30 min). Total ~3h-3h15 aproximado.

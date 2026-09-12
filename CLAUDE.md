@@ -40,7 +40,7 @@ Priorizan **experiencias culturales tradicionales** por encima de hoteles están
 | 2 | 5–6 oct | 1 | Kawaguchiko | ✅ Tsunagaru Camp Resort QOONEL+ reservado |
 | 3 | 6–10 oct | 4 | Kioto | ✅ Agora Kyoto Karasuma reservado · 1 día a Nara |
 | 4 | 10–12 oct | 2 | Kanazawa | ✅ Smile Hotel Kanazawa Nishiguchi Ekimae reservado |
-| 5 | 12–14 oct | 2 | Takayama | ⚠️ Ryokan Asunaro solo cubre la noche 12-13; falta la noche 13-14 |
+| 5 | 12–14 oct | 2 | Takayama | ✅ Reservado completo: Ryokan Asunaro (12-13) + Hostel Fish in a River (13-14) |
 | 6 | 14–15 oct | 1 | Narai-juku | Pendiente |
 | 7 | 15–17 oct | 2 | Tokio (Asakusa/Ueno) | Pendiente |
 
@@ -86,11 +86,11 @@ Priorizan **experiencias culturales tradicionales** por encima de hoteles están
 
 ## Prioridades de reserva (por orden)
 
-1. **Ampliar/confirmar alojamiento en Takayama para la noche 13-14 oct** — Ryokan Asunaro solo cubre 12-13 oct; falta resolver la segunda noche
-2. **Alojamiento en Narai-juku** (14-15 oct, 1 noche)
-3. Hotel última noche(s) en Tokio (15-17 oct) — puede esperar
+1. **Alojamiento en Narai-juku** (14-15 oct, 1 noche)
+2. Hotel última noche(s) en Tokio (15-17 oct) — puede esperar
 
 **Kanazawa (10-12 oct) — ✅ resuelto:** Smile Hotel Kanazawa Nishiguchi Ekimae reservado.
+**Takayama (12-14 oct) — ✅ resuelto:** Ryokan Asunaro (12-13) + Hostel Fish in a River (13-14), las 2 noches reservadas.
 
 ---
 
@@ -137,17 +137,17 @@ Mapa standalone en `ruta_japon.html` (ver el archivo para el estado actual de ma
 - **Shirakawa-go pasa a ser parada con 2 noches (sept 2026):** sustituye a la parada "por definir" (antes Koyasan) y al primer tramo de Kanazawa (11-12 oct), fusionados en una sola parada de 10-12 oct. Deja de ser excursión de día. Kanazawa vuelve a ser un único tramo (13-15 oct, 2 noches). Takayama no se ve afectado, sigue con su reserva.
 - **Kanazawa desaparece del itinerario como parada con noche (sept 2026):** sus 2 noches se reparten entre Takayama (que pasa de 1 a 2 noches, 12-14 oct) y una parada nueva, Narai-juku (14-15 oct, 1 noche). Kanazawa pasa a visitarse como excursión de día desde Shirakawa-go. Ojo: el Ryokan Asunaro reservado solo cubre la noche 12-13 oct — falta resolver alojamiento para la noche 13-14.
 - **Se intercambian Shirakawa-go y Kanazawa (sept 2026):** Kanazawa vuelve a ser la parada 4 con noche (10-12 oct, 2 noches). Shirakawa-go pierde la noche y pasa a excursión de día desde Takayama (bus ~50 min).
+- **Takayama, noche 13-14 resuelta (sept 2026):** reservado Hostel Fish in a River. Las 2 noches de Takayama quedan cubiertas (con alojamientos distintos cada noche).
 - **Nombre del usuario:** Jaime (Marina es la pareja). No inventar apellidos ni otros datos.
 
 ---
 
 ## Cosas pendientes concretas
 
-1. Resolver alojamiento en Takayama para la noche 13-14 oct (el Ryokan Asunaro reservado solo cubre 12-13)
-2. Cerrar alojamiento en Narai-juku (14-15 oct, 1 noche)
-3. Definir contenido de POIs para Kanazawa, Takayama, Shirakawa-go y Narai-juku (Jaime irá pasando imágenes)
-4. Cuando toque: reservas de trenes y buses (Fujikyu, shinkansen Mishima-Kioto, Thunderbird+Hokuriku Kioto-Kanazawa, bus Nohi Kanazawa↔Takayama, bus Nohi Takayama↔Shirakawa-go, bus Nohi/Alpico Takayama↔Matsumoto, tren Matsumoto-Narai-Shiojiri, Azusa Shiojiri-Shinjuku) — verificar horarios exactos y si el bus Takayama-Matsumoto opera en octubre
-5. Verificar si compensa algún pase regional (el Hokuriku Arch Pass vuelve a encajar con Kanazawa de nuevo con noche; valorar también Kansai para Nara)
+1. Cerrar alojamiento en Narai-juku (14-15 oct, 1 noche)
+2. Definir contenido de POIs para Kanazawa, Takayama, Shirakawa-go y Narai-juku (Jaime irá pasando imágenes)
+3. Cuando toque: reservas de trenes y buses (Fujikyu, shinkansen Mishima-Kioto, Thunderbird+Hokuriku Kioto-Kanazawa, bus Nohi Kanazawa↔Takayama, bus Nohi Takayama↔Shirakawa-go, bus Nohi/Alpico Takayama↔Matsumoto, tren Matsumoto-Narai-Shiojiri, Azusa Shiojiri-Shinjuku) — verificar horarios exactos y si el bus Takayama-Matsumoto opera en octubre
+4. Verificar si compensa algún pase regional (el Hokuriku Arch Pass vuelve a encajar con Kanazawa de nuevo con noche; valorar también Kansai para Nara)
 
 ---
 
