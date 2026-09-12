@@ -713,7 +713,7 @@ function initMap() {
       ? `<a href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(place.address)}" target="_blank" rel="noopener" class="info-cta">Cómo llegar</a>`
       : '';
     overlayContent.innerHTML = `
-      <button class="info-close" aria-label="Cerrar" onclick="closeInfo()">×</button>
+      <button class="info-close" aria-label="Cerrar">×</button>
       <div class="info-eyebrow">${eyebrow}</div>
       <div class="info-title">${place.name}</div>
       <div class="info-dates">${meta}</div>
@@ -722,6 +722,7 @@ function initMap() {
       <ul class="info-todo">${place.todo.map(t => `<li>${t}</li>`).join('')}</ul>
       <div class="info-cta-row">${bookingCta}${directionsCta}</div>
     `;
+    overlayContent.querySelector('.info-close').addEventListener('click', closeInfo);
     overlay.classList.add('visible');
   }
 
