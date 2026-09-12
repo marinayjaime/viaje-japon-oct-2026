@@ -448,13 +448,18 @@
   }
 
   @media (max-width: 900px) {
-    .app { grid-template-columns: 1fr; grid-template-rows: 40vh 60vh; }
-    aside { border-right: none; border-bottom: 1px solid var(--border); order: 2; }
-    main { order: 1; }
+    /* En móvil no mostramos el mapa (ocupa demasiada pantalla): la lista
+       ocupa toda la altura y el mapa queda invisible mismo grid cell.
+       El panel de info se saca a position:fixed para que siga
+       funcionando a pantalla completa aunque su contenedor (main) esté
+       oculto. */
+    .app { grid-template-columns: 1fr; grid-template-rows: 1fr; }
+    aside { border-right: none; grid-row: 1; grid-column: 1; }
+    main { visibility: hidden; grid-row: 1; grid-column: 1; }
+    .info-overlay { visibility: visible; position: fixed; inset: 0; padding: 28px 24px; }
     h1 { font-size: 24px; }
     .info-title { font-size: 32px; }
     .info-todo li { font-size: 14px; }
-    .info-overlay { padding: 28px 24px; }
   }
 </style>
 </head>
