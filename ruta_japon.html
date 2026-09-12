@@ -940,7 +940,7 @@ function initMap() {
   stops.forEach((s, i) => {
     const opt = document.createElement('option');
     opt.value = i;
-    opt.textContent = `${String(s.n).padStart(2, '0')} · ${s.name}`;
+    opt.textContent = `${s.name} (${s.dates})`;
     roadmapSelect.appendChild(opt);
   });
 
