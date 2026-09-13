@@ -167,16 +167,35 @@ Isla de Itsukushima, junto a Hiroshima (oeste). Excursión de día muy larga des
 
 ## Kanazawa
 
-Base de 4 noches y punto de partida para las excursiones a Takayama y Shirakawa-go. Contenido por definir. Base: Kenrokuen, Castillo, Higashi Chaya, mercado Omicho, 21st Century Museum.
+Parada de 2 noches (10-12 oct). Contenido por definir. Base: Kenrokuen, Castillo, Higashi Chaya, mercado Omicho, 21st Century Museum.
 
 ---
 
-## Takayama (excursión de día desde Kanazawa)
+## Takayama
 
-Bus Nohi ~2h15 por trayecto. Contenido por definir. Base: Sanmachi Suji, Takayama Jinya, morning market.
+Parada de 2 noches (12-14 oct). Incluye excursión de día a Shirakawa-go (ver más abajo).
+
+### Casco antiguo Sanmachi Suji
+- Tres calles principales: Ichinomachi, Ninomachi, Sannomachi
+- Casa Yoshijima (antigua residencia de productor de sake, 1907)
+- Casa Kusakabe (familia adinerada, proveedores del gobierno)
+- Bodegas de sake tradicionales (bola de cedro colgada en la entrada, catas)
+
+### Otros puntos
+- Takayama Jinya (antigua sede del gobierno local)
+- Morning market junto al río Miyagawa (verduras, flores, encurtidos, dulces locales)
+- Santuario Sakurayama Hachiman (más de 1000 años)
+- Templo Hida Kokubunji (el más antiguo de la ciudad, s. VIII, ginkgo de 1200 años)
+- Museo al aire libre Hida Minzoku Mura (casas tradicionales con techo de paja, réplica de aldea)
 
 ---
 
-## Shirakawa-go (excursión de día desde Kanazawa)
+## Shirakawa-go (excursión de día desde Takayama)
 
-Aldea UNESCO gassho-zukuri. Bus ~1h15. Casas gassho-zukuri, mirador Shiroyama, casa Wada-ke.
+Aldea UNESCO gassho-zukuri. Bus Nohi ~50 min desde Takayama. Con calma, 4-5h son suficientes.
+
+- Mirador (subida a pie ~15-20 min desde el norte del pueblo; ideal ir nada más llegar para orientarse)
+- Puente Deai (vistas a las montañas)
+- Museo al aire libre Gassho-Zukuri Minka-en (más de 25 casas tradicionales trasladadas de la región)
+- Templo Myozenji (campanario en estilo gassho-zukuri)
+- Santuario Shirakawa Hachiman
