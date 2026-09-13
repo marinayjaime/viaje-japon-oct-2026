@@ -1,6 +1,6 @@
 # Itinerario · 3–17 octubre 2026
 
-14 noches, 7 paradas. Reorganizado (jul 2026): Kanazawa como base de la zona norte (Takayama y Shirakawa-go como excursiones de día), Kioto a 4 noches con día a Nara, Osaka sin noche (de paso) y Tokio a 4 noches (2+2). Actualizado (sept 2026, varias iteraciones): Koyasan se retira del itinerario. Takayama pasa a 2 noches (12-14 oct) y se añade **Narai-juku** (14-15 oct, 1 noche) como parada nueva. **Kanazawa** vuelve a ser la parada 4 (10-12 oct, 2 noches) y **Shirakawa-go** pasa a excursión de día desde Takayama (bus ~50 min).
+14 noches, 7 paradas. Reorganizado (jul 2026): Kanazawa como base de la zona norte (Takayama y Shirakawa-go como excursiones de día), Kioto a 4 noches con día a Nara, Osaka sin noche (de paso) y Tokio a 4 noches (2+2). Actualizado (sept 2026, varias iteraciones): Koyasan se retira del itinerario. Takayama pasa a 2 noches (12-14 oct). **Kanazawa** vuelve a ser la parada 4 (10-12 oct, 2 noches) y **Shirakawa-go** pasa a excursión de día desde Takayama (bus ~50 min). La parada 6 (14-15 oct, 1 noche) fue primero **Narai-juku** y después se sustituyó por **Gifu**.
 
 ---
 
@@ -52,16 +52,16 @@ Bus Nohi (~2h15).
 - Alojamiento noche 12-13: **Ryokan Asunaro** ✅ reservado — 2-96-2 Hatsudamachi, Takayama, Gifu, Japón. Onsen propio, cena kaiseki con wagyu de Hida, casa tradicional del s. XVI trasladada desde Niigata.
 - Alojamiento noche 13-14: **Hostel Fish in a River** ✅ reservado — 2-16-2 Showa-cho, 506-0053, Takayama, Japón.
 
-### → Takayama → Narai-juku · 14 oct
-Bus Nohi/Alpico Takayama↔Matsumoto (~2h33, reserva obligatoria, verificar si opera en octubre) + tren local JR Chuo Matsumoto→Narai (~30 min). Total ~3h-3h15 aproximado.
+### → Takayama → Gifu · 14 oct
+Tren directo JR Central (limited express), ~1h54, cada 2h aprox.
 
-### Parada 6 · Narai-juku · 14–15 oct · 1 noche
-- Pueblo de posta del antiguo Nakasendo (Kiso Valley), casas de madera bien conservadas.
-- Nueva parada (sept 2026), sustituye a la segunda noche que tenía Kanazawa.
+### Parada 6 · Gifu · 14–15 oct · 1 noche
+- Ciudad a orillas del río Nagara, con castillo en lo alto del monte Kinka.
+- Sustituye a Narai-juku (sept 2026).
 - Pendiente: alojamiento.
 
-### → Narai-juku → Tokio · 15 oct
-Tren local Narai→Shiojiri (~20 min) + Limited Express Azusa Shiojiri→Shinjuku (~2h30). Total ~3h.
+### → Gifu → Tokio · 15 oct
+Tren JR Tokaido Gifu→Nagoya (~21-24 min) + Tokaido Shinkansen Nagoya→Tokio. Total ~2h-2h15 aproximado.
 
 ### Parada 7 · Tokio (Ginza) · 15–17 oct · 2 noches
 - ✅ Reservado: KOKO HOTEL Ginza-1chome.

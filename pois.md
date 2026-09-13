@@ -199,3 +199,16 @@ Aldea UNESCO gassho-zukuri. Bus Nohi ~50 min desde Takayama. Con calma, 4-5h son
 - Museo al aire libre Gassho-Zukuri Minka-en (más de 25 casas tradicionales trasladadas de la región)
 - Templo Myozenji (campanario en estilo gassho-zukuri)
 - Santuario Shirakawa Hachiman
+
+---
+
+## Gifu
+
+Parada de 1 noche (14-15 oct), sustituye a Narai-juku. Se llega desde Takayama en tren directo (~1h54).
+
+- Castillo de Gifu (en lo alto del monte Kinka, accesible en teleférico o a pie; reconstrucción de 1956, mirador con vistas panorámicas)
+- Templo Shohoji (Gran Buda de Gifu, estatua de 14 m del s. XIX)
+- Estatua de Oda Nobunaga en la plaza de la estación de Gifu
+- Calle Kawaramachi (calle histórica junto al río Nagara)
+- Río Nagara (paseo; pesca con cormoranes solo en temporada de verano)
+- Parque del monte Kinka (pequeño, con recinto de ardillas)

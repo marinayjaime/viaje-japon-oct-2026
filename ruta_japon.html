@@ -684,7 +684,7 @@
     {
       n: 5, name: "Takayama", dates: "12 → 14 oct", nights: 2,
       lat: 36.1461, lng: 137.2522,
-      notes: "Pasa de 1 a 2 noches (sept 2026): Kanazawa desaparece como parada con noche y una de sus 2 noches se traslada aquí. Se llega desde Kanazawa en bus Nohi (~2h15) y se sigue a Narai-juku vía Matsumoto. Posible excursión a Shirakawa-go desde aquí (bus Nohi ~50 min). Las 2 noches están en alojamientos distintos: Ryokan Asunaro (12-13) y Hostel Fish in a River (13-14).",
+      notes: "Pasa de 1 a 2 noches (sept 2026): Kanazawa desaparece como parada con noche y una de sus 2 noches se traslada aquí. Se llega desde Kanazawa en bus Nohi (~2h15) y se sigue a Gifu en tren directo (~1h54). Posible excursión a Shirakawa-go desde aquí (bus Nohi ~50 min). Las 2 noches están en alojamientos distintos: Ryokan Asunaro (12-13) y Hostel Fish in a River (13-14).",
       todo: [
         "Excursión a Shirakawa-go (bus Nohi ~50 min)",
         "Casco antiguo Sanmachi Suji (casas Yoshijima y Kusakabe, bodegas de sake)",
@@ -702,12 +702,14 @@
       address: "2-96-2 Hatsudamachi, Takayama, Gifu, Japón"
     },
     {
-      n: 6, name: "Narai-juku", dates: "14 → 15 oct", nights: 1,
-      lat: 35.9653, lng: 137.8114,
-      notes: "Parada nueva (sept 2026): sustituye a la segunda noche que tenía Kanazawa. Pueblo de posta del antiguo Nakasendo, en el valle de Kiso. Se llega desde Takayama vía bus a Matsumoto (~2h33, reserva obligatoria, verificar si opera en octubre) + tren local a Narai (~30 min). Se sigue a Tokio vía tren local a Shiojiri + Limited Express Azusa (~3h total).",
+      n: 6, name: "Gifu", dates: "14 → 15 oct", nights: 1,
+      lat: 35.4233, lng: 136.7606,
+      notes: "Sustituye a Narai-juku (sept 2026). Ciudad a orillas del río Nagara, con castillo en lo alto del monte Kinka. Se llega desde Takayama en tren directo JR Central (~1h54, cada 2h aprox.). Se sigue a Tokio vía tren JR Tokaido a Nagoya (~21-24 min) + Tokaido Shinkansen Nagoya→Tokio.",
       todo: [
-        "Calle principal de casas de madera del periodo Edo",
-        "Templo Chosho-ji"
+        "Castillo de Gifu (teleférico o a pie al monte Kinka)",
+        "Templo Shohoji (Gran Buda de Gifu)",
+        "Calle Kawaramachi junto al río Nagara",
+        "Estatua de Oda Nobunaga en la plaza de la estación"
       ],
       hotel: "Por definir", booked: false
     },
@@ -801,8 +803,8 @@
     { from: 2, to: 3, mode: "Bus a Mishima + shinkansen", time: "~3h30" },
     { from: 3, to: 4, mode: "Thunderbird a Tsuruga + Hokuriku Shinkansen a Kanazawa", time: "~2h aprox." },
     { from: 4, to: 5, mode: "Bus Nohi", time: "~2h15" },
-    { from: 5, to: 6, mode: "Bus Nohi/Alpico a Matsumoto + tren local a Narai", time: "~3h-3h15 aprox." },
-    { from: 6, to: 7, mode: "Tren local a Shiojiri + Limited Express Azusa", time: "~3h" }
+    { from: 5, to: 6, mode: "Tren directo JR Central", time: "~1h54" },
+    { from: 6, to: 7, mode: "Tren JR Tokaido a Nagoya + Tokaido Shinkansen", time: "~2h-2h15 aprox." }
   ];
 
 function initMap() {

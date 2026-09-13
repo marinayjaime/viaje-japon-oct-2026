@@ -10,17 +10,17 @@
 | 4 | Smile Hotel Kanazawa Nishiguchi Ekimae (10-12 oct, 2 noches) | ✅ Reservado | — | [Booking](https://www.booking.com/hotel/jp/sumairuhoterujin-ze-xi-kou-yi-qian.es.html) |
 | 5a | Ryokan Asunaro, Takayama (noche 12-13 oct) | ✅ Reservado | — | [Booking](https://www.booking.com/hotel/jp/ryokan-asunaro.en.html) |
 | 5b | Hostel Fish in a River, Takayama (noche 13-14 oct) | ✅ Reservado | — | [Booking](https://www.booking.com/hotel/jp/hostel-fish-in-a-river.es.html) |
-| 6 | Alojamiento Narai-juku (14-15 oct, 1 noche) | ⏳ Pendiente | — | — |
-| 7 | Hotel Tokio final (15-17 oct, 2 noches) | ⏳ Pendiente | — | — |
+| 6 | Alojamiento Gifu (14-15 oct, 1 noche) | ⏳ Pendiente | — | — |
+| 7 | KOKO HOTEL Ginza-1chome, Tokio (15-17 oct, 2 noches) | ✅ Reservado | — | [Booking](https://www.booking.com/hotel/jp/koko-yin-zuo-yi-ding-mu.es.html) |
 
-> Koyasan se retiró del itinerario (sept 2026); Kanazawa y Shirakawa-go se han intercambiado varias veces desde entonces. Estado final: **Kanazawa** es la parada 4 (10-12 oct, 2 noches). **Shirakawa-go** es excursión de día desde Takayama (bus ~50 min). Takayama tiene 2 noches (12-14 oct), ambas reservadas en alojamientos distintos. Narai-juku es parada nueva (14-15 oct), pendiente de alojamiento.
+> Koyasan se retiró del itinerario (sept 2026); Kanazawa y Shirakawa-go se han intercambiado varias veces desde entonces. Estado final: **Kanazawa** es la parada 4 (10-12 oct, 2 noches). **Shirakawa-go** es excursión de día desde Takayama (bus ~50 min). Takayama tiene 2 noches (12-14 oct), ambas reservadas en alojamientos distintos. La parada 6 fue primero Narai-juku y pasó a ser **Gifu** (14-15 oct), pendiente de alojamiento. La última parada en Tokio (15-17 oct) se reservó en Ginza (KOKO HOTEL Ginza-1chome), no en Asakusa/Ueno como se había planteado.
 
 ---
 
 ## Orden de prioridad
 
-### 1. Alojamiento Narai-juku (14-15 oct, 1 noche) — MÁS URGENTE (única parada sin resolver)
-Pueblo de posta pequeño (Kiso Valley); alojamiento tradicional tipo minshuku, sin opciones concretas verificadas todavía.
+### 1. Alojamiento Gifu (14-15 oct, 1 noche) — MÁS URGENTE (única parada sin resolver)
+Ciudad de tamaño medio (no pueblo tradicional como era Narai-juku); encaja más con la filosofía de "hotel funcional" (como Tokio/Osaka) que con alojamiento tradicional. Sin opciones concretas verificadas todavía.
 
 ### 2. Alojamiento Kawaguchiko (5 oct)
 Prioridad: vistas al Fuji. Zona norte del lago. Rango 100-180 €/noche.
@@ -35,8 +35,8 @@ Prioridad: vistas al Fuji. Zona norte del lago. Rango 100-180 €/noche.
 ### Kioto — ✅ resuelto
 Agora Kyoto Karasuma reservado (6-10 oct).
 
-### 5. Tokio final (15-17 oct, 2 noches)
-Asakusa o Ueno para acceso al Skyliner (Nohga Hotel, Mimaru Ueno, Almont Ueno).
+### Tokio final (15-17 oct, 2 noches) — ✅ resuelto
+**KOKO HOTEL Ginza-1chome** — 1 Chome-9-5 Ginza, Chuo City, Tokio 104-0061, Japón. Cambia la zona respecto al plan anterior (Asakusa/Ueno para el Skyliner) — pendiente revisar ruta al aeropuerto el 17 oct (probablemente Narita Express desde Tokyo Station).
 
 ---
 
@@ -50,17 +50,16 @@ Asakusa o Ueno para acceso al Skyliner (Nohga Hotel, Mimaru Ueno, Almont Ueno).
 | Kioto → Kanazawa | 10 oct | Thunderbird Kioto→Tsuruga (~1h) + Hokuriku Shinkansen→Kanazawa (~35 min) | ~2h aprox. |
 | Bus Kanazawa → Takayama | 12 oct | Nohi Bus | ~2h15, reservar; pocas frecuencias |
 | Excursión Takayama → Shirakawa-go (día) | 12-14 oct | Bus Nohi | ~50 min, ida y vuelta |
-| Bus Takayama → Matsumoto | 14 oct | Nohi/Alpico | ~2h33, reserva obligatoria, verificar si opera en octubre |
-| Tren Matsumoto → Narai-juku | 14 oct | JR Chuo local | ~30 min |
-| Tren Narai-juku → Shiojiri → Tokio (Shinjuku) | 15 oct | JR local + Limited Express Azusa | ~20 min + ~2h30 |
-| Skyliner Ueno → Narita | 17 oct | Keisei | Se puede comprar en el día |
+| Tren Takayama → Gifu | 14 oct | JR Central, directo | ~1h54, cada 2h aprox. |
+| Tren Gifu → Nagoya + Shinkansen Nagoya → Tokio | 15 oct | JR Tokaido + Tokaido Shinkansen | ~21-24 min + shinkansen |
+| Ruta Tokio → Narita | 17 oct | Pendiente confirmar (Ginza cambia la lógica del Skyliner desde Ueno; probable Narita Express desde Tokyo Station) | — |
 
 ---
 
 ## Pases a considerar
 
 - **JR Pass nacional:** con esta ruta ya NO compensa (subió mucho en 2023).
-- **Hokuriku Arch Pass:** cubre Tokio–Kanazawa–Osaka vía costa. Con Kanazawa de nuevo en el itinerario (10-12 oct) pero sin tramo Kanazawa→Tokio en tren (el regreso ahora es Narai-juku→Shiojiri→Shinjuku, línea Chuo) — **revisar si sigue compensando** solo por el tramo Kioto→Kanazawa.
+- **Hokuriku Arch Pass:** cubre Tokio–Kanazawa–Osaka vía costa. Con el cambio de Narai-juku a Gifu, el regreso a Tokio ahora sí pasa por Tokaido Shinkansen (Gifu→Nagoya→Tokio) — **revisar de nuevo si compensa**, ya que puede encajar mejor con este pase que la ruta anterior por la línea Chuo.
 - **Kansai Thru Pass:** posible para movimientos en Kansai (Kioto/Nara).
 - Comprar trenes sueltos + pases regionales concretos suele salir mejor.
 

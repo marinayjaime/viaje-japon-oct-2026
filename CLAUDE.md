@@ -41,7 +41,7 @@ Priorizan **experiencias culturales tradicionales** por encima de hoteles están
 | 3 | 6–10 oct | 4 | Kioto | ✅ Agora Kyoto Karasuma reservado · 1 día a Nara |
 | 4 | 10–12 oct | 2 | Kanazawa | ✅ Smile Hotel Kanazawa Nishiguchi Ekimae reservado |
 | 5 | 12–14 oct | 2 | Takayama | ✅ Reservado completo: Ryokan Asunaro (12-13) + Hostel Fish in a River (13-14) |
-| 6 | 14–15 oct | 1 | Narai-juku | Pendiente |
+| 6 | 14–15 oct | 1 | Gifu | Pendiente |
 | 7 | 15–17 oct | 2 | Tokio (Ginza) | ✅ KOKO HOTEL Ginza-1chome reservado |
 
 **Cambio de estructura (julio 2026):** Takayama deja de ser parada con noche y pasa a excursión de día desde Kanazawa (junto con Shirakawa-go). Osaka pierde la noche (se ve de paso entre Koyasan y Kanazawa). Kioto pasa a 4 noches (incluye día a Nara). Tokio pasa a 4 noches repartidas 2+2. Kanazawa → Tokio ahora es shinkansen Hokuriku directo (~2h30).
@@ -53,6 +53,8 @@ Priorizan **experiencias culturales tradicionales** por encima de hoteles están
 **Cambio de estructura (sept 2026, v3):** Takayama pasa de 1 a 2 noches (12-14 oct). Kanazawa **desaparece como parada con noche**; sus 2 noches se reparten: 1 para Takayama (arriba) y 1 para una parada nueva, **Narai-juku (14-15 oct)**. Kanazawa se visita como excursión de día desde Shirakawa-go (bus ~1h15). Total de paradas se mantiene en 7.
 
 **Cambio de estructura (sept 2026, v4):** Se intercambian Shirakawa-go y Kanazawa. La parada 4 (10-12 oct, 2 noches) vuelve a ser **Kanazawa** (en vez de Shirakawa-go). **Shirakawa-go** pierde su noche y pasa a ser excursión de día desde Takayama (bus ~50 min).
+
+**Cambio de estructura (sept 2026, v5):** La parada 6 (14-15 oct, 1 noche) pasa de **Narai-juku** a **Gifu**. Se llega desde Takayama en tren directo JR Central (~1h54, cada 2h aprox.) en vez del combinado bus Nohi/Alpico a Matsumoto + tren local. Desde Gifu, la salida hacia Tokio también cambia: tren JR Tokaido a Nagoya (~21-24 min) + Tokaido Shinkansen Nagoya→Tokio, en vez de tren local a Shiojiri + Limited Express Azusa.
 
 **Excursiones de día PLANIFICADAS (ya dentro del itinerario, sin noche):**
 - **Nara** — uno de los 4 días de Kioto (~45 min en tren).
@@ -76,8 +78,8 @@ Priorizan **experiencias culturales tradicionales** por encima de hoteles están
 | Kawaguchiko → Kioto | Bus a Mishima + shinkansen | ~3h30 |
 | Kioto → Kanazawa | Thunderbird Kioto→Tsuruga (~1h) + Hokuriku Shinkansen Tsuruga→Kanazawa (~35 min) | ~2h (aprox.) |
 | Kanazawa → Takayama | Bus Nohi | ~2h15 |
-| Takayama → Narai-juku | Bus Nohi/Alpico Takayama↔Matsumoto (~2h33, reserva obligatoria, verificar si opera en octubre) + tren local JR Chuo Matsumoto→Narai (~30 min) | ~3h-3h15 (aprox.) |
-| Narai-juku → Tokio | Tren local Narai→Shiojiri (~20 min) + Limited Express Azusa Shiojiri→Shinjuku (~2h30) | ~3h |
+| Takayama → Gifu | Tren directo JR Central (limited express) | ~1h54 (cada 2h aprox.) |
+| Gifu → Tokio | Tren JR Tokaido a Nagoya (~21-24 min) + Tokaido Shinkansen Nagoya→Tokio | ~2h-2h15 (aprox.) |
 
 **Excursión de día desde Takayama:**
 | Takayama → Shirakawa-go | Bus Nohi | ~50 min |
@@ -86,7 +88,7 @@ Priorizan **experiencias culturales tradicionales** por encima de hoteles están
 
 ## Prioridades de reserva (por orden)
 
-1. **Alojamiento en Narai-juku** (14-15 oct, 1 noche)
+1. **Alojamiento en Gifu** (14-15 oct, 1 noche)
 
 **Kanazawa (10-12 oct) — ✅ resuelto:** Smile Hotel Kanazawa Nishiguchi Ekimae reservado.
 **Tokio, última parada (15-17 oct) — ✅ resuelto:** KOKO HOTEL Ginza-1chome reservado.
@@ -140,14 +142,15 @@ Mapa standalone en `ruta_japon.html` (ver el archivo para el estado actual de ma
 - **Takayama, noche 13-14 resuelta (sept 2026):** reservado Hostel Fish in a River. Las 2 noches de Takayama quedan cubiertas (con alojamientos distintos cada noche).
 - **Nombre del usuario:** Jaime (Marina es la pareja). No inventar apellidos ni otros datos.
 - **Tokio, última parada resuelta (sept 2026):** reservado KOKO HOTEL Ginza-1chome (15-17 oct). Cambia la zona respecto al plan anterior (Asakusa/Ueno pensado para el Skyliner) — pendiente revisar la ruta al aeropuerto el 17 oct.
+- **Narai-juku sustituido por Gifu (sept 2026):** la parada 6 (14-15 oct) deja de ser Narai-juku y pasa a ser Gifu. Cambia también el transporte: Takayama→Gifu es tren directo JR Central (~1h54) en vez de bus+tren vía Matsumoto; Gifu→Tokio es tren a Nagoya + Tokaido Shinkansen en vez de tren local + Limited Express Azusa. Motivo del cambio no registrado explícitamente por Jaime, solo la decisión de sustituir la parada.
 
 ---
 
 ## Cosas pendientes concretas
 
-1. Cerrar alojamiento en Narai-juku (14-15 oct, 1 noche)
-2. Definir contenido de POIs para Kanazawa y Narai-juku (Jaime irá pasando imágenes) — Takayama y Shirakawa-go ya tienen contenido (sept 2026)
-3. Cuando toque: reservas de trenes y buses (Fujikyu, shinkansen Mishima-Kioto, Thunderbird+Hokuriku Kioto-Kanazawa, bus Nohi Kanazawa↔Takayama, bus Nohi Takayama↔Shirakawa-go, bus Nohi/Alpico Takayama↔Matsumoto, tren Matsumoto-Narai-Shiojiri, Azusa Shiojiri-Shinjuku) — verificar horarios exactos y si el bus Takayama-Matsumoto opera en octubre
+1. Cerrar alojamiento en Gifu (14-15 oct, 1 noche)
+2. Definir contenido de POIs para Kanazawa (Jaime irá pasando imágenes) — Takayama, Shirakawa-go y Gifu ya tienen contenido (sept 2026)
+3. Cuando toque: reservas de trenes y buses (Fujikyu, shinkansen Mishima-Kioto, Thunderbird+Hokuriku Kioto-Kanazawa, bus Nohi Kanazawa↔Takayama, bus Nohi Takayama↔Shirakawa-go, tren directo Takayama-Gifu, tren Gifu-Nagoya + Tokaido Shinkansen Nagoya-Tokio) — verificar horarios exactos
 4. Verificar si compensa algún pase regional (el Hokuriku Arch Pass vuelve a encajar con Kanazawa de nuevo con noche; valorar también Kansai para Nara)
 
 ---
