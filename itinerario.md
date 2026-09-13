@@ -27,7 +27,7 @@ Bus Fujikyu directo desde Shinjuku (~1h45). Reserva anticipada.
 - Alojamiento: **Tsunagaru Camp Resort QOONEL+** ✅ reservado (glamping con onsen) — 2568-1 Azagawa, Kawaguchi, Fujikawaguchiko-cho, Minamitsuru-gun, Yamanashi, Japón
 
 ### → Kawaguchiko → Kioto · 6 oct
-Bus a Mishima (~1h40) + shinkansen a Kioto (~1h50). Total ~3h30 con transbordo.
+Bus Fujikyu a Mishima (~1h30) + Tokaido Shinkansen a Kioto (~2h). Total ~3h30 con transbordo.
 
 ### Parada 3 · Kioto · 6–10 oct · 4 noches
 - ~3 días completos + partes. **Uno de los días es excursión a Nara.**
@@ -36,7 +36,7 @@ Bus a Mishima (~1h40) + shinkansen a Kioto (~1h50). Total ~3h30 con transbordo.
 - Contenido en `pois.md` (hay más del que cabe: priorizar en su momento).
 
 ### → Kioto → Kanazawa · 10 oct
-Thunderbird Kioto→Tsuruga (~1h) + Hokuriku Shinkansen Tsuruga→Kanazawa (~35 min). Total ~2h aproximado.
+Thunderbird Kioto→Tsuruga (~1h) + Hokuriku Shinkansen Tsuruga→Kanazawa (~35 min). Total ~1h35.
 
 ### Parada 4 · Kanazawa · 10–12 oct · 2 noches
 - Kenrokuen, castillo, Higashi Chaya, mercado Omicho, 21st Century Museum.
@@ -61,7 +61,7 @@ Tren directo JR Central (limited express), ~1h54, cada 2h aprox.
 - Pendiente: alojamiento.
 
 ### → Gifu → Tokio · 15 oct
-Tren JR Tokaido Gifu→Nagoya (~21-24 min) + Tokaido Shinkansen Nagoya→Tokio. Total ~2h-2h15 aproximado.
+Tren JR Tokaido Gifu→Nagoya (~21-24 min) + Tokaido Shinkansen Nagoya→Tokio (Nozomi ~1h40 / Hikari ~1h55-2h30). Total ~2h-2h50 según el tren.
 
 ### Parada 7 · Tokio (Ginza) · 15–17 oct · 2 noches
 - ✅ Reservado: KOKO HOTEL Ginza-1chome.

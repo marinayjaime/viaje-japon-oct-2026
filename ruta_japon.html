@@ -123,76 +123,6 @@
     padding: 14px 20px 8px;
   }
 
-  .roadmap-section { border-bottom: 1px solid var(--border); padding: 0 20px 14px; }
-
-  /* Desplegable propio (no <select> nativo): en iOS/Android el <select>
-     abre el picker del sistema y no se puede maquetar, así que la lista
-     de opciones se construye a mano para que también lleve el diseño
-     de la web. */
-  .roadmap-select-wrap { position: relative; }
-  .roadmap-select {
-    width: 100%;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
-    letter-spacing: 0.02em;
-    color: var(--ink);
-    background-color: var(--paper);
-    border: 1px solid var(--border-strong);
-    border-left: 3px solid var(--persimmon);
-    border-radius: 8px;
-    padding: 11px 36px 11px 14px;
-    cursor: pointer;
-    box-shadow: 0 1px 3px rgba(27, 31, 42, 0.08);
-    transition: border-color 0.15s, box-shadow 0.15s;
-    text-align: left;
-    display: block;
-    position: relative;
-  }
-  .roadmap-select::after {
-    content: '▾';
-    position: absolute;
-    right: 14px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--muted);
-    font-size: 12px;
-  }
-  .roadmap-select:hover { border-color: var(--persimmon); }
-  .roadmap-select:focus,
-  .roadmap-select.open {
-    outline: none;
-    border-color: var(--persimmon);
-    box-shadow: 0 0 0 3px rgba(200, 74, 40, 0.15);
-  }
-  .roadmap-select-label.placeholder { color: var(--muted); }
-  .roadmap-select-menu {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: calc(100% + 6px);
-    z-index: 20;
-    background: var(--paper);
-    border: 1px solid var(--border-strong);
-    border-radius: 8px;
-    box-shadow: 0 8px 24px rgba(27, 31, 42, 0.18);
-    max-height: 260px;
-    overflow-y: auto;
-    padding: 6px;
-  }
-  .roadmap-select-option {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
-    color: var(--ink);
-    padding: 9px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-  }
-  .roadmap-select-option:hover,
-  .roadmap-select-option.highlighted {
-    background: var(--paper-2);
-    color: var(--persimmon);
-  }
-
   /* Bloque "preparar para el siguiente destino" dentro del panel grande */
   .rm-label {
     font-family: 'JetBrains Mono', monospace;
@@ -224,6 +154,47 @@
     margin-top: 28px;
     padding-top: 20px;
     border-top: 1px dashed var(--border);
+  }
+  .rm-steps { list-style: none; margin: 10px 0; padding: 0; }
+  .rm-step {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--ink);
+    padding: 5px 0;
+    border-bottom: 1px dotted var(--border);
+  }
+  .rm-step:last-child { border-bottom: none; }
+  .rm-step-icon { flex: 0 0 auto; }
+  .rm-step-desc { flex: 1 1 auto; }
+  .rm-step-time {
+    flex: 0 0 auto;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .rm-alt {
+    font-size: 12px;
+    color: var(--muted);
+    background: var(--paper-2);
+    border-radius: 6px;
+    padding: 8px 10px;
+    margin: 6px 0 4px;
+  }
+  .stop-today {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--persimmon);
+    color: var(--paper);
+    padding: 2px 6px;
+    border-radius: 2px;
+    margin-left: 6px;
+    vertical-align: middle;
   }
 
   .stop {
@@ -593,16 +564,6 @@
       </div>
     </div>
 
-    <div class="roadmap-section">
-      <div class="section-title">¿Dónde estás?</div>
-      <div class="roadmap-select-wrap">
-        <button type="button" class="roadmap-select" id="roadmap-select" aria-haspopup="listbox" aria-expanded="false">
-          <span class="roadmap-select-label placeholder" id="roadmap-select-label">Selecciona una parada</span>
-        </button>
-        <div class="roadmap-select-menu" id="roadmap-select-menu" role="listbox" hidden></div>
-      </div>
-    </div>
-
     <div class="timeline" id="timeline"></div>
 
     <div class="foot">
@@ -634,7 +595,8 @@
       ],
       hotel: "Hotel Kabuki", booked: true,
       bookingUrl: "https://www.booking.com/hotel/jp/kabuki.es.html",
-      address: "1-16-9 Kabuki-cho, Shinjuku-ku, Tokio, 160-0021, Japón"
+      address: "1-16-9 Kabuki-cho, Shinjuku-ku, Tokio, 160-0021, Japón",
+      toTransport: "Busta Shinjuku (terminal del bus Fujikyu): ~7-8 min a pie (~0.58 km)."
     },
     {
       n: 2, name: "Kawaguchiko", dates: "5 → 6 oct", nights: 1,
@@ -649,7 +611,8 @@
       ],
       hotel: "Tsunagaru Camp Resort QOONEL+", booked: true,
       bookingUrl: "https://www.booking.com/hotel/jp/tunagarukiyanpurizotoqoonel.html",
-      address: "35.53428,138.78015"
+      address: "35.53428,138.78015",
+      toTransport: "El resort está apartado del centro: no es andando. Traslado/shuttle hasta la estación de Kawaguchiko (~15 min en coche), desde donde sale el bus a Mishima — confirmar horario del shuttle con el alojamiento."
     },
     {
       n: 3, name: "Kioto", dates: "6 → 10 oct", nights: 4,
@@ -664,7 +627,8 @@
       ],
       hotel: "Agora Kyoto Karasuma", booked: true,
       bookingUrl: "https://www.booking.com/hotel/jp/agora-kyoto-karasuma.es.html",
-      address: "701-1 Myodenjicho, Shimogyo-ku, Kioto, 600-8472, Japón"
+      address: "701-1 Myodenjicho, Shimogyo-ku, Kioto, 600-8472, Japón",
+      toTransport: "No está a distancia andando de la estación de Kioto (~2.1 km). 6 min a pie hasta Karasuma/Shijo (metro) + ~10 min en metro hasta la estación de Kioto."
     },
     {
       n: 4, name: "Kanazawa", dates: "10 → 12 oct", nights: 2,
@@ -679,7 +643,8 @@
       ],
       hotel: "Smile Hotel Kanazawa Nishiguchi Ekimae", booked: true,
       bookingUrl: "https://www.booking.com/hotel/jp/sumairuhoterujin-ze-xi-kou-yi-qian.es.html",
-      address: "3-2-37 Hirooka, Kanazawa, Ishikawa, Japón"
+      address: "3-2-37 Hirooka, Kanazawa, Ishikawa, Japón",
+      toTransport: "Estación de Kanazawa (salida oeste): ~4 min a pie desde el hotel."
     },
     {
       n: 5, name: "Takayama", dates: "12 → 14 oct", nights: 2,
@@ -699,7 +664,8 @@
         { label: "Reserva noche 12-13", url: "https://www.booking.com/hotel/jp/ryokan-asunaro.en.html", booked: true },
         { label: "Reserva noche 13-14", url: "https://www.booking.com/hotel/jp/hostel-fish-in-a-river.es.html", booked: true }
       ],
-      address: "2-96-2 Hatsudamachi, Takayama, Gifu, Japón"
+      address: "2-96-2 Hatsudamachi, Takayama, Gifu, Japón",
+      toTransport: "Ryokan Asunaro: ~250 m (unos pasos) hasta la terminal de autobuses Nohi. Hostel Fish in a River: ~8 min a pie hasta la estación de Takayama (la terminal Nohi está junto a la estación)."
     },
     {
       n: 6, name: "Gifu", dates: "14 → 15 oct", nights: 1,
@@ -725,7 +691,8 @@
       ],
       hotel: "KOKO HOTEL Ginza-1chome", booked: true,
       bookingUrl: "https://www.booking.com/hotel/jp/koko-yin-zuo-yi-ding-mu.es.html",
-      address: "1 Chome-9-5 Ginza, Chuo City, Tokio 104-0061, Japón"
+      address: "1 Chome-9-5 Ginza, Chuo City, Tokio 104-0061, Japón",
+      toTransport: "Estación Ginza-itchome: 1 min a pie. Hasta la estación de Tokio (para el tren al aeropuerto): ~10-15 min en metro."
     }
   ];
 
@@ -798,13 +765,32 @@
     }
   ];
 
+  // steps: desglose real de cada tramo (verificado, no inventado) para mostrar
+  // en el panel "Preparar para X" paso a paso. alt: alternativa/nota de la
+  // opción más rápida cuando hay más de una posibilidad razonable.
   const legs = [
-    { from: 1, to: 2, mode: "Bus Fujikyu desde Shinjuku", time: "1h45" },
-    { from: 2, to: 3, mode: "Bus a Mishima + shinkansen", time: "~3h30" },
-    { from: 3, to: 4, mode: "Thunderbird a Tsuruga + Hokuriku Shinkansen a Kanazawa", time: "~2h aprox." },
-    { from: 4, to: 5, mode: "Bus Nohi", time: "~2h15" },
-    { from: 5, to: 6, mode: "Tren directo JR Central", time: "~1h54" },
-    { from: 6, to: 7, mode: "Tren JR Tokaido a Nagoya + Tokaido Shinkansen", time: "~2h-2h15 aprox." }
+    { from: 1, to: 2, mode: "Bus Fujikyu desde Shinjuku", time: "1h45",
+      steps: [{ icon: "🚌", desc: "Bus Fujikyu Busta Shinjuku → Kawaguchiko", time: "1h45" }] },
+    { from: 2, to: 3, mode: "Bus a Mishima + shinkansen", time: "~3h30",
+      steps: [
+        { icon: "🚌", desc: "Bus Fujikyu Kawaguchiko → Mishima", time: "~1h30" },
+        { icon: "🚄", desc: "Tokaido Shinkansen Mishima → Kioto", time: "~2h" }
+      ] },
+    { from: 3, to: 4, mode: "Thunderbird a Tsuruga + Hokuriku Shinkansen a Kanazawa", time: "~1h35",
+      steps: [
+        { icon: "🚄", desc: "Limited Express Thunderbird Kioto → Tsuruga", time: "~1h" },
+        { icon: "🚄", desc: "Hokuriku Shinkansen Tsuruga → Kanazawa", time: "~35 min" }
+      ] },
+    { from: 4, to: 5, mode: "Bus Nohi", time: "~2h15",
+      steps: [{ icon: "🚌", desc: "Bus Nohi Kanazawa → Takayama (reserva con antelación, pocas frecuencias)", time: "~2h15" }] },
+    { from: 5, to: 6, mode: "Tren directo JR Central", time: "~1h54",
+      steps: [{ icon: "🚄", desc: "Limited Express JR Central Takayama → Gifu (directo, cada 2h aprox.)", time: "~1h54" }] },
+    { from: 6, to: 7, mode: "Tren JR Tokaido a Nagoya + Tokaido Shinkansen", time: "~2h-2h50",
+      steps: [
+        { icon: "🚃", desc: "JR Tokaido Line Gifu → Nagoya", time: "~21-24 min" },
+        { icon: "🚄", desc: "Tokaido Shinkansen Nagoya → Tokio", time: "~1h40-2h30" }
+      ],
+      alt: "Más rápido: Nozomi (~1h40 Nagoya→Tokio, suplemento aparte, no cubierto por JR Pass). Hikari es más lento (~1h55-2h30) pero si se comprara un JR Pass sería la opción cubierta — de momento descartado (no compensa, ver reservas.md)." }
   ];
 
 function initMap() {
@@ -879,13 +865,25 @@ function initMap() {
       ? `<a href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(place.address)}" target="_blank" rel="noopener" class="info-cta" data-directions="1">Cómo llegar</a>`
       : '';
 
-    // Vista extendida (desde el selector "¿Dónde estás?"): añade un bloque
-    // con cómo preparar el salto al siguiente destino.
+    // Bloque "Preparar para X": paso a paso real (hotel → transporte → siguiente
+    // hotel) para cualquier parada con reserva, no solo desde el selector.
     let nextBlock = '';
-    if (extended && !isOptional) {
+    if (!isOptional) {
       const idx = stops.indexOf(place);
       const next = stops[idx + 1];
       const leg = legByFrom[place.n];
+      const stepRows = [];
+      if (place.toTransport) {
+        stepRows.push(`<li class="rm-step"><span class="rm-step-icon">🚶</span><span class="rm-step-desc">${place.toTransport}</span></li>`);
+      }
+      if (leg && leg.steps) {
+        leg.steps.forEach(s => {
+          stepRows.push(`<li class="rm-step"><span class="rm-step-icon">${s.icon}</span><span class="rm-step-desc">${s.desc}</span><span class="rm-step-time">${s.time}</span></li>`);
+        });
+      }
+      const stepsHtml = stepRows.length ? `<ul class="rm-steps">${stepRows.join('')}</ul>` : '';
+      const altHtml = leg && leg.alt ? `<div class="rm-alt"><strong>Alternativa:</strong> ${leg.alt}</div>` : '';
+
       if (next) {
         const originParam = place.address || `${place.lat},${place.lng}`;
         const destParam = next.address || `${next.lat},${next.lng}`;
@@ -893,7 +891,9 @@ function initMap() {
         nextBlock = `
           <div class="rm-next">
             <div class="rm-label">Preparar para ${next.name}</div>
-            ${leg ? `<div class="rm-transport">${leg.mode} · ${leg.time}</div>` : ''}
+            ${leg ? `<div class="rm-transport">${leg.mode} · ${leg.time} en total</div>` : ''}
+            ${stepsHtml}
+            ${altHtml}
             <div class="info-cta-row">
               <a href="${webUrl}" target="_blank" rel="noopener" class="info-cta" data-rm-directions="1">Cómo llegar</a>
             </div>
@@ -907,7 +907,8 @@ function initMap() {
         nextBlock = `
           <div class="rm-next">
             <div class="rm-label">Vuelta a casa</div>
-            <div class="rm-transport">Vuelo de salida: 17 oct 2026, 11:10 desde Narita (NRT)</div>
+            ${stepsHtml}
+            <div class="rm-transport">Vuelo de salida: 17 oct 2026, 11:10 desde Narita (NRT). Ruta hotel → aeropuerto pendiente de confirmar.</div>
           </div>
         `;
       }
@@ -1008,64 +1009,19 @@ function initMap() {
   const legByFrom = {};
   legs.forEach(l => legByFrom[l.from] = l);
 
-  // Selector "¿Dónde estás?": al elegir una parada, abre el panel grande
-  // con su roadmap (qué ver, alojamiento y cómo preparar el siguiente salto).
-  // Es un desplegable hecho a mano (no <select> nativo) porque en
-  // iOS/Android el <select> abre el picker del sistema, que no se puede
-  // maquetar con CSS.
-  const roadmapSelectBtn = document.getElementById('roadmap-select');
-  const roadmapSelectLabel = document.getElementById('roadmap-select-label');
-  const roadmapSelectMenu = document.getElementById('roadmap-select-menu');
-
-  // Calcula qué parada toca hoy para marcarla en el desplegable
-  const roadmapTripStart = new Date('2026-10-03T00:00:00+09:00');
+  // Calcula qué parada toca hoy para marcarla en la lista lateral
+  const todayCalcStart = new Date('2026-10-03T00:00:00+09:00');
   let todayStopIndex = -1;
-  const roadmapNow = new Date();
-  if (roadmapNow >= roadmapTripStart) {
-    let cursor = new Date(roadmapTripStart);
+  const nowJst = new Date();
+  if (nowJst >= todayCalcStart) {
+    let cursor = new Date(todayCalcStart);
     for (let idx = 0; idx < stops.length; idx++) {
       const endCursor = new Date(cursor);
       endCursor.setDate(endCursor.getDate() + stops[idx].nights);
-      if (roadmapNow < endCursor) { todayStopIndex = idx; break; }
+      if (nowJst < endCursor) { todayStopIndex = idx; break; }
       cursor = endCursor;
     }
   }
-
-  stops.forEach((s, i) => {
-    const optEl = document.createElement('div');
-    optEl.className = 'roadmap-select-option';
-    optEl.setAttribute('role', 'option');
-    optEl.dataset.i = i;
-    optEl.textContent = i === todayStopIndex ? `${s.name} (hoy)` : s.name;
-    optEl.addEventListener('click', () => {
-      roadmapSelectLabel.textContent = s.name;
-      roadmapSelectLabel.classList.remove('placeholder');
-      closeRoadmapMenu();
-      focusStop(i);
-      showInfo(s, false, true, true);
-    });
-    roadmapSelectMenu.appendChild(optEl);
-  });
-
-  function openRoadmapMenu() {
-    roadmapSelectMenu.hidden = false;
-    roadmapSelectBtn.classList.add('open');
-    roadmapSelectBtn.setAttribute('aria-expanded', 'true');
-  }
-  function closeRoadmapMenu() {
-    roadmapSelectMenu.hidden = true;
-    roadmapSelectBtn.classList.remove('open');
-    roadmapSelectBtn.setAttribute('aria-expanded', 'false');
-  }
-  roadmapSelectBtn.addEventListener('click', () => {
-    if (roadmapSelectMenu.hidden) openRoadmapMenu();
-    else closeRoadmapMenu();
-  });
-  document.addEventListener('click', (e) => {
-    if (!roadmapSelectBtn.contains(e.target) && !roadmapSelectMenu.contains(e.target)) {
-      closeRoadmapMenu();
-    }
-  });
 
   const sectionTitle = document.createElement('div');
   sectionTitle.className = 'section-title';
@@ -1077,10 +1033,11 @@ function initMap() {
     el.className = 'stop';
     el.dataset.i = i;
     const bookedBadge = statusBadgeHtml(s);
+    const todayBadge = i === todayStopIndex ? '<span class="stop-today">Hoy</span>' : '';
     el.innerHTML = `
       <div class="stop-num">${String(s.n).padStart(2, '0')}</div>
       <div class="stop-body">
-        <div class="stop-name">${s.name}${bookedBadge}</div>
+        <div class="stop-name">${s.name}${bookedBadge}${todayBadge}</div>
         <div class="stop-detail">${s.dates}</div>
       </div>
       <div class="stop-nights">

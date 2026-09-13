@@ -47,7 +47,7 @@ Agora Kyoto Karasuma reservado (6-10 oct).
 | Bus Shinjuku → Kawaguchiko | 5 oct | Fujikyu Express | Reservar con antelación |
 | Bus Kawaguchiko → Mishima | 6 oct | Fujikyu | Reservar con antelación |
 | Shinkansen Mishima → Kioto | 6 oct | JR | Compra próxima a la fecha |
-| Kioto → Kanazawa | 10 oct | Thunderbird Kioto→Tsuruga (~1h) + Hokuriku Shinkansen→Kanazawa (~35 min) | ~2h aprox. |
+| Kioto → Kanazawa | 10 oct | Thunderbird Kioto→Tsuruga (~1h) + Hokuriku Shinkansen→Kanazawa (~35 min) | ~1h35 |
 | Bus Kanazawa → Takayama | 12 oct | Nohi Bus | ~2h15, reservar; pocas frecuencias |
 | Excursión Takayama → Shirakawa-go (día) | 12-14 oct | Bus Nohi | ~50 min, ida y vuelta |
 | Tren Takayama → Gifu | 14 oct | JR Central, directo | ~1h54, cada 2h aprox. |

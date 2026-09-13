@@ -75,11 +75,11 @@ Priorizan **experiencias culturales tradicionales** por encima de hoteles están
 | Trayecto | Medio | Tiempo aprox. |
 |---|---|---|
 | Tokio → Kawaguchiko | Bus Fujikyu desde Shinjuku | 1h45 |
-| Kawaguchiko → Kioto | Bus a Mishima + shinkansen | ~3h30 |
-| Kioto → Kanazawa | Thunderbird Kioto→Tsuruga (~1h) + Hokuriku Shinkansen Tsuruga→Kanazawa (~35 min) | ~2h (aprox.) |
+| Kawaguchiko → Kioto | Bus Fujikyu a Mishima (~1h30) + Tokaido Shinkansen a Kioto (~2h) | ~3h30 |
+| Kioto → Kanazawa | Thunderbird Kioto→Tsuruga (~1h) + Hokuriku Shinkansen Tsuruga→Kanazawa (~35 min) | ~1h35 |
 | Kanazawa → Takayama | Bus Nohi | ~2h15 |
 | Takayama → Gifu | Tren directo JR Central (limited express) | ~1h54 (cada 2h aprox.) |
-| Gifu → Tokio | Tren JR Tokaido a Nagoya (~21-24 min) + Tokaido Shinkansen Nagoya→Tokio | ~2h-2h15 (aprox.) |
+| Gifu → Tokio | Tren JR Tokaido a Nagoya (~21-24 min) + Tokaido Shinkansen Nagoya→Tokio (Nozomi ~1h40 / Hikari ~1h55-2h30) | ~2h-2h50 |
 
 **Excursión de día desde Takayama:**
 | Takayama → Shirakawa-go | Bus Nohi | ~50 min |
