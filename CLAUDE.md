@@ -42,7 +42,7 @@ Priorizan **experiencias culturales tradicionales** por encima de hoteles están
 | 4 | 10–12 oct | 2 | Kanazawa | ✅ Smile Hotel Kanazawa Nishiguchi Ekimae reservado |
 | 5 | 12–14 oct | 2 | Takayama | ✅ Reservado completo: Ryokan Asunaro (12-13) + Hostel Fish in a River (13-14) |
 | 6 | 14–15 oct | 1 | Narai-juku | Pendiente |
-| 7 | 15–17 oct | 2 | Tokio (Asakusa/Ueno) | Pendiente |
+| 7 | 15–17 oct | 2 | Tokio (Ginza) | ✅ KOKO HOTEL Ginza-1chome reservado |
 
 **Cambio de estructura (julio 2026):** Takayama deja de ser parada con noche y pasa a excursión de día desde Kanazawa (junto con Shirakawa-go). Osaka pierde la noche (se ve de paso entre Koyasan y Kanazawa). Kioto pasa a 4 noches (incluye día a Nara). Tokio pasa a 4 noches repartidas 2+2. Kanazawa → Tokio ahora es shinkansen Hokuriku directo (~2h30).
 
@@ -87,9 +87,9 @@ Priorizan **experiencias culturales tradicionales** por encima de hoteles están
 ## Prioridades de reserva (por orden)
 
 1. **Alojamiento en Narai-juku** (14-15 oct, 1 noche)
-2. Hotel última noche(s) en Tokio (15-17 oct) — puede esperar
 
 **Kanazawa (10-12 oct) — ✅ resuelto:** Smile Hotel Kanazawa Nishiguchi Ekimae reservado.
+**Tokio, última parada (15-17 oct) — ✅ resuelto:** KOKO HOTEL Ginza-1chome reservado.
 **Takayama (12-14 oct) — ✅ resuelto:** Ryokan Asunaro (12-13) + Hostel Fish in a River (13-14), las 2 noches reservadas.
 
 ---
@@ -139,13 +139,14 @@ Mapa standalone en `ruta_japon.html` (ver el archivo para el estado actual de ma
 - **Se intercambian Shirakawa-go y Kanazawa (sept 2026):** Kanazawa vuelve a ser la parada 4 con noche (10-12 oct, 2 noches). Shirakawa-go pierde la noche y pasa a excursión de día desde Takayama (bus ~50 min).
 - **Takayama, noche 13-14 resuelta (sept 2026):** reservado Hostel Fish in a River. Las 2 noches de Takayama quedan cubiertas (con alojamientos distintos cada noche).
 - **Nombre del usuario:** Jaime (Marina es la pareja). No inventar apellidos ni otros datos.
+- **Tokio, última parada resuelta (sept 2026):** reservado KOKO HOTEL Ginza-1chome (15-17 oct). Cambia la zona respecto al plan anterior (Asakusa/Ueno pensado para el Skyliner) — pendiente revisar la ruta al aeropuerto el 17 oct.
 
 ---
 
 ## Cosas pendientes concretas
 
 1. Cerrar alojamiento en Narai-juku (14-15 oct, 1 noche)
-2. Definir contenido de POIs para Kanazawa, Takayama, Shirakawa-go y Narai-juku (Jaime irá pasando imágenes)
+2. Definir contenido de POIs para Kanazawa y Narai-juku (Jaime irá pasando imágenes) — Takayama y Shirakawa-go ya tienen contenido (sept 2026)
 3. Cuando toque: reservas de trenes y buses (Fujikyu, shinkansen Mishima-Kioto, Thunderbird+Hokuriku Kioto-Kanazawa, bus Nohi Kanazawa↔Takayama, bus Nohi Takayama↔Shirakawa-go, bus Nohi/Alpico Takayama↔Matsumoto, tren Matsumoto-Narai-Shiojiri, Azusa Shiojiri-Shinjuku) — verificar horarios exactos y si el bus Takayama-Matsumoto opera en octubre
 4. Verificar si compensa algún pase regional (el Hokuriku Arch Pass vuelve a encajar con Kanazawa de nuevo con noche; valorar también Kansai para Nara)
 

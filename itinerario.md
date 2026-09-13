@@ -63,13 +63,13 @@ Bus Nohi/Alpico Takayama↔Matsumoto (~2h33, reserva obligatoria, verificar si o
 ### → Narai-juku → Tokio · 15 oct
 Tren local Narai→Shiojiri (~20 min) + Limited Express Azusa Shiojiri→Shinjuku (~2h30). Total ~3h.
 
-### Parada 7 · Tokio (Asakusa/Ueno) · 15–17 oct · 2 noches
-- Zona con acceso directo al Skyliner a Narita (~40 min).
+### Parada 7 · Tokio (Ginza) · 15–17 oct · 2 noches
+- ✅ Reservado: KOKO HOTEL Ginza-1chome.
 - Zonas pendientes de Tokio, compras, cena de despedida. Opción día a Kamakura.
-- Pendiente: hotel funcional en Ueno o Asakusa.
+- Pendiente: revisar ruta al aeropuerto — el plan anterior asumía Skyliner desde Ueno/Asakusa; desde Ginza probablemente compense más Narita Express desde Tokyo Station, a confirmar.
 
 ### → Tokio → Narita · 17 oct
-Salida del hotel ~7:15. Skyliner ~40 min. Aeropuerto sobre las 8:30 para vuelo 11:10.
+Pendiente de confirmar (ver arriba). Vuelo 11:10.
 
 ---
 
