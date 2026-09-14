@@ -654,10 +654,10 @@
       Conversor de moneda
     </button>
 
-    <a class="converter-btn" href="transporte/jr-pass-mapa-validez.pdf" target="_blank" rel="noopener">
+    <button class="converter-btn" id="transporte-btn" type="button">
       <span class="converter-btn-icon">🚄</span>
       Transporte
-    </a>
+    </button>
 
     <div class="timeline" id="timeline"></div>
 
@@ -1202,6 +1202,23 @@ function initMap() {
     overlay.classList.add('visible');
   }
   document.getElementById('converter-btn').addEventListener('click', showConverter);
+
+  function showTransporte() {
+    clearTimeout(hideTimer);
+    pinned = true;
+    overlayContent.innerHTML = `
+      <button class="info-close" aria-label="Cerrar">×</button>
+      <div class="info-eyebrow">Herramienta</div>
+      <div class="info-title">Transporte</div>
+      <div class="info-cta-row" style="margin-top:24px">
+        <a href="transporte/jr-pass-mapa-validez.pdf" target="_blank" rel="noopener" class="info-cta">Guía 1</a>
+        <a href="transporte/jr-pass-mapa-nacional-en.pdf" target="_blank" rel="noopener" class="info-cta">Guía 2</a>
+      </div>
+    `;
+    overlayContent.querySelector('.info-close').addEventListener('click', closeInfo);
+    overlay.classList.add('visible');
+  }
+  document.getElementById('transporte-btn').addEventListener('click', showTransporte);
 
   const markerMap = {};
   const stopEls = {};
