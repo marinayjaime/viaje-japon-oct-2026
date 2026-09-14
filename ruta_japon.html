@@ -831,6 +831,23 @@
     }).join('');
   }
 
+  // Construye el resumen + botón "Ver recorrido" + desplegable de un tramo,
+  // a partir del lugar de origen (con su toTransport) y el leg correspondiente.
+  // Se reutiliza tanto en la pestaña "[siguiente parada]" de la parada de
+  // origen como en la pestaña "¿Cómo llegar?" de la parada de destino.
+  function buildRouteHtml(fromPlace, leg) {
+    const walkHtml = fromPlace.toTransport
+      ? `<ul class="rm-steps"><li class="rm-step"><span class="rm-step-icon">🚶</span><span class="rm-step-desc">${fromPlace.toTransport}</span></li></ul>`
+      : '';
+    const hasRoute = !!(fromPlace.toTransport || (leg && leg.options));
+    const optionsHtml = leg && leg.options ? renderOptions(leg.options) : '';
+    const fastest = leg && leg.options ? [...leg.options].sort((a, b) => a.timeMinutes - b.timeMinutes)[0] : null;
+    const summaryHtml = fastest ? `<div class="rm-transport">${fastest.title} · ${fastest.time} en total</div>` : '';
+    const routeToggleBtn = hasRoute ? `<button type="button" class="rm-toggle-btn" aria-expanded="false">Ver recorrido</button>` : '';
+    const routeCollapsible = hasRoute ? `<div class="rm-collapsible" hidden>${walkHtml}${optionsHtml}</div>` : '';
+    return { hasRoute, summaryHtml, routeToggleBtn, routeCollapsible };
+  }
+
   const stops = [
     {
       n: 1, name: "Tokio", dates: "3 → 5 oct", nights: 2,
@@ -1265,6 +1282,34 @@ function initMap() {
       });
     }
 
+    // Pestaña "¿Cómo llegar?" (a partir de la 2ª parada): el mismo trayecto
+    // que ya se muestra en la pestaña de la parada anterior (con el nombre
+    // de esta parada), para poder verlo también desde aquí.
+    if (!isOptional && !place.arrivalOptions) {
+      const idx = stops.indexOf(place);
+      const prev = stops[idx - 1];
+      if (prev) {
+        const prevLeg = legByFrom[prev.n];
+        const r = buildRouteHtml(prev, prevLeg);
+        if (r.hasRoute) {
+          const originParam = prev.address || `${prev.lat},${prev.lng}`;
+          const destParam = place.address || `${place.lat},${place.lng}`;
+          const webUrl = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(originParam)}&destination=${encodeURIComponent(destParam)}&travelmode=transit`;
+          tabs.push({
+            label: '¿Cómo llegar?',
+            html: `
+              ${r.summaryHtml}
+              <div class="rm-btn-row">
+                ${r.routeToggleBtn}
+                <a href="${webUrl}" target="_blank" rel="noopener" class="info-cta" data-incoming-directions="1">Cómo llegar</a>
+              </div>
+              ${r.routeCollapsible}
+            `
+          });
+        }
+      }
+    }
+
     // Pestaña "¿Qué hacer?"
     tabs.push({
       label: '¿Qué hacer?',
@@ -1286,15 +1331,7 @@ function initMap() {
       const idx = stops.indexOf(place);
       const next = stops[idx + 1];
       const leg = legByFrom[place.n];
-      const walkHtml = place.toTransport
-        ? `<ul class="rm-steps"><li class="rm-step"><span class="rm-step-icon">🚶</span><span class="rm-step-desc">${place.toTransport}</span></li></ul>`
-        : '';
-      const hasRoute = !!(place.toTransport || (leg && leg.options));
-      const optionsHtml = leg && leg.options ? renderOptions(leg.options) : '';
-      const fastest = leg && leg.options ? [...leg.options].sort((a, b) => a.timeMinutes - b.timeMinutes)[0] : null;
-      const summaryHtml = fastest ? `<div class="rm-transport">${fastest.title} · ${fastest.time} en total</div>` : '';
-      const routeToggleBtn = hasRoute ? `<button type="button" class="rm-toggle-btn" aria-expanded="false">Ver recorrido</button>` : '';
-      const routeCollapsible = hasRoute ? `<div class="rm-collapsible" hidden>${walkHtml}${optionsHtml}</div>` : '';
+      const r = buildRouteHtml(place, leg);
 
       if (next) {
         const originParam = place.address || `${place.lat},${place.lng}`;
@@ -1303,12 +1340,12 @@ function initMap() {
         tabs.push({
           label: next.name,
           html: `
-            ${summaryHtml}
+            ${r.summaryHtml}
             <div class="rm-btn-row">
-              ${routeToggleBtn}
+              ${r.routeToggleBtn}
               <a href="${webUrl}" target="_blank" rel="noopener" class="info-cta" data-rm-directions="1">Cómo llegar</a>
             </div>
-            ${routeCollapsible}
+            ${r.routeCollapsible}
             <div class="rm-next-hotel">
               <span class="rm-label-inline">Alojamiento en ${next.name}:</span> ${next.hotel}
             </div>
@@ -1319,8 +1356,8 @@ function initMap() {
         tabs.push({
           label: 'Vuelta a casa',
           html: `
-            <div class="rm-btn-row">${routeToggleBtn}</div>
-            ${routeCollapsible}
+            <div class="rm-btn-row">${r.routeToggleBtn}</div>
+            ${r.routeCollapsible}
             <div class="rm-transport">Vuelo de salida: 17 oct 2026, 11:10 desde Narita (NRT). Ruta hotel → aeropuerto pendiente de confirmar.</div>
           `
         });
@@ -1378,6 +1415,18 @@ function initMap() {
         nextDirLink,
         `comgooglemaps://?saddr=${encodeURIComponent(originParam)}&daddr=${encodeURIComponent(destParam)}&directionsmode=transit`,
         nextDirLink.href
+      );
+    }
+    const incomingDirLink = overlayContent.querySelector('[data-incoming-directions]');
+    if (incomingDirLink) {
+      const idx = stops.indexOf(place);
+      const prev = stops[idx - 1];
+      const originParam = prev.address || `${prev.lat},${prev.lng}`;
+      const destParam = place.address || `${place.lat},${place.lng}`;
+      attachSmartMapsClick(
+        incomingDirLink,
+        `comgooglemaps://?saddr=${encodeURIComponent(originParam)}&daddr=${encodeURIComponent(destParam)}&directionsmode=transit`,
+        incomingDirLink.href
       );
     }
     overlayContent.querySelectorAll('.rm-toggle-btn').forEach(btn => {
