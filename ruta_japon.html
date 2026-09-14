@@ -271,42 +271,30 @@
     padding: 8px 10px;
     margin: 6px 0 4px;
   }
-  .rm-details { margin: 8px 0; }
-  .rm-details summary {
+  .rm-collapsible { margin-top: 2px; }
+  .rm-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin: 2px 0 10px;
+    padding: 5px 10px;
+    background: transparent;
+    border: 1px solid var(--border-strong);
+    border-radius: 3px;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
     cursor: pointer;
-    list-style: none;
-    user-select: none;
+    transition: border-color 0.15s, color 0.15s;
   }
-  .rm-details summary::-webkit-details-marker { display: none; }
-  .rm-details summary::before {
+  .rm-toggle-btn:hover { border-color: var(--persimmon); color: var(--persimmon); }
+  .rm-toggle-btn::before {
     content: '▸';
     display: inline-block;
-    width: 12px;
     transition: transform 0.15s ease;
   }
-  .rm-details[open] summary::before { transform: rotate(90deg); }
-  .rm-details > summary {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: var(--muted);
-    padding: 4px 0;
-  }
-  .rm-details[open] > summary { margin-bottom: 4px; }
-  .rm-details-top > summary.rm-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--persimmon);
-    margin-bottom: 0;
-  }
-  .rm-details-top[open] > summary.rm-label { margin-bottom: 8px; }
-  .rm-summary-suffix {
-    text-transform: none;
-    letter-spacing: normal;
-    font-weight: 400;
-    color: var(--muted);
-  }
+  .rm-toggle-btn[aria-expanded="true"]::before { transform: rotate(90deg); }
   .stop-today {
     display: inline-block;
     font-family: 'JetBrains Mono', monospace;
@@ -1093,11 +1081,14 @@ function initMap() {
         ? `<div class="info-cta-row"><a href="https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(place.arrivalOrigin)}&destination=${encodeURIComponent(place.address)}&travelmode=transit" target="_blank" rel="noopener" class="info-cta" data-arrival-directions="1">Cómo llegar</a></div>`
         : '';
       arrivalBlock = `
-        <details class="rm-next rm-details rm-details-top" style="border-top:none; padding-top:0; margin-top:0">
-          <summary class="rm-label">${place.arrivalLabel || 'Cómo llegar'} <span class="rm-summary-suffix">· Ver recorrido</span></summary>
-          <ul class="rm-steps">${optionRows}</ul>
-          ${arrivalDirectionsCta}
-        </details>
+        <div class="rm-next" style="border-top:none; padding-top:0; margin-top:0">
+          <span class="rm-label">${place.arrivalLabel || 'Cómo llegar'}</span>
+          <button type="button" class="rm-toggle-btn" aria-expanded="false">Ver recorrido</button>
+          <div class="rm-collapsible" hidden>
+            <ul class="rm-steps">${optionRows}</ul>
+            ${arrivalDirectionsCta}
+          </div>
+        </div>
       `;
     }
 
@@ -1120,7 +1111,7 @@ function initMap() {
       const stepsHtml = stepRows.length ? `<ul class="rm-steps">${stepRows.join('')}</ul>` : '';
       const altHtml = leg && leg.alt ? `<div class="rm-alt"><strong>Alternativa:</strong> ${leg.alt}</div>` : '';
       const routeDetails = stepsHtml
-        ? `<details class="rm-details"><summary>Ver recorrido</summary>${stepsHtml}${altHtml}</details>`
+        ? `<button type="button" class="rm-toggle-btn" aria-expanded="false">Ver recorrido</button><div class="rm-collapsible" hidden>${stepsHtml}${altHtml}</div>`
         : '';
 
       if (next) {
@@ -1192,6 +1183,15 @@ function initMap() {
         nextDirLink.href
       );
     }
+    overlayContent.querySelectorAll('.rm-toggle-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.nextElementSibling;
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        target.hidden = expanded;
+        btn.setAttribute('aria-expanded', String(!expanded));
+        btn.textContent = expanded ? 'Ver recorrido' : 'Ocultar recorrido';
+      });
+    });
     overlay.classList.add('visible');
   }
 
