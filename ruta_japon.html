@@ -767,12 +767,25 @@
   }
 
   // Renderiza una lista de opciones de transporte ordenadas de más rápida a
-  // más lenta, con etiqueta verde en la más rápida (solo si hay más de una).
+  // más lenta, con etiqueta verde en la más rápida y, justo debajo de ella
+  // (posición 2), la más económica de entre las que tienen precio conocido
+  // (solo si hay más de una opción).
   function renderOptions(options) {
-    const sorted = [...options].sort((a, b) => a.timeMinutes - b.timeMinutes);
-    return sorted.map((o, i) => {
-      const fastest = i === 0 && sorted.length > 1
-        ? `<span class="rm-fastest-badge">La más rápida</span>` : '';
+    let sorted = [...options].sort((a, b) => a.timeMinutes - b.timeMinutes);
+    const fastestOpt = sorted[0];
+    const withPrice = sorted.filter(o => typeof o.priceValue === 'number');
+    const cheapestOpt = withPrice.length
+      ? withPrice.reduce((min, o) => o.priceValue < min.priceValue ? o : min)
+      : null;
+    if (cheapestOpt && cheapestOpt !== fastestOpt) {
+      sorted = sorted.filter(o => o !== cheapestOpt);
+      sorted.splice(1, 0, cheapestOpt);
+    }
+    return sorted.map((o) => {
+      const badges = [];
+      if (sorted.length > 1 && o === fastestOpt) badges.push('La más rápida');
+      if (sorted.length > 1 && o === cheapestOpt) badges.push('La más económica');
+      const badgeHtml = badges.map(b => `<span class="rm-fastest-badge">${b}</span>`).join('');
       const body = o.steps
         ? `<ul class="rm-steps">${o.steps.map(s => `
             <li class="rm-step">
@@ -788,7 +801,7 @@
           <div class="rm-option-head">
             <span class="rm-option-icon">${o.icon}</span>
             <span class="rm-option-title">${o.title}</span>
-            ${fastest}
+            ${badgeHtml}
             <span class="rm-option-time">${o.time}</span>
           </div>
           ${body}
@@ -812,35 +825,35 @@
           title: "Narita Express (N'EX)",
           desc: "directo a la <strong>Estación de Shinjuku</strong>, sin trasbordos. Asiento reservado, espacio para maletas. Desde la Salida Este de Shinjuku, el Hotel Kabuki está a ~5 min a pie (cruzar Yasukuni-dori hacia Kabukicho, detrás de Don Quijote).",
           time: "~75-80 min", timeMinutes: 78,
-          price: "~18 € (ida) · billete ida/vuelta con descuento para extranjeros ~28 €"
+          price: "~18 € (ida) · billete ida/vuelta con descuento para extranjeros ~28 €", priceValue: 18
         },
         {
           icon: "🚈",
           title: "Keisei Skyliner + línea JR Yamanote",
           desc: `Skyliner hasta ${lineBadge('yamanote','07')} <strong>Nippori</strong> (tramo más rápido) + trasbordo a la línea Yamanote hasta ${lineBadge('yamanote','17')} <strong>Shinjuku</strong>. Desde la Salida Este, Hotel Kabuki: ~5 min a pie.`,
           time: "~65-75 min", timeMinutes: 70,
-          price: "~15 €"
+          price: "~15 €", priceValue: 15
         },
         {
           icon: "🚃",
           title: "Keisei Access Express",
           desc: `opción económica, más paradas, sin reserva (se paga con IC card). Requiere trasbordo a la línea Yamanote hasta ${lineBadge('yamanote','17')} <strong>Shinjuku</strong>. Desde la Salida Este, Hotel Kabuki: ~5 min a pie.`,
           time: "más lento que el Skyliner", timeMinutes: 95,
-          price: "~7-8 € + trasbordo corto"
+          price: "~7-8 € + trasbordo corto", priceValue: 7.5
         },
         {
           icon: "🚌",
           title: "Limousine Bus",
           desc: "directo hasta <strong>Busta Shinjuku</strong> (la misma terminal del bus a Kawaguchiko), a ~7-8 min a pie del Hotel Kabuki. Sin trasbordos.",
           time: "~2h (según tráfico)", timeMinutes: 120,
-          price: "~20 €"
+          price: "~20 €", priceValue: 20
         },
         {
           icon: "🚕",
           title: "Taxi",
           desc: "puerta a puerta hasta el <strong>Hotel Kabuki</strong>. Tarifa fija disponible en el aeropuerto.",
           time: "~70-90 min", timeMinutes: 80,
-          price: "~140-200 €"
+          price: "~140-200 €", priceValue: 170
         }
       ],
       todo: [
@@ -1064,10 +1077,11 @@
             { icon: "🚌", desc: "Bus Fujikyu (todas las plazas numeradas y con reserva obligatoria) <strong>Busta Shinjuku → Estación de Kawaguchiko</strong>. Comprobar la dársena en los paneles del propio Busta Shinjuku al llegar (terminal grande, varias plantas).", time: "~1h40-1h45" },
             { icon: "🚐", desc: "El Tsunagaru Camp Resort QOONEL+ NO se puede ir andando. El propio alojamiento recoge en la <strong>Estación de Kawaguchiko</strong> con shuttle, normalmente entre las <strong>14:30 y las 16:30</strong> — cuadrar la reserva del bus para llegar dentro de esa franja y confirmar el horario exacto con el alojamiento antes del viaje. Si no coincide, alternativa: taxi (~15 min).", time: "~15 min" }
           ],
-          note: "Reserva por adelantado en temporada alta (highwaybus.com o por teléfono) — hay pocas frecuencias diarias." },
+          note: "Reserva por adelantado en temporada alta (highwaybus.com o por teléfono) — hay pocas frecuencias diarias.",
+          price: "~¥2.000-2.300/persona (~11-13€)", priceValue: 12 },
         { icon: "🚄", title: "Tren Fuji Excursion (Limited Express) directo desde Shinjuku", time: "~1h54", timeMinutes: 114,
           desc: "Tren directo sin trasbordos <strong>Shinjuku → Fujikawaguchiko</strong> (para en Tachikawa, Hachioji, Otsuki y Mt. Fuji Station). Solo 4 servicios al día. También termina en la Estación de Kawaguchiko, así que aplica el mismo shuttle del alojamiento (14:30-16:30) que la opción del bus.",
-          price: "~¥4.130/persona (~23€)" }
+          price: "~¥4.130/persona (~23€)", priceValue: 23 }
       ] },
     { from: 2, to: 3,
       options: [
@@ -1080,7 +1094,8 @@
         { icon: "🚄", title: "Tren local a Otsuki + vuelta a Shinjuku + Shinkansen", time: "~5h38", timeMinutes: 338,
           desc: "Tren Kawaguchiko→Otsuki (~1h10, vistas al Fuji) + Chuo Line a Shinjuku + Tokaido Shinkansen a Kioto. Casi el doble de lento que la opción del bus a Mishima — solo tiene sentido si esa ruta no es viable ese día." },
         { icon: "🚌", title: "Bus directo vía Gotemba (todo en autobús)", time: "~7h51", timeMinutes: 471,
-          desc: "Bus Kawaguchiko → Gotemba → Kioto (Karasumaguchi), sin trenes. La más lenta con diferencia; no recomendable salvo por precio." }
+          desc: "Bus Kawaguchiko → Gotemba → Kioto (Karasumaguchi), sin trenes. La más lenta con diferencia; no recomendable salvo por precio.",
+          price: "~$24-95/persona (~22-88€)", priceValue: 22 }
       ] },
     { from: 3, to: 4,
       options: [
@@ -1089,10 +1104,11 @@
             { icon: "🚄", desc: "Limited Express <strong>Thunderbird</strong> Kioto → Tsuruga", time: "~1h" },
             { icon: "🚶", desc: "Trasbordo en <strong>Tsuruga</strong>: NO es en el mismo andén. Se baja del Thunderbird a pie de vía y hay que subir por ascensor/escaleras a la 2ª planta (vestíbulo) y de ahí a la 3ª planta, donde están los andenes del Shinkansen (unos 21 m de altura, de los más altos de toda la red). Trasbordo bien señalizado con puertas específicas JR West.", time: "~10-15 min" },
             { icon: "🚄", desc: "Hokuriku Shinkansen <strong>Tsuruga → Kanazawa</strong>", time: "~35 min" }
-          ] },
+          ],
+          price: "~¥6.500/persona con el billete especial para turistas extranjeros (~36€)", priceValue: 36 },
         { icon: "🚌", title: "Bus directo Kioto → Kanazawa", time: "~4h", timeMinutes: 240,
           desc: "Autobús directo sin trasbordos desde la <strong>Salida Hachijo</strong> de la Estación de Kioto (p. ej. Kintetsu Bus / Kita Nippon Kanko Bus, salidas 8:30 y 14:35, llegada a Kanazawa 12:50 y 18:55). El doble de lento que el tren pero bastante más barato.",
-          price: "~3.000-9.600¥/persona (~17-54€)" }
+          price: "~3.000-9.600¥/persona (~17-54€)", priceValue: 17 }
       ] },
     { from: 4, to: 5,
       options: [
@@ -1101,10 +1117,11 @@
             { icon: "🚶", desc: "En la Estación de Kanazawa, salir por la <strong>Salida Este</strong> (Kenrokuen Gate / Tsuzumi Gate) y buscar la <strong>parada de autobús nº2</strong>.", time: "~2-3 min desde el vestíbulo" },
             { icon: "🚌", desc: "Bus Nohi <strong>Kanazawa → Terminal de autobuses Nohi de Takayama</strong> (junto a la Salida Este/Norikura de la Estación de Takayama). Pocas frecuencias diarias.", time: "~2h15" }
           ],
-          note: "Reservar con antelación — es una ruta muy solicitada y hay pocos autobuses al día." },
+          note: "Reservar con antelación — es una ruta muy solicitada y hay pocos autobuses al día.",
+          price: "~¥3.390-4.200/persona (~19-24€)", priceValue: 19 },
         { icon: "🚄", title: "Hokuriku Shinkansen a Toyama + Limited Express Hida", time: "~2h-2h30", timeMinutes: 140,
           desc: "Shinkansen Kanazawa→Toyama (18-23 min) + Limited Express Hida Toyama→Takayama (~90 min, solo 4 servicios/día: 07:58, 09:54, 13:08 y 17:14).",
-          price: "~¥5.710/persona (~32€)",
+          price: "~¥5.710/persona (~32€)", priceValue: 32,
           note: "⚠️ Parte de la línea Takayama (tramo Sugihara-Inotani) lleva cortada desde marzo de 2026, con autobús sustitutivo — confirmar que esta combinación sigue operativa antes de plantearla. Mientras tanto, el bus Nohi es la opción fiable." }
       ] },
     { from: 5, to: 6,
@@ -1120,9 +1137,11 @@
             { icon: "🚃", desc: "JR Tokaido Line <strong>Gifu → Nagoya</strong>", time: "~21-24 min" },
             { icon: "🚶", desc: "Trasbordo en <strong>Nagoya</strong>: los andenes de líneas convencionales (1-13) y los del Shinkansen Tokaido (14-19) están en zonas separadas de la estación, conectados por pasillos en la planta de entresuelo dentro del control de billetes. Seguir las señales hacia \"Shinkansen\".", time: "~5 min" },
             { icon: "🚄", desc: "Tokaido Shinkansen <strong>Nozomi</strong> <strong>Nagoya → Tokio</strong>. Suplemento aparte, no cubierto por ningún pase regional.", time: "~1h40" }
-          ] },
+          ],
+          price: "~¥11.300/persona en asiento no reservado (~63€)", priceValue: 63 },
         { icon: "🚄", title: "Tren a Nagoya + Tokaido Shinkansen (Hikari)", time: "~2h20-2h55", timeMinutes: 155,
-          desc: "Misma ruta (Gifu→Nagoya + trasbordo) pero con <strong>Hikari</strong> en vez de Nozomi hasta Tokio (~1h55-2h30 ese tramo). Es la opción que cubriría un JR Pass, pero de momento descartado (no compensa, ver reservas.md)." }
+          desc: "Misma ruta (Gifu→Nagoya + trasbordo) pero con <strong>Hikari</strong> en vez de Nozomi hasta Tokio (~1h55-2h30 ese tramo). Es la opción que cubriría un JR Pass, pero de momento descartado (no compensa, ver reservas.md).",
+          price: "~¥11.090/persona en asiento reservado (~62€)", priceValue: 62 }
       ] }
   ];
 
