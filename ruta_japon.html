@@ -595,6 +595,7 @@
       ],
       hotel: "Hotel Kabuki", booked: true,
       bookingUrl: "https://www.booking.com/hotel/jp/kabuki.es.html",
+      voucher: "vouchers/hotel-kabuki-tokio.pdf",
       address: "1-16-9 Kabuki-cho, Shinjuku-ku, Tokio, 160-0021, Japón",
       toTransport: "Busta Shinjuku (terminal del bus Fujikyu): ~7-8 min a pie (~0.58 km)."
     },
@@ -611,6 +612,7 @@
       ],
       hotel: "Tsunagaru Camp Resort QOONEL+", booked: true,
       bookingUrl: "https://www.booking.com/hotel/jp/tunagarukiyanpurizotoqoonel.html",
+      voucher: "vouchers/tsunagaru-camp-resort-kawaguchiko.pdf",
       address: "35.53428,138.78015",
       toTransport: "El resort está apartado del centro: no es andando. Traslado/shuttle hasta la estación de Kawaguchiko (~15 min en coche), desde donde sale el bus a Mishima — confirmar horario del shuttle con el alojamiento."
     },
@@ -627,6 +629,7 @@
       ],
       hotel: "Agora Kyoto Karasuma", booked: true,
       bookingUrl: "https://www.booking.com/hotel/jp/agora-kyoto-karasuma.es.html",
+      voucher: "vouchers/agora-kyoto-karasuma.pdf",
       address: "701-1 Myodenjicho, Shimogyo-ku, Kioto, 600-8472, Japón",
       toTransport: "No está a distancia andando de la estación de Kioto (~2.1 km). 6 min a pie hasta Karasuma/Shijo (metro) + ~10 min en metro hasta la estación de Kioto."
     },
@@ -643,6 +646,7 @@
       ],
       hotel: "Smile Hotel Kanazawa Nishiguchi Ekimae", booked: true,
       bookingUrl: "https://www.booking.com/hotel/jp/sumairuhoterujin-ze-xi-kou-yi-qian.es.html",
+      voucher: "vouchers/smile-hotel-kanazawa.pdf",
       address: "3-2-37 Hirooka, Kanazawa, Ishikawa, Japón",
       toTransport: "Estación de Kanazawa (salida oeste): ~4 min a pie desde el hotel."
     },
@@ -661,8 +665,8 @@
       ],
       hotel: "Ryokan Asunaro (noche 12-13) + Hostel Fish in a River (noche 13-14)", booked: true,
       bookings: [
-        { label: "Reserva noche 12-13", url: "https://www.booking.com/hotel/jp/ryokan-asunaro.en.html", booked: true },
-        { label: "Reserva noche 13-14", url: "https://www.booking.com/hotel/jp/hostel-fish-in-a-river.es.html", booked: true }
+        { label: "Reserva noche 12-13", url: "https://www.booking.com/hotel/jp/ryokan-asunaro.en.html", booked: true, voucher: "vouchers/ryokan-asunaro-takayama.pdf" },
+        { label: "Reserva noche 13-14", url: "https://www.booking.com/hotel/jp/hostel-fish-in-a-river.es.html", booked: true, voucher: "vouchers/hostel-fish-in-a-river-takayama.pdf" }
       ],
       address: "2-96-2 Hatsudamachi, Takayama, Gifu, Japón",
       toTransport: "Ryokan Asunaro: ~250 m (unos pasos) hasta la terminal de autobuses Nohi. Hostel Fish in a River: ~8 min a pie hasta la estación de Takayama (la terminal Nohi está junto a la estación)."
@@ -691,6 +695,7 @@
       ],
       hotel: "KOKO HOTEL Ginza-1chome", booked: true,
       bookingUrl: "https://www.booking.com/hotel/jp/koko-yin-zuo-yi-ding-mu.es.html",
+      voucher: "vouchers/koko-hotel-ginza-tokio.pdf",
       address: "1 Chome-9-5 Ginza, Chuo City, Tokio 104-0061, Japón",
       toTransport: "Estación Ginza-itchome: 1 min a pie. Hasta la estación de Tokio (para el tren al aeropuerto): ~10-15 min en metro."
     }
@@ -836,13 +841,18 @@ function initMap() {
 
   function bookingButtonsHtml(place) {
     return place.bookings
-      ? place.bookings.map(b => b.url
-          ? `<a href="${b.url.replace(/&/g, '&amp;')}" target="_blank" rel="noopener" class="info-cta">${b.label}</a>`
-          : `<span class="info-cta info-cta-disabled">${b.label}</span>`
-        ).join('')
-      : (place.bookingUrl
-          ? `<a href="${place.bookingUrl.replace(/&/g, '&amp;')}" target="_blank" rel="noopener" class="info-cta">${place.booked ? 'Ver reserva' : 'Ver hotel'}</a>`
-          : '');
+      ? place.bookings.map(b => {
+          const href = b.voucher || b.url;
+          return href
+            ? `<a href="${href.replace(/&/g, '&amp;')}" target="_blank" rel="noopener" class="info-cta">${b.label}</a>`
+            : `<span class="info-cta info-cta-disabled">${b.label}</span>`;
+        }).join('')
+      : (() => {
+          const href = place.voucher || place.bookingUrl;
+          return href
+            ? `<a href="${href.replace(/&/g, '&amp;')}" target="_blank" rel="noopener" class="info-cta">${place.booked ? 'Ver reserva' : 'Ver hotel'}</a>`
+            : '';
+        })();
   }
 
   const overlay = document.getElementById('info-overlay');
