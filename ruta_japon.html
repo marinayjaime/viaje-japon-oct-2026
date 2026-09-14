@@ -498,23 +498,24 @@
   .info-cta {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    margin-top: 24px;
-    padding: 11px 18px;
+    gap: 6px;
+    margin: 10px 0 0;
+    padding: 5px 10px;
     background: var(--ink);
     color: var(--paper);
     text-decoration: none;
     border-radius: 3px;
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
+    letter-spacing: 0.06em;
     transition: background 0.15s, transform 0.15s;
   }
   .info-cta:hover { background: var(--persimmon); transform: translateY(-1px); }
   .info-cta::after { content: '↗'; font-size: 13px; }
   .info-cta-row { display: flex; flex-wrap: wrap; gap: 10px; }
-  .info-cta-row .info-cta { margin-top: 24px; }
+  .info-cta-row .info-cta { margin-top: 10px; }
+  .rm-btn-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+  .rm-btn-row .info-cta, .rm-btn-row .rm-toggle-btn { margin: 2px 0 10px; }
   .info-cta-disabled {
     background: transparent;
     color: var(--muted);
@@ -1076,15 +1077,17 @@ function initMap() {
         </li>
       `).join('');
       const arrivalDirectionsCta = (place.arrivalOrigin && place.address)
-        ? `<div class="info-cta-row"><a href="https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(place.arrivalOrigin)}&destination=${encodeURIComponent(place.address)}&travelmode=transit" target="_blank" rel="noopener" class="info-cta" data-arrival-directions="1">Cómo llegar</a></div>`
+        ? `<a href="https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(place.arrivalOrigin)}&destination=${encodeURIComponent(place.address)}&travelmode=transit" target="_blank" rel="noopener" class="info-cta" data-arrival-directions="1">Cómo llegar</a>`
         : '';
       arrivalBlock = `
         <div class="rm-next" style="border-top:none; padding-top:0; margin-top:0">
           <span class="rm-label">${place.arrivalLabel || 'Cómo llegar'}</span>
-          <button type="button" class="rm-toggle-btn" aria-expanded="false">Ver recorrido</button>
+          <div class="rm-btn-row">
+            <button type="button" class="rm-toggle-btn" aria-expanded="false">Ver recorrido</button>
+            ${arrivalDirectionsCta}
+          </div>
           <div class="rm-collapsible" hidden>
             <ul class="rm-steps">${optionRows}</ul>
-            ${arrivalDirectionsCta}
           </div>
         </div>
       `;
@@ -1108,9 +1111,8 @@ function initMap() {
       }
       const stepsHtml = stepRows.length ? `<ul class="rm-steps">${stepRows.join('')}</ul>` : '';
       const altHtml = leg && leg.alt ? `<div class="rm-alt"><strong>Alternativa:</strong> ${leg.alt}</div>` : '';
-      const routeDetails = stepsHtml
-        ? `<button type="button" class="rm-toggle-btn" aria-expanded="false">Ver recorrido</button><div class="rm-collapsible" hidden>${stepsHtml}${altHtml}</div>`
-        : '';
+      const routeToggleBtn = stepsHtml ? `<button type="button" class="rm-toggle-btn" aria-expanded="false">Ver recorrido</button>` : '';
+      const routeCollapsible = stepsHtml ? `<div class="rm-collapsible" hidden>${stepsHtml}${altHtml}</div>` : '';
 
       if (next) {
         const originParam = place.address || `${place.lat},${place.lng}`;
@@ -1120,10 +1122,11 @@ function initMap() {
           <div class="rm-next">
             <div class="rm-label">Preparar para ${next.name}</div>
             ${leg ? `<div class="rm-transport">${leg.mode} · ${leg.time} en total</div>` : ''}
-            ${routeDetails}
-            <div class="info-cta-row">
+            <div class="rm-btn-row">
+              ${routeToggleBtn}
               <a href="${webUrl}" target="_blank" rel="noopener" class="info-cta" data-rm-directions="1">Cómo llegar</a>
             </div>
+            ${routeCollapsible}
             <div class="rm-next-hotel">
               <span class="rm-label-inline">Alojamiento en ${next.name}:</span> ${next.hotel}
             </div>
@@ -1134,7 +1137,8 @@ function initMap() {
         nextBlock = `
           <div class="rm-next">
             <div class="rm-label">Vuelta a casa</div>
-            ${routeDetails}
+            <div class="rm-btn-row">${routeToggleBtn}</div>
+            ${routeCollapsible}
             <div class="rm-transport">Vuelo de salida: 17 oct 2026, 11:10 desde Narita (NRT). Ruta hotel → aeropuerto pendiente de confirmar.</div>
           </div>
         `;
@@ -1183,7 +1187,8 @@ function initMap() {
     }
     overlayContent.querySelectorAll('.rm-toggle-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        const target = btn.nextElementSibling;
+        const row = btn.closest('.rm-btn-row');
+        const target = (row || btn).nextElementSibling;
         const expanded = btn.getAttribute('aria-expanded') === 'true';
         target.hidden = expanded;
         btn.setAttribute('aria-expanded', String(!expanded));
