@@ -61,7 +61,7 @@
   h1 {
     font-family: 'Fraunces', serif;
     font-optical-sizing: auto;
-    font-variation-settings: "opsz" 96;
+    font-variation-settings: "opsz" 45;
     font-weight: 400;
     font-size: 44px;
     line-height: 1.0;
@@ -716,6 +716,7 @@
       lat: 35.6938, lng: 139.7033,
       notes: "Base en Shinjuku. Llegada Narita 9:30. Día suave por jet lag.",
       arrivalLabel: "Del aeropuerto al hotel",
+      arrivalOrigin: "Narita International Airport (NRT)",
       arrivalOptions: [
         {
           icon: "🚄",
@@ -1088,10 +1089,14 @@ function initMap() {
           </span>
         </li>
       `).join('');
+      const arrivalDirectionsCta = (place.arrivalOrigin && place.address)
+        ? `<div class="info-cta-row"><a href="https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(place.arrivalOrigin)}&destination=${encodeURIComponent(place.address)}&travelmode=transit" target="_blank" rel="noopener" class="info-cta" data-arrival-directions="1">Cómo llegar</a></div>`
+        : '';
       arrivalBlock = `
         <details class="rm-next rm-details rm-details-top" style="border-top:none; padding-top:0; margin-top:0">
           <summary class="rm-label">${place.arrivalLabel || 'Cómo llegar'} <span class="rm-summary-suffix">· Ver recorrido</span></summary>
           <ul class="rm-steps">${optionRows}</ul>
+          ${arrivalDirectionsCta}
         </details>
       `;
     }
@@ -1165,6 +1170,14 @@ function initMap() {
         dirLink,
         `comgooglemaps://?daddr=${encodeURIComponent(place.address)}`,
         dirLink.href
+      );
+    }
+    const arrivalDirLink = overlayContent.querySelector('[data-arrival-directions]');
+    if (arrivalDirLink) {
+      attachSmartMapsClick(
+        arrivalDirLink,
+        `comgooglemaps://?saddr=${encodeURIComponent(place.arrivalOrigin)}&daddr=${encodeURIComponent(place.address)}&directionsmode=transit`,
+        arrivalDirLink.href
       );
     }
     const nextDirLink = overlayContent.querySelector('[data-rm-directions]');
