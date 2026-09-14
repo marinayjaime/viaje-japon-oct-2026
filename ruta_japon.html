@@ -348,8 +348,10 @@
     white-space: nowrap;
   }
   .rm-toggle-btn[aria-expanded="true"]::before { transform: rotate(90deg); }
-  .rm-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 18px; }
+  .rm-tabs { display: flex; flex-direction: column; gap: 8px; margin: 20px 0 18px; }
   .rm-tab-btn {
+    width: 100%;
+    text-align: left;
     padding: 8px 14px;
     border-radius: 3px;
     border: 1px solid var(--border-strong);
@@ -675,8 +677,6 @@
     h1 { font-size: 38px; }
     .info-title { font-size: 32px; }
     .info-todo li { font-size: 14px; }
-    .rm-tabs { flex-direction: column; }
-    .rm-tab-btn { width: 100%; text-align: left; }
 
     /* Lista de paradas como tarjetas, para leer de un vistazo en el móvil */
     .timeline { display: flex; flex-direction: column; gap: 10px; padding: 6px 14px 28px; }
