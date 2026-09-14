@@ -1269,8 +1269,17 @@ function initMap() {
       html: `<ul class="info-todo">${place.todo.map(t => `<li>${t}</li>`).join('')}</ul>`
     });
 
+    // Pestaña "Alojamiento": reserva + cómo llegar al propio hotel de esta parada.
+    if (bookingCta || directionsCta) {
+      tabs.push({
+        label: 'Alojamiento',
+        html: `<div class="info-cta-row">${bookingCta}${directionsCta}</div>`
+      });
+    }
+
     // Pestaña con el nombre de la siguiente parada ("Preparar para X"), o
-    // "Vuelta a casa" si es la última. No aplica a excursiones de día.
+    // "Vuelta a casa" si es la última. Va siempre la última. No aplica a
+    // excursiones de día.
     if (!isOptional) {
       const idx = stops.indexOf(place);
       const next = stops[idx + 1];
@@ -1316,20 +1325,13 @@ function initMap() {
       }
     }
 
-    // Pestaña "Alojamiento": reserva + cómo llegar al propio hotel de esta parada.
-    if (bookingCta || directionsCta) {
-      tabs.push({
-        label: 'Alojamiento',
-        html: `<div class="info-cta-row">${bookingCta}${directionsCta}</div>`
-      });
-    }
-
+    // Ninguna pestaña se abre por defecto: el usuario elige cuál ver.
     const tabsHtml = `
       <div class="rm-tabs">
-        ${tabs.map((t, i) => `<button type="button" class="rm-tab-btn${i === 0 ? ' active' : ''}" data-tab="${i}">${t.label}</button>`).join('')}
+        ${tabs.map((t, i) => `<button type="button" class="rm-tab-btn" data-tab="${i}">${t.label}</button>`).join('')}
       </div>
     `;
-    const panelsHtml = tabs.map((t, i) => `<div class="rm-tab-panel" data-tab-panel="${i}"${i === 0 ? '' : ' hidden'}>${t.html}</div>`).join('');
+    const panelsHtml = tabs.map((t, i) => `<div class="rm-tab-panel" data-tab-panel="${i}" hidden>${t.html}</div>`).join('');
 
     overlayContent.innerHTML = `
       <button class="info-close" aria-label="Cerrar">×</button>
