@@ -1054,12 +1054,10 @@ function initMap() {
           </span>
         </li>
       `).join('');
-      const hasPrice = place.arrivalOptions.some(o => o.price);
       arrivalBlock = `
-        <div class="rm-next">
+        <div class="rm-next" style="border-top:none; padding-top:0; margin-top:0">
           <div class="rm-label">${place.arrivalLabel || 'Cómo llegar'}</div>
           <ul class="rm-steps">${optionRows}</ul>
-          ${hasPrice ? '<div class="rm-alt">Precios orientativos en €, calculados a un tipo de cambio aproximado — pueden variar.</div>' : ''}
         </div>
       `;
     }
