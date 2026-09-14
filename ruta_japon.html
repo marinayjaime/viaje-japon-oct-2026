@@ -113,6 +113,88 @@
     margin-top: 6px;
   }
 
+  .converter-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: calc(100% - 40px);
+    margin: 12px 20px 0;
+    padding: 10px 14px;
+    background: var(--paper-2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    text-align: left;
+    transition: background 0.15s;
+  }
+  .converter-btn:hover { background: var(--border); }
+  .converter-btn-icon {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--paper);
+    background: var(--moss);
+    padding: 4px 7px;
+    border-radius: 6px;
+    flex: 0 0 auto;
+  }
+  .converter-fields {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 8px;
+    align-items: center;
+  }
+  .converter-field { display: flex; flex-direction: column; gap: 4px; }
+  .converter-field label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+  }
+  .converter-field input {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--ink);
+    background: var(--paper-2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 7px 9px;
+    width: 100%;
+    min-width: 0;
+  }
+  .converter-field input:focus { outline: none; border-color: var(--persimmon); }
+  .converter-swap {
+    font-size: 14px;
+    color: var(--muted);
+    padding-top: 14px;
+  }
+  .converter-rate {
+    margin-top: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .converter-rate input {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--ink);
+    background: transparent;
+    border: none;
+    border-bottom: 1px dotted var(--border-strong);
+    width: 42px;
+    padding: 0 2px;
+    text-align: center;
+  }
+  .converter-rate input:focus { outline: none; border-bottom-color: var(--persimmon); }
+
   .timeline { padding: 4px 0 16px; flex: 1; }
   .section-title {
     font-family: 'JetBrains Mono', monospace;
@@ -564,6 +646,11 @@
       </div>
     </div>
 
+    <button class="converter-btn" id="converter-btn" type="button">
+      <span class="converter-btn-icon">¥ → €</span>
+      Conversor de moneda
+    </button>
+
     <div class="timeline" id="timeline"></div>
 
     <div class="foot">
@@ -976,6 +1063,61 @@ function initMap() {
     pinned = false;
     hideInfo(true);
   }
+
+  function showConverter() {
+    clearTimeout(hideTimer);
+    pinned = true;
+    const savedRate = parseFloat(localStorage.getItem('jpyEurRate')) || 178;
+    overlayContent.innerHTML = `
+      <button class="info-close" aria-label="Cerrar">×</button>
+      <div class="info-eyebrow">Herramienta</div>
+      <div class="info-title">Conversor ¥ ↔ €</div>
+      <div class="converter-fields" style="margin-top:24px">
+        <div class="converter-field">
+          <label for="conv-jpy">YENES (¥)</label>
+          <input type="number" inputmode="decimal" id="conv-jpy" placeholder="0" />
+        </div>
+        <div class="converter-swap">=</div>
+        <div class="converter-field">
+          <label for="conv-eur">EUROS (€)</label>
+          <input type="number" inputmode="decimal" id="conv-eur" placeholder="0" />
+        </div>
+      </div>
+      <div class="converter-rate">
+        Tipo de cambio: 1 € = <input type="number" inputmode="decimal" id="conv-rate" value="${savedRate}" /> ¥
+        <span>(orientativo — ajústalo con el tipo real antes de viajar)</span>
+      </div>
+    `;
+    overlayContent.querySelector('.info-close').addEventListener('click', closeInfo);
+
+    const jpyEl = overlayContent.querySelector('#conv-jpy');
+    const eurEl = overlayContent.querySelector('#conv-eur');
+    const rateEl = overlayContent.querySelector('#conv-rate');
+
+    jpyEl.addEventListener('input', () => {
+      const rate = parseFloat(rateEl.value) || savedRate;
+      const jpy = parseFloat(jpyEl.value);
+      eurEl.value = isNaN(jpy) ? '' : (jpy / rate).toFixed(2);
+    });
+    eurEl.addEventListener('input', () => {
+      const rate = parseFloat(rateEl.value) || savedRate;
+      const eur = parseFloat(eurEl.value);
+      jpyEl.value = isNaN(eur) ? '' : Math.round(eur * rate);
+    });
+    rateEl.addEventListener('input', () => {
+      const rate = parseFloat(rateEl.value);
+      if (!rate) return;
+      localStorage.setItem('jpyEurRate', rate);
+      if (jpyEl.value) {
+        eurEl.value = (parseFloat(jpyEl.value) / rate).toFixed(2);
+      } else if (eurEl.value) {
+        jpyEl.value = Math.round(parseFloat(eurEl.value) * rate);
+      }
+    });
+
+    overlay.classList.add('visible');
+  }
+  document.getElementById('converter-btn').addEventListener('click', showConverter);
 
   const markerMap = {};
   const stopEls = {};
