@@ -348,6 +348,21 @@
     white-space: nowrap;
   }
   .rm-toggle-btn[aria-expanded="true"]::before { transform: rotate(90deg); }
+  .rm-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 18px; }
+  .rm-tab-btn {
+    padding: 8px 14px;
+    border-radius: 3px;
+    border: 1px solid var(--border-strong);
+    background: transparent;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+  }
+  .rm-tab-btn:hover { border-color: var(--persimmon); color: var(--persimmon); }
+  .rm-tab-btn.active { background: var(--ink); border-color: var(--ink); color: var(--paper); }
   .stop-today {
     display: inline-block;
     font-family: 'JetBrains Mono', monospace;
@@ -1224,15 +1239,17 @@ function initMap() {
       ? `<a href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(place.address)}" target="_blank" rel="noopener" class="info-cta" data-directions="1">Cómo llegar</a>`
       : '';
 
-    // Bloque de opciones de llegada (aeropuerto→hotel, o excursiones de día)
-    let arrivalBlock = '';
+    // Cada bloque de contenido pasa a ser una pestaña independiente.
+    const tabs = [];
+
+    // Pestaña "Del aeropuerto al hotel" / "Cómo llegar desde X" (excursiones)
     if (place.arrivalOptions) {
       const arrivalDirectionsCta = (place.arrivalOrigin && place.address)
         ? `<a href="https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(place.arrivalOrigin)}&destination=${encodeURIComponent(place.address)}&travelmode=transit" target="_blank" rel="noopener" class="info-cta" data-arrival-directions="1">Cómo llegar</a>`
         : '';
-      arrivalBlock = `
-        <div class="rm-next" style="border-top:none; padding-top:0; margin-top:0">
-          <span class="rm-label">${place.arrivalLabel || 'Cómo llegar'}</span>
+      tabs.push({
+        label: place.arrivalLabel || 'Cómo llegar',
+        html: `
           <div class="rm-btn-row">
             <button type="button" class="rm-toggle-btn" aria-expanded="false">Ver recorrido</button>
             ${arrivalDirectionsCta}
@@ -1240,13 +1257,18 @@ function initMap() {
           <div class="rm-collapsible" hidden>
             ${renderOptions(place.arrivalOptions)}
           </div>
-        </div>
-      `;
+        `
+      });
     }
 
-    // Bloque "Preparar para X": paso a paso real (hotel → transporte → siguiente
-    // hotel) para cualquier parada con reserva, no solo desde el selector.
-    let nextBlock = '';
+    // Pestaña "¿Qué hacer?"
+    tabs.push({
+      label: '¿Qué hacer?',
+      html: `<ul class="info-todo">${place.todo.map(t => `<li>${t}</li>`).join('')}</ul>`
+    });
+
+    // Pestaña con el nombre de la siguiente parada ("Preparar para X"), o
+    // "Vuelta a casa" si es la última. No aplica a excursiones de día.
     if (!isOptional) {
       const idx = stops.indexOf(place);
       const next = stops[idx + 1];
@@ -1265,9 +1287,9 @@ function initMap() {
         const originParam = place.address || `${place.lat},${place.lng}`;
         const destParam = next.address || `${next.lat},${next.lng}`;
         const webUrl = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(originParam)}&destination=${encodeURIComponent(destParam)}&travelmode=transit`;
-        nextBlock = `
-          <div class="rm-next">
-            <div class="rm-label">Preparar para ${next.name}</div>
+        tabs.push({
+          label: next.name,
+          html: `
             ${summaryHtml}
             <div class="rm-btn-row">
               ${routeToggleBtn}
@@ -1278,31 +1300,51 @@ function initMap() {
               <span class="rm-label-inline">Alojamiento en ${next.name}:</span> ${next.hotel}
             </div>
             <div class="info-cta-row">${bookingButtonsHtml(next)}</div>
-          </div>
-        `;
+          `
+        });
       } else {
-        nextBlock = `
-          <div class="rm-next">
-            <div class="rm-label">Vuelta a casa</div>
+        tabs.push({
+          label: 'Vuelta a casa',
+          html: `
             <div class="rm-btn-row">${routeToggleBtn}</div>
             ${routeCollapsible}
             <div class="rm-transport">Vuelo de salida: 17 oct 2026, 11:10 desde Narita (NRT). Ruta hotel → aeropuerto pendiente de confirmar.</div>
-          </div>
-        `;
+          `
+        });
       }
     }
+
+    // Pestaña "Alojamiento": reserva + cómo llegar al propio hotel de esta parada.
+    if (bookingCta || directionsCta) {
+      tabs.push({
+        label: 'Alojamiento',
+        html: `<div class="info-cta-row">${bookingCta}${directionsCta}</div>`
+      });
+    }
+
+    const tabsHtml = `
+      <div class="rm-tabs">
+        ${tabs.map((t, i) => `<button type="button" class="rm-tab-btn${i === 0 ? ' active' : ''}" data-tab="${i}">${t.label}</button>`).join('')}
+      </div>
+    `;
+    const panelsHtml = tabs.map((t, i) => `<div class="rm-tab-panel" data-tab-panel="${i}"${i === 0 ? '' : ' hidden'}>${t.html}</div>`).join('');
 
     overlayContent.innerHTML = `
       <button class="info-close" aria-label="Cerrar">×</button>
       <div class="info-eyebrow">${eyebrow}</div>
       <div class="info-title">${place.name}</div>
       <div class="info-dates">${meta}</div>
-      ${arrivalBlock}
-      <div class="info-todo-title">Qué ver / hacer</div>
-      <ul class="info-todo">${place.todo.map(t => `<li>${t}</li>`).join('')}</ul>
-      <div class="info-cta-row">${bookingCta}${directionsCta}</div>
-      ${nextBlock}
+      ${tabsHtml}
+      ${panelsHtml}
     `;
+    overlayContent.querySelectorAll('.rm-tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        overlayContent.querySelectorAll('.rm-tab-btn').forEach(b => b.classList.toggle('active', b === btn));
+        overlayContent.querySelectorAll('.rm-tab-panel').forEach(p => {
+          p.hidden = p.dataset.tabPanel !== btn.dataset.tab;
+        });
+      });
+    });
     overlayContent.querySelector('.info-close').addEventListener('click', closeInfo);
     const dirLink = overlayContent.querySelector('[data-directions]');
     if (dirLink) {
