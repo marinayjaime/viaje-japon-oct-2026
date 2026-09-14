@@ -292,6 +292,61 @@
     display: inline-block;
     transition: transform 0.15s ease;
   }
+  .rm-option { margin: 0 0 16px; padding-bottom: 14px; border-bottom: 1px dashed var(--border); }
+  .rm-option:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .rm-option-head {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+  .rm-option-icon { font-size: 15px; }
+  .rm-option-title { font-weight: 500; color: var(--ink); font-size: 13px; }
+  .rm-option-time {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    margin-left: auto;
+    white-space: nowrap;
+  }
+  .rm-fastest-badge {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--moss);
+    color: var(--paper);
+    padding: 2px 7px;
+    border-radius: 2px;
+  }
+  .rm-option-desc { font-size: 13px; color: var(--ink); }
+  .rm-option-price {
+    margin-top: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .rm-option-note {
+    font-size: 12px;
+    color: var(--muted);
+    background: var(--paper-2);
+    border-radius: 6px;
+    padding: 6px 9px;
+    margin-top: 6px;
+  }
+  .line-badge {
+    display: inline-flex;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    color: #fff;
+    padding: 1px 5px;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
   .rm-toggle-btn[aria-expanded="true"]::before { transform: rotate(90deg); }
   .stop-today {
     display: inline-block;
@@ -697,6 +752,53 @@
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCl5G7U2D1vEvL1GQChWJKRaqNr3OGvaV0&language=es&libraries=marker&callback=initMap" async defer></script>
 <script>
+  // Líneas de metro/tren de cercanías con color e identificador oficial real
+  // (no inventado): JY = JR Yamanote (verde uguisu), K = Karasuma Subway
+  // de Kioto (verde), Y = Yurakucho Line de Tokyo Metro (dorado).
+  const LINES = {
+    yamanote: { color: '#8FC31F', label: 'JY' },
+    karasuma: { color: '#3CB371', label: 'K' },
+    yurakucho: { color: '#BB8B38', label: 'Y' }
+  };
+  function lineBadge(lineKey, code) {
+    const l = LINES[lineKey];
+    if (!l) return '';
+    return `<span class="line-badge" style="background:${l.color}">${l.label}${code}</span>`;
+  }
+
+  // Renderiza una lista de opciones de transporte ordenadas de más rápida a
+  // más lenta, con etiqueta verde en la más rápida (solo si hay más de una).
+  function renderOptions(options) {
+    const sorted = [...options].sort((a, b) => a.timeMinutes - b.timeMinutes);
+    return sorted.map((o, i) => {
+      const fastest = i === 0 && sorted.length > 1
+        ? `<span class="rm-fastest-badge">La más rápida</span>` : '';
+      const body = o.steps
+        ? `<ul class="rm-steps">${o.steps.map(s => `
+            <li class="rm-step">
+              <span class="rm-step-icon">${s.icon}</span>
+              <span class="rm-step-desc">${s.desc}</span>
+              ${s.time ? `<span class="rm-step-time">${s.time}</span>` : ''}
+            </li>`).join('')}</ul>`
+        : `<div class="rm-option-desc">${o.desc}</div>`;
+      const price = o.price ? `<div class="rm-option-price">${o.price}</div>` : '';
+      const note = o.note ? `<div class="rm-option-note">${o.note}</div>` : '';
+      return `
+        <div class="rm-option">
+          <div class="rm-option-head">
+            <span class="rm-option-icon">${o.icon}</span>
+            <span class="rm-option-title">${o.title}</span>
+            ${fastest}
+            <span class="rm-option-time">${o.time}</span>
+          </div>
+          ${body}
+          ${price}
+          ${note}
+        </div>
+      `;
+    }).join('');
+  }
+
   const stops = [
     {
       n: 1, name: "Tokio", dates: "3 → 5 oct", nights: 2,
@@ -708,36 +810,36 @@
         {
           icon: "🚄",
           title: "Narita Express (N'EX)",
-          desc: "directo a la <strong>Estación de Shinjuku</strong>, sin trasbordos. Asiento reservado, espacio para maletas.",
-          time: "~75-80 min",
+          desc: "directo a la <strong>Estación de Shinjuku</strong>, sin trasbordos. Asiento reservado, espacio para maletas. Desde la Salida Este de Shinjuku, el Hotel Kabuki está a ~5 min a pie (cruzar Yasukuni-dori hacia Kabukicho, detrás de Don Quijote).",
+          time: "~75-80 min", timeMinutes: 78,
           price: "~18 € (ida) · billete ida/vuelta con descuento para extranjeros ~28 €"
         },
         {
           icon: "🚈",
           title: "Keisei Skyliner + línea JR Yamanote",
-          desc: "Skyliner hasta <strong>Nippori</strong> (tramo más rápido) + trasbordo a la <strong>línea Yamanote</strong> hasta Shinjuku.",
-          time: "~1h con trasbordo incluido",
+          desc: `Skyliner hasta ${lineBadge('yamanote','07')} <strong>Nippori</strong> (tramo más rápido) + trasbordo a la línea Yamanote hasta ${lineBadge('yamanote','17')} <strong>Shinjuku</strong>. Desde la Salida Este, Hotel Kabuki: ~5 min a pie.`,
+          time: "~65-75 min", timeMinutes: 70,
           price: "~15 €"
         },
         {
           icon: "🚃",
           title: "Keisei Access Express",
-          desc: "opción económica, más paradas, sin reserva (se paga con IC card). Requiere trasbordo a la <strong>línea Yamanote</strong> hasta Shinjuku.",
-          time: "más lento que el Skyliner",
+          desc: `opción económica, más paradas, sin reserva (se paga con IC card). Requiere trasbordo a la línea Yamanote hasta ${lineBadge('yamanote','17')} <strong>Shinjuku</strong>. Desde la Salida Este, Hotel Kabuki: ~5 min a pie.`,
+          time: "más lento que el Skyliner", timeMinutes: 95,
           price: "~7-8 € + trasbordo corto"
         },
         {
           icon: "🚌",
           title: "Limousine Bus",
           desc: "directo hasta <strong>Busta Shinjuku</strong> (la misma terminal del bus a Kawaguchiko), a ~7-8 min a pie del Hotel Kabuki. Sin trasbordos.",
-          time: "~2h (según tráfico)",
+          time: "~2h (según tráfico)", timeMinutes: 120,
           price: "~20 €"
         },
         {
           icon: "🚕",
           title: "Taxi",
           desc: "puerta a puerta hasta el <strong>Hotel Kabuki</strong>. Tarifa fija disponible en el aeropuerto.",
-          time: "~70-90 min",
+          time: "~70-90 min", timeMinutes: 80,
           price: "~140-200 €"
         }
       ],
@@ -786,7 +888,7 @@
       bookingUrl: "https://www.booking.com/hotel/jp/agora-kyoto-karasuma.es.html",
       voucher: "vouchers/agora-kyoto-karasuma.pdf",
       address: "701-1 Myodenjicho, Shimogyo-ku, Kioto, 600-8472, Japón",
-      toTransport: "No está a distancia andando de la estación de Kioto (~2.1 km). 6 min a pie hasta Karasuma/Shijo (metro) + ~10 min en metro hasta la estación de Kioto."
+      toTransport: `No está a distancia andando de la estación de Kioto (~2.1 km). 6 min a pie hasta ${lineBadge('karasuma','09')} <strong>Shijo</strong> + ~10 min en metro (Karasuma Line) hasta ${lineBadge('karasuma','11')} <strong>Estación de Kioto</strong>.`
     },
     {
       n: 4, name: "Kanazawa", dates: "10 → 12 oct", nights: 2,
@@ -852,7 +954,7 @@
       bookingUrl: "https://www.booking.com/hotel/jp/koko-yin-zuo-yi-ding-mu.es.html",
       voucher: "vouchers/koko-hotel-ginza-tokio.pdf",
       address: "1 Chome-9-5 Ginza, Chuo City, Tokio 104-0061, Japón",
-      toTransport: "Estación Ginza-itchome: 1 min a pie. Hasta la estación de Tokio (para el tren al aeropuerto): ~10-15 min en metro."
+      toTransport: `${lineBadge('yurakucho','19')} Estación Ginza-itchome: 1 min a pie. Para ir a la Estación de Tokio (tren al aeropuerto): ~8 min a pie hasta la Estación de Ginza + Metro Marunouchi (línea roja) 1 parada hasta Tokio (~3 min) — alternativa más simple que el trasbordo por Yurakucho.`
     }
   ];
 
@@ -867,13 +969,13 @@
           icon: "🚃",
           title: "JR Nara Line (rápido Miyakoji)",
           desc: "sale de la <strong>Estación de Kioto</strong> cada 30 min, sin trasbordos, hasta la <strong>Estación JR Nara</strong>.",
-          time: "~45 min"
+          time: "~45 min", timeMinutes: 45
         },
         {
           icon: "🚃",
           title: "Kintetsu (Limited Express o exprés directo)",
           desc: "sale de los andenes 1-2 del lado Kintetsu de la <strong>Estación de Kioto</strong> hasta la <strong>Estación Kintetsu Nara</strong>, más cerca del casco histórico y del parque de los ciervos que la estación JR.",
-          time: "~35-45 min"
+          time: "~35-45 min", timeMinutes: 40
         }
       ],
       todo: [
@@ -893,7 +995,7 @@
           icon: "🚌",
           title: "Bus Nohi",
           desc: "sale de la <strong>Terminal de autobuses Nohi</strong> (junto a la Estación de Takayama), <strong>dársena nº4</strong>, justo enfrente de la terminal. Los autobuses marcados con \"R\" llevan reserva obligatoria; el resto no la exigen pero se recomienda reservar por ser una ruta muy solicitada.",
-          time: "~50 min"
+          time: "~50 min", timeMinutes: 50
         }
       ],
       todo: [
@@ -949,43 +1051,79 @@
     }
   ];
 
-  // steps: desglose real de cada tramo (verificado, no inventado) para mostrar
-  // en el panel "Preparar para X" paso a paso. alt: alternativa/nota de la
-  // opción más rápida cuando hay más de una posibilidad razonable.
+  // options: todas las combinaciones razonables investigadas (no inventadas)
+  // para cada tramo, ordenadas por renderOptions() de más rápida a más lenta.
+  // La opción con el desglose paso a paso completo (steps) es siempre la que
+  // ya se había verificado en detalle; las alternativas llevan un resumen
+  // (desc) con la información real disponible.
   const legs = [
-    { from: 1, to: 2, mode: "Bus Fujikyu desde Shinjuku", time: "~1h40-1h45",
-      steps: [
-        { icon: "🚌", desc: "Bus Fujikyu (todas las plazas numeradas y con reserva obligatoria) <strong>Busta Shinjuku → Estación de Kawaguchiko</strong>. Comprobar la dársena en los paneles del propio Busta Shinjuku al llegar (terminal grande, varias plantas).", time: "~1h40-1h45" },
-        { icon: "🚐", desc: "El Tsunagaru Camp Resort QOONEL+ NO se puede ir andando. El propio alojamiento recoge en la <strong>Estación de Kawaguchiko</strong> con shuttle, normalmente entre las <strong>14:30 y las 16:30</strong> — cuadrar la reserva del bus para llegar dentro de esa franja y confirmar el horario exacto con el alojamiento antes del viaje. Si no coincide, alternativa: taxi (~15 min).", time: "~15 min" }
-      ],
-      alt: "Reserva por adelantado en temporada alta (highwaybus.com o por teléfono) — hay pocas frecuencias diarias." },
-    { from: 2, to: 3, mode: "Bus a Mishima + shinkansen", time: "~3h",
-      steps: [
-        { icon: "🚌", desc: "Bus Fujikyu <strong>Kawaguchiko → Mishima (Salida Norte)</strong>, sale de la Estación de Kawaguchiko cada hora aprox. Sin aseo a bordo.", time: "~1h30" },
-        { icon: "🚶", desc: "El bus para justo en la Salida Norte de la Estación de Mishima — la entrada al Shinkansen está a pocos minutos a pie, en la misma estación.", time: "~5 min" },
-        { icon: "🚄", desc: "Tokaido Shinkansen (<strong>Hikari</strong>; Mishima no tiene parada de Nozomi) <strong>Mishima → Kioto</strong>. Solo algunos Hikari paran en Mishima (aprox. cada 2h) — cuadrar el bus con ese horario.", time: "~2h" }
+    { from: 1, to: 2,
+      options: [
+        { icon: "🚌", title: "Bus Fujikyu directo desde Shinjuku", time: "~1h40-1h45", timeMinutes: 105,
+          steps: [
+            { icon: "🚌", desc: "Bus Fujikyu (todas las plazas numeradas y con reserva obligatoria) <strong>Busta Shinjuku → Estación de Kawaguchiko</strong>. Comprobar la dársena en los paneles del propio Busta Shinjuku al llegar (terminal grande, varias plantas).", time: "~1h40-1h45" },
+            { icon: "🚐", desc: "El Tsunagaru Camp Resort QOONEL+ NO se puede ir andando. El propio alojamiento recoge en la <strong>Estación de Kawaguchiko</strong> con shuttle, normalmente entre las <strong>14:30 y las 16:30</strong> — cuadrar la reserva del bus para llegar dentro de esa franja y confirmar el horario exacto con el alojamiento antes del viaje. Si no coincide, alternativa: taxi (~15 min).", time: "~15 min" }
+          ],
+          note: "Reserva por adelantado en temporada alta (highwaybus.com o por teléfono) — hay pocas frecuencias diarias." },
+        { icon: "🚄", title: "Tren Fuji Excursion (Limited Express) directo desde Shinjuku", time: "~1h54", timeMinutes: 114,
+          desc: "Tren directo sin trasbordos <strong>Shinjuku → Fujikawaguchiko</strong> (para en Tachikawa, Hachioji, Otsuki y Mt. Fuji Station). Solo 4 servicios al día. También termina en la Estación de Kawaguchiko, así que aplica el mismo shuttle del alojamiento (14:30-16:30) que la opción del bus.",
+          price: "~¥4.130/persona (~23€)" }
       ] },
-    { from: 3, to: 4, mode: "Thunderbird a Tsuruga + Hokuriku Shinkansen a Kanazawa", time: "~1h45-2h",
-      steps: [
-        { icon: "🚄", desc: "Limited Express <strong>Thunderbird</strong> Kioto → Tsuruga", time: "~1h" },
-        { icon: "🚶", desc: "Trasbordo en <strong>Tsuruga</strong>: NO es en el mismo andén. Se baja del Thunderbird a pie de vía y hay que subir por ascensor/escaleras a la 2ª planta (vestíbulo) y de ahí a la 3ª planta, donde están los andenes del Shinkansen (unos 21 m de altura, de los más altos de toda la red). Trasbordo bien señalizado con puertas específicas JR West.", time: "~10-15 min" },
-        { icon: "🚄", desc: "Hokuriku Shinkansen <strong>Tsuruga → Kanazawa</strong>", time: "~35 min" }
+    { from: 2, to: 3,
+      options: [
+        { icon: "🚌", title: "Bus a Mishima + Tokaido Shinkansen (Hikari)", time: "~3h", timeMinutes: 180,
+          steps: [
+            { icon: "🚌", desc: "Bus Fujikyu <strong>Kawaguchiko → Mishima (Salida Norte)</strong>, sale de la Estación de Kawaguchiko cada hora aprox. Sin aseo a bordo.", time: "~1h30" },
+            { icon: "🚶", desc: "El bus para justo en la Salida Norte de la Estación de Mishima — la entrada al Shinkansen está a pocos minutos a pie, en la misma estación.", time: "~5 min" },
+            { icon: "🚄", desc: "Tokaido Shinkansen (<strong>Hikari</strong>; Mishima no tiene parada de Nozomi) <strong>Mishima → Kioto</strong>. Solo algunos Hikari paran en Mishima (aprox. cada 2h) — cuadrar el bus con ese horario.", time: "~2h" }
+          ] },
+        { icon: "🚄", title: "Tren local a Otsuki + vuelta a Shinjuku + Shinkansen", time: "~5h38", timeMinutes: 338,
+          desc: "Tren Kawaguchiko→Otsuki (~1h10, vistas al Fuji) + Chuo Line a Shinjuku + Tokaido Shinkansen a Kioto. Casi el doble de lento que la opción del bus a Mishima — solo tiene sentido si esa ruta no es viable ese día." },
+        { icon: "🚌", title: "Bus directo vía Gotemba (todo en autobús)", time: "~7h51", timeMinutes: 471,
+          desc: "Bus Kawaguchiko → Gotemba → Kioto (Karasumaguchi), sin trenes. La más lenta con diferencia; no recomendable salvo por precio." }
       ] },
-    { from: 4, to: 5, mode: "Bus Nohi", time: "~2h15",
-      steps: [
-        { icon: "🚶", desc: "En la Estación de Kanazawa, salir por la <strong>Salida Este</strong> (Kenrokuen Gate / Tsuzumi Gate) y buscar la <strong>parada de autobús nº2</strong>.", time: "~2-3 min desde el vestíbulo" },
-        { icon: "🚌", desc: "Bus Nohi <strong>Kanazawa → Terminal de autobuses Nohi de Takayama</strong> (junto a la Salida Este/Norikura de la Estación de Takayama). Pocas frecuencias diarias.", time: "~2h15" }
-      ],
-      alt: "Reservar con antelación — es una ruta muy solicitada y hay pocos autobuses al día." },
-    { from: 5, to: 6, mode: "Limited Express Hida", time: "~1h54",
-      steps: [{ icon: "🚄", desc: "Limited Express <strong>Hida</strong> (JR Central) <strong>Takayama → Gifu</strong>, directo, cada 2h aprox. Se accede a los andenes de la Estación de Takayama desde la 2ª planta, justo encima de la Terminal Nohi.", time: "~1h54" }] },
-    { from: 6, to: 7, mode: "Tren JR Tokaido a Nagoya + Tokaido Shinkansen", time: "~2h-2h50",
-      steps: [
-        { icon: "🚃", desc: "JR Tokaido Line <strong>Gifu → Nagoya</strong>", time: "~21-24 min" },
-        { icon: "🚶", desc: "Trasbordo en <strong>Nagoya</strong>: los andenes de líneas convencionales (1-13) y los del Shinkansen Tokaido (14-19) están en zonas separadas de la estación, conectados por pasillos en la planta de entresuelo dentro del control de billetes. Seguir las señales hacia \"Shinkansen\".", time: "~5 min" },
-        { icon: "🚄", desc: "Tokaido Shinkansen <strong>Nagoya → Tokio</strong>", time: "~1h40-2h30" }
-      ],
-      alt: "Más rápido: Nozomi (~1h40 Nagoya→Tokio, suplemento aparte, no cubierto por JR Pass). Hikari es más lento (~1h55-2h30) pero si se comprara un JR Pass sería la opción cubierta — de momento descartado (no compensa, ver reservas.md)." }
+    { from: 3, to: 4,
+      options: [
+        { icon: "🚄", title: "Thunderbird a Tsuruga + Hokuriku Shinkansen", time: "~1h45-2h", timeMinutes: 105,
+          steps: [
+            { icon: "🚄", desc: "Limited Express <strong>Thunderbird</strong> Kioto → Tsuruga", time: "~1h" },
+            { icon: "🚶", desc: "Trasbordo en <strong>Tsuruga</strong>: NO es en el mismo andén. Se baja del Thunderbird a pie de vía y hay que subir por ascensor/escaleras a la 2ª planta (vestíbulo) y de ahí a la 3ª planta, donde están los andenes del Shinkansen (unos 21 m de altura, de los más altos de toda la red). Trasbordo bien señalizado con puertas específicas JR West.", time: "~10-15 min" },
+            { icon: "🚄", desc: "Hokuriku Shinkansen <strong>Tsuruga → Kanazawa</strong>", time: "~35 min" }
+          ] },
+        { icon: "🚌", title: "Bus directo Kioto → Kanazawa", time: "~4h", timeMinutes: 240,
+          desc: "Autobús directo sin trasbordos desde la <strong>Salida Hachijo</strong> de la Estación de Kioto (p. ej. Kintetsu Bus / Kita Nippon Kanko Bus, salidas 8:30 y 14:35, llegada a Kanazawa 12:50 y 18:55). El doble de lento que el tren pero bastante más barato.",
+          price: "~3.000-9.600¥/persona (~17-54€)" }
+      ] },
+    { from: 4, to: 5,
+      options: [
+        { icon: "🚌", title: "Bus Nohi directo", time: "~2h15", timeMinutes: 135,
+          steps: [
+            { icon: "🚶", desc: "En la Estación de Kanazawa, salir por la <strong>Salida Este</strong> (Kenrokuen Gate / Tsuzumi Gate) y buscar la <strong>parada de autobús nº2</strong>.", time: "~2-3 min desde el vestíbulo" },
+            { icon: "🚌", desc: "Bus Nohi <strong>Kanazawa → Terminal de autobuses Nohi de Takayama</strong> (junto a la Salida Este/Norikura de la Estación de Takayama). Pocas frecuencias diarias.", time: "~2h15" }
+          ],
+          note: "Reservar con antelación — es una ruta muy solicitada y hay pocos autobuses al día." },
+        { icon: "🚄", title: "Hokuriku Shinkansen a Toyama + Limited Express Hida", time: "~2h-2h30", timeMinutes: 140,
+          desc: "Shinkansen Kanazawa→Toyama (18-23 min) + Limited Express Hida Toyama→Takayama (~90 min, solo 4 servicios/día: 07:58, 09:54, 13:08 y 17:14).",
+          price: "~¥5.710/persona (~32€)",
+          note: "⚠️ Parte de la línea Takayama (tramo Sugihara-Inotani) lleva cortada desde marzo de 2026, con autobús sustitutivo — confirmar que esta combinación sigue operativa antes de plantearla. Mientras tanto, el bus Nohi es la opción fiable." }
+      ] },
+    { from: 5, to: 6,
+      options: [
+        { icon: "🚄", title: "Limited Express Hida directo", time: "~1h54", timeMinutes: 114,
+          steps: [{ icon: "🚄", desc: "Limited Express <strong>Hida</strong> (JR Central) <strong>Takayama → Gifu</strong>, directo, cada 2h aprox. Se accede a los andenes de la Estación de Takayama desde la 2ª planta, justo encima de la Terminal Nohi.", time: "~1h54" }],
+          note: "Única línea directa entre Takayama y Gifu. La alternativa en trenes locales implica varios trasbordos y muchas más horas, sin ninguna ventaja — no compensa considerarla." }
+      ] },
+    { from: 6, to: 7,
+      options: [
+        { icon: "🚄", title: "Tren a Nagoya + Tokaido Shinkansen (Nozomi)", time: "~2h-2h05", timeMinutes: 125,
+          steps: [
+            { icon: "🚃", desc: "JR Tokaido Line <strong>Gifu → Nagoya</strong>", time: "~21-24 min" },
+            { icon: "🚶", desc: "Trasbordo en <strong>Nagoya</strong>: los andenes de líneas convencionales (1-13) y los del Shinkansen Tokaido (14-19) están en zonas separadas de la estación, conectados por pasillos en la planta de entresuelo dentro del control de billetes. Seguir las señales hacia \"Shinkansen\".", time: "~5 min" },
+            { icon: "🚄", desc: "Tokaido Shinkansen <strong>Nozomi</strong> <strong>Nagoya → Tokio</strong>. Suplemento aparte, no cubierto por ningún pase regional.", time: "~1h40" }
+          ] },
+        { icon: "🚄", title: "Tren a Nagoya + Tokaido Shinkansen (Hikari)", time: "~2h20-2h55", timeMinutes: 155,
+          desc: "Misma ruta (Gifu→Nagoya + trasbordo) pero con <strong>Hikari</strong> en vez de Nozomi hasta Tokio (~1h55-2h30 ese tramo). Es la opción que cubriría un JR Pass, pero de momento descartado (no compensa, ver reservas.md)." }
+      ] }
   ];
 
 function initMap() {
@@ -1068,15 +1206,6 @@ function initMap() {
     // Bloque de opciones de llegada (aeropuerto→hotel, o excursiones de día)
     let arrivalBlock = '';
     if (place.arrivalOptions) {
-      const optionRows = place.arrivalOptions.map(o => `
-        <li class="rm-step" style="align-items:flex-start">
-          <span class="rm-step-icon">${o.icon}</span>
-          <span class="rm-step-desc">
-            <strong>${o.title}</strong> — ${o.desc}
-            <span class="rm-step-meta">${o.time}${o.price ? ` · ${o.price}` : ''}</span>
-          </span>
-        </li>
-      `).join('');
       const arrivalDirectionsCta = (place.arrivalOrigin && place.address)
         ? `<a href="https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(place.arrivalOrigin)}&destination=${encodeURIComponent(place.address)}&travelmode=transit" target="_blank" rel="noopener" class="info-cta" data-arrival-directions="1">Cómo llegar</a>`
         : '';
@@ -1088,7 +1217,7 @@ function initMap() {
             ${arrivalDirectionsCta}
           </div>
           <div class="rm-collapsible" hidden>
-            <ul class="rm-steps">${optionRows}</ul>
+            ${renderOptions(place.arrivalOptions)}
           </div>
         </div>
       `;
@@ -1101,19 +1230,15 @@ function initMap() {
       const idx = stops.indexOf(place);
       const next = stops[idx + 1];
       const leg = legByFrom[place.n];
-      const stepRows = [];
-      if (place.toTransport) {
-        stepRows.push(`<li class="rm-step"><span class="rm-step-icon">🚶</span><span class="rm-step-desc">${place.toTransport}</span></li>`);
-      }
-      if (leg && leg.steps) {
-        leg.steps.forEach(s => {
-          stepRows.push(`<li class="rm-step"><span class="rm-step-icon">${s.icon}</span><span class="rm-step-desc">${s.desc}</span><span class="rm-step-time">${s.time}</span></li>`);
-        });
-      }
-      const stepsHtml = stepRows.length ? `<ul class="rm-steps">${stepRows.join('')}</ul>` : '';
-      const altHtml = leg && leg.alt ? `<div class="rm-alt"><strong>Alternativa:</strong> ${leg.alt}</div>` : '';
-      const routeToggleBtn = stepsHtml ? `<button type="button" class="rm-toggle-btn" aria-expanded="false">Ver recorrido</button>` : '';
-      const routeCollapsible = stepsHtml ? `<div class="rm-collapsible" hidden>${stepsHtml}${altHtml}</div>` : '';
+      const walkHtml = place.toTransport
+        ? `<ul class="rm-steps"><li class="rm-step"><span class="rm-step-icon">🚶</span><span class="rm-step-desc">${place.toTransport}</span></li></ul>`
+        : '';
+      const hasRoute = !!(place.toTransport || (leg && leg.options));
+      const optionsHtml = leg && leg.options ? renderOptions(leg.options) : '';
+      const fastest = leg && leg.options ? [...leg.options].sort((a, b) => a.timeMinutes - b.timeMinutes)[0] : null;
+      const summaryHtml = fastest ? `<div class="rm-transport">${fastest.title} · ${fastest.time} en total</div>` : '';
+      const routeToggleBtn = hasRoute ? `<button type="button" class="rm-toggle-btn" aria-expanded="false">Ver recorrido</button>` : '';
+      const routeCollapsible = hasRoute ? `<div class="rm-collapsible" hidden>${walkHtml}${optionsHtml}</div>` : '';
 
       if (next) {
         const originParam = place.address || `${place.lat},${place.lng}`;
@@ -1122,7 +1247,7 @@ function initMap() {
         nextBlock = `
           <div class="rm-next">
             <div class="rm-label">Preparar para ${next.name}</div>
-            ${leg ? `<div class="rm-transport">${leg.mode} · ${leg.time} en total</div>` : ''}
+            ${summaryHtml}
             <div class="rm-btn-row">
               ${routeToggleBtn}
               <a href="${webUrl}" target="_blank" rel="noopener" class="info-cta" data-rm-directions="1">Cómo llegar</a>
