@@ -194,6 +194,12 @@
     text-align: center;
   }
   .converter-rate input:focus { outline: none; border-bottom-color: var(--persimmon); }
+  .converter-status {
+    margin-top: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+  }
 
   .timeline { padding: 4px 0 16px; flex: 1; }
   .section-title {
@@ -1067,7 +1073,8 @@ function initMap() {
   function showConverter() {
     clearTimeout(hideTimer);
     pinned = true;
-    const savedRate = parseFloat(localStorage.getItem('jpyEurRate')) || 178;
+    const cachedRate = parseFloat(localStorage.getItem('jpyEurRate')) || 178;
+    const cachedDate = localStorage.getItem('jpyEurRateDate');
     overlayContent.innerHTML = `
       <button class="info-close" aria-label="Cerrar">×</button>
       <div class="info-eyebrow">Herramienta</div>
@@ -1084,36 +1091,62 @@ function initMap() {
         </div>
       </div>
       <div class="converter-rate">
-        Tipo de cambio: 1 € = <input type="number" inputmode="decimal" id="conv-rate" value="${savedRate}" /> ¥
-        <span>(orientativo — ajústalo con el tipo real antes de viajar)</span>
+        Tipo de cambio: 1 € = <input type="number" inputmode="decimal" id="conv-rate" value="${cachedRate}" /> ¥
       </div>
+      <div class="converter-status" id="conv-status">${cachedDate ? `Último tipo real conocido: ${cachedDate}. Buscando uno actualizado…` : 'Buscando el tipo de cambio real…'}</div>
     `;
     overlayContent.querySelector('.info-close').addEventListener('click', closeInfo);
 
     const jpyEl = overlayContent.querySelector('#conv-jpy');
     const eurEl = overlayContent.querySelector('#conv-eur');
     const rateEl = overlayContent.querySelector('#conv-rate');
+    const statusEl = overlayContent.querySelector('#conv-status');
+    let userEditedRate = false;
 
-    jpyEl.addEventListener('input', () => {
-      const rate = parseFloat(rateEl.value) || savedRate;
-      const jpy = parseFloat(jpyEl.value);
-      eurEl.value = isNaN(jpy) ? '' : (jpy / rate).toFixed(2);
-    });
-    eurEl.addEventListener('input', () => {
-      const rate = parseFloat(rateEl.value) || savedRate;
-      const eur = parseFloat(eurEl.value);
-      jpyEl.value = isNaN(eur) ? '' : Math.round(eur * rate);
-    });
-    rateEl.addEventListener('input', () => {
-      const rate = parseFloat(rateEl.value);
-      if (!rate) return;
-      localStorage.setItem('jpyEurRate', rate);
+    function recompute(rate) {
       if (jpyEl.value) {
         eurEl.value = (parseFloat(jpyEl.value) / rate).toFixed(2);
       } else if (eurEl.value) {
         jpyEl.value = Math.round(parseFloat(eurEl.value) * rate);
       }
+    }
+
+    jpyEl.addEventListener('input', () => {
+      const rate = parseFloat(rateEl.value) || cachedRate;
+      const jpy = parseFloat(jpyEl.value);
+      eurEl.value = isNaN(jpy) ? '' : (jpy / rate).toFixed(2);
     });
+    eurEl.addEventListener('input', () => {
+      const rate = parseFloat(rateEl.value) || cachedRate;
+      const eur = parseFloat(eurEl.value);
+      jpyEl.value = isNaN(eur) ? '' : Math.round(eur * rate);
+    });
+    rateEl.addEventListener('input', () => {
+      userEditedRate = true;
+      const rate = parseFloat(rateEl.value);
+      if (!rate) return;
+      localStorage.setItem('jpyEurRate', rate);
+      recompute(rate);
+    });
+
+    fetch('https://api.frankfurter.dev/v1/latest?from=EUR&to=JPY')
+      .then(r => r.json())
+      .then(data => {
+        const liveRate = data && data.rates && data.rates.JPY;
+        if (!liveRate) throw new Error('sin dato');
+        localStorage.setItem('jpyEurRate', liveRate);
+        localStorage.setItem('jpyEurRateDate', data.date);
+        statusEl.textContent = `Tipo de cambio real del ${data.date} (Banco Central Europeo).`;
+        if (!userEditedRate) {
+          rateEl.value = liveRate.toFixed(2);
+          recompute(liveRate);
+        }
+      })
+      .catch(() => {
+        statusEl.textContent = cachedDate
+          ? `No se pudo actualizar. Usando el último tipo real conocido (${cachedDate}).`
+          : 'No se pudo obtener el tipo de cambio real. Usando un valor orientativo — ajústalo a mano.';
+      });
 
     overlay.classList.add('visible');
   }
