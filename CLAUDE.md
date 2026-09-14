@@ -157,7 +157,7 @@ Mapa standalone en `ruta_japon.html` (ver el archivo para el estado actual de ma
 
 ## Preferencias específicas del HTML
 
-- Fuentes: Fraunces (serif) + Inter (sans) + JetBrains Mono (mono)
+- Fuentes: Fraunces (serif) + Inter (sans) + JetBrains Mono (mono). Excepción: el título principal ("Japón en otoño") usa Playfair Display, porque la J de Fraunces tiene un gancho curvado en todos los tamaños ópticos y variantes (no es arreglable con opsz ni stylistic sets). Fraunces se mantiene en el resto de la web (nombres de parada, títulos de panel, etc.).
 - Paleta: papel washi (#F1E9D6), tinta (#1B1F2A), persimmon (#C84A28), musgo (#5E6B3D)
 - Panel a pantalla completa (no popup pequeño)
 - Popup NO permanente: se cierra ~220ms después de salir del marcador
