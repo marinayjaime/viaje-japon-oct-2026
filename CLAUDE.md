@@ -143,6 +143,8 @@ Mapa standalone en `ruta_japon.html` (ver el archivo para el estado actual de ma
 - **Nombre del usuario:** Jaime (Marina es la pareja). No inventar apellidos ni otros datos.
 - **Tokio, última parada resuelta (sept 2026):** reservado KOKO HOTEL Ginza-1chome (15-17 oct). Cambia la zona respecto al plan anterior (Asakusa/Ueno pensado para el Skyliner) — pendiente revisar la ruta al aeropuerto el 17 oct.
 - **Narai-juku sustituido por Gifu (sept 2026):** la parada 6 (14-15 oct) deja de ser Narai-juku y pasa a ser Gifu. Cambia también el transporte: Takayama→Gifu es tren directo JR Central (~1h54) en vez de bus+tren vía Matsumoto; Gifu→Tokio es tren a Nagoya + Tokaido Shinkansen en vez de tren local + Limited Express Azusa. Motivo del cambio no registrado explícitamente por Jaime, solo la decisión de sustituir la parada.
+- **Hokuriku Arch Pass descartado (sept 2026):** investigado con WebSearch — no compensa frente al billete de ida suelto Kioto→Kanazawa para turistas extranjeros (~6.500¥ vs ~30.000-35.000¥ del pase). Ver pendiente #4.
+- **Aviso cena Ryokan Asunaro (sept 2026):** investigado con WebSearch — el ryokan exige check-in antes de las 18:00 el 12 oct para servir la cena kaiseki (si se llega más tarde, se pierde sin reembolso). Afecta a qué bus Nohi coger desde Kanazawa ese día.
 
 ---
 
@@ -151,7 +153,7 @@ Mapa standalone en `ruta_japon.html` (ver el archivo para el estado actual de ma
 1. Cerrar alojamiento en Gifu (14-15 oct, 1 noche)
 2. Definir contenido de POIs para Kanazawa (Jaime irá pasando imágenes) — Takayama, Shirakawa-go y Gifu ya tienen contenido (sept 2026)
 3. Cuando toque: reservas de trenes y buses (Fujikyu, shinkansen Mishima-Kioto, Thunderbird+Hokuriku Kioto-Kanazawa, bus Nohi Kanazawa↔Takayama, bus Nohi Takayama↔Shirakawa-go, tren directo Takayama-Gifu, tren Gifu-Nagoya + Tokaido Shinkansen Nagoya-Tokio) — verificar horarios exactos
-4. Verificar si compensa algún pase regional (el Hokuriku Arch Pass vuelve a encajar con Kanazawa de nuevo con noche; valorar también Kansai para Nara)
+4. ~~Verificar si compensa el Hokuriku Arch Pass~~ — resuelto (sept 2026): NO compensa. Cuesta ~30.000-35.000¥/persona (7 días) y de su ruta solo aprovecharían el trayecto Kioto→Kanazawa. JR West vende un billete de ida para turistas extranjeros de ese mismo trayecto (Thunderbird + Hokuriku Shinkansen) por ~6.500¥/persona — mucho más barato. Queda pendiente valorar un pase Kansai para el día de Nara.
 
 ---
 
