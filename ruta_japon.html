@@ -896,6 +896,41 @@
     return { hasRoute, summaryHtml, routeToggleBtn, routeCollapsible };
   }
 
+  // Posibilidades de días en Tokio (recomendaciones que ha pasado Jaime),
+  // como desplegables en "¿Qué hacer?" de las dos paradas de Tokio.
+  const tokioGuides = [
+    {
+      button: 'Shibuya y Harajuku',
+      title: 'Shibuya y Harajuku',
+      blocks: [{ type: 'schedule', rows: [
+        ['Mañana', 'Compras en Shibuya y comer', null, ''],
+        ['Tarde', 'Subir por Cat Street', null, ''],
+        ['Tarde', 'Calle Takeshita', null, ''],
+        ['Tarde', 'Santuario Meiji', null, ''],
+        ['Noche', 'Shibuya de noche', null, '']
+      ] }]
+    },
+    {
+      button: 'Nikko + Asakusa de noche',
+      title: 'Nikko + Asakusa de noche + izakaya',
+      blocks: [{ type: 'schedule', rows: [
+        ['Día', 'Nikko', null, ''],
+        ['Noche', 'Asakusa de noche', null, ''],
+        ['Noche', 'Izakaya', null, 'Pedir el yakitori de mochi de queso y los de pollo. Son tapas. O descubrir uno que os guste, porque hay varios locales.']
+      ] }]
+    },
+    {
+      button: 'Asakusa → Shinjuku',
+      title: 'Asakusa, Ueno, Akihabara y Shinjuku',
+      blocks: [{ type: 'schedule', rows: [
+        ['1', 'Asakusa de día', null, 'Entrar por Kaminarimon Gate (雷門). Ver la calle de tiendas, el templo principal y alrededores.'],
+        ['2', 'Estanque Shinobazu (Parque Ueno) + Ameyoko market (アメ横商店街)', null, 'Se puede parar. Estanque con flores de loto. Ameyoko: esto no me dio tiempo.'],
+        ['3', 'Akihabara · comer aquí', null, 'Edificios de cosas frikis. Principales: Akihabara Radio Kaikan (muchísimas cosas), Mandarake Complex (de segunda mano, curioso; enfrente está Bic Camera) y Super Potato (no llegué a entrar).'],
+        ['4', 'Shinjuku por la tarde', null, 'Ir al Tokyo Metropolitan Government (TMG) sobre las 17:30–18:00 para ver las vistas de día y de noche. Después, Shinjuku de noche: gato gigante, Godzilla, luces… pasear por esa zona.']
+      ] }]
+    }
+  ];
+
   const stops = [
     {
       n: 1, name: "Tokio", dates: "3 → 5 oct", nights: 2,
@@ -947,6 +982,7 @@
         "Ginza / Ikebukuro / Roppongi (según tiempo)",
         "Opción día a Kamakura (~1h en JR)"
       ],
+      guides: tokioGuides,
       hotel: "Hotel Kabuki", booked: true,
       bookingUrl: "https://www.booking.com/hotel/jp/kabuki.es.html",
       voucher: "vouchers/hotel-kabuki-tokio.pdf",
@@ -1047,6 +1083,7 @@
         "Opción día a Kamakura (~1h en JR)",
         "Pendiente confirmar ruta al aeropuerto (Narita Express desde Tokyo Station vs. Skyliner)"
       ],
+      guides: tokioGuides,
       hotel: "KOKO HOTEL Ginza-1chome", booked: true,
       bookingUrl: "https://www.booking.com/hotel/jp/koko-yin-zuo-yi-ding-mu.es.html",
       voucher: "vouchers/koko-hotel-ginza-tokio.pdf",
@@ -1165,14 +1202,14 @@
       const heading = b.heading ? `<div class="info-todo-title guide-heading">${b.heading}</div>` : '';
       if (b.type === 'schedule') {
         return `${heading}
-          <div class="guide-cols">${b.columns.join(' · ')}</div>
+          ${b.columns ? `<div class="guide-cols">${b.columns.join(' · ')}</div>` : ''}
           <div class="guide-schedule">
             ${b.rows.map(([time, plan, dur, note]) => `
               <div class="guide-row">
                 <div class="guide-time">${time}</div>
                 <div>
                   <div class="guide-plan">${plan}${dur ? ` <span class="guide-dur">${dur}</span>` : ''}</div>
-                  <div class="guide-note">${note}</div>
+                  ${note ? `<div class="guide-note">${note}</div>` : ''}
                 </div>
               </div>`).join('')}
           </div>`;
@@ -1197,7 +1234,7 @@
     return `
       <div class="guide">
         <div class="guide-title">${g.title}</div>
-        <div class="guide-sub">${g.subtitle}</div>
+        ${g.subtitle ? `<div class="guide-sub">${g.subtitle}</div>` : ''}
         ${blocks}
       </div>`;
   }
