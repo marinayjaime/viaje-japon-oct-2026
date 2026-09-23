@@ -10,17 +10,17 @@
 | 4 | Smile Hotel Kanazawa Nishiguchi Ekimae (10-12 oct, 2 noches) | ✅ Reservado | — | [Booking](https://www.booking.com/hotel/jp/sumairuhoterujin-ze-xi-kou-yi-qian.es.html) |
 | 5a | Ryokan Asunaro, Takayama (noche 12-13 oct) | ✅ Reservado | — | [Booking](https://www.booking.com/hotel/jp/ryokan-asunaro.en.html) |
 | 5b | Hostel Fish in a River, Takayama (noche 13-14 oct) | ✅ Reservado | — | [Booking](https://www.booking.com/hotel/jp/hostel-fish-in-a-river.es.html) |
-| 6 | Alojamiento Gifu (14-15 oct, 1 noche) | ⏳ Pendiente | — | — |
+| 6 | Sauna Hotel Gifu (14-15 oct, 1 noche) | ✅ Reservado | ~67 € (no reembolsable) | [Booking](https://www.booking.com/hotel/jp/sauna-gifu.es.html) |
 | 7 | KOKO HOTEL Ginza-1chome, Tokio (15-17 oct, 2 noches) | ✅ Reservado | — | [Booking](https://www.booking.com/hotel/jp/koko-yin-zuo-yi-ding-mu.es.html) |
 
-> Koyasan se retiró del itinerario (sept 2026); Kanazawa y Shirakawa-go se han intercambiado varias veces desde entonces. Estado final: **Kanazawa** es la parada 4 (10-12 oct, 2 noches). **Shirakawa-go** es excursión de día desde Takayama (bus ~50 min). Takayama tiene 2 noches (12-14 oct), ambas reservadas en alojamientos distintos. La parada 6 fue primero Narai-juku y pasó a ser **Gifu** (14-15 oct), pendiente de alojamiento. La última parada en Tokio (15-17 oct) se reservó en Ginza (KOKO HOTEL Ginza-1chome), no en Asakusa/Ueno como se había planteado.
+> Koyasan se retiró del itinerario (sept 2026); Kanazawa y Shirakawa-go se han intercambiado varias veces desde entonces. Estado final: **Kanazawa** es la parada 4 (10-12 oct, 2 noches). **Shirakawa-go** es excursión de día desde Takayama (bus ~50 min). Takayama tiene 2 noches (12-14 oct), ambas reservadas en alojamientos distintos. La parada 6 fue primero Narai-juku y pasó a ser **Gifu** (14-15 oct), reservado en Sauna Hotel Gifu. La última parada en Tokio (15-17 oct) se reservó en Ginza (KOKO HOTEL Ginza-1chome), no en Asakusa/Ueno como se había planteado.
 
 ---
 
 ## Orden de prioridad
 
-### 1. Alojamiento Gifu (14-15 oct, 1 noche) — MÁS URGENTE (única parada sin resolver)
-Ciudad de tamaño medio (no pueblo tradicional como era Narai-juku); encaja más con la filosofía de "hotel funcional" (como Tokio/Osaka) que con alojamiento tradicional. Sin opciones concretas verificadas todavía.
+### Gifu (14-15 oct, 1 noche) — ✅ resuelto
+**Sauna Hotel Gifu** — 殿町1丁目10, 岐阜市, 500-8116 (Tonomachi 1-chome 10, Gifu), Japón. Tel. +81 90 7373 8341. Habitación doble, sin comidas, sin internet. Entrada 16:00-00:00, salida 07:00-11:00. Hay que avisar al hotel con antelación de la hora prevista de llegada. No reembolsable.
 
 ### 2. Alojamiento Kawaguchiko (5 oct)
 Prioridad: vistas al Fuji. Zona norte del lago. Rango 100-180 €/noche.

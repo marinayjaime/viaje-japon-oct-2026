@@ -41,7 +41,7 @@ Priorizan **experiencias culturales tradicionales** por encima de hoteles están
 | 3 | 6–10 oct | 4 | Kioto | ✅ Agora Kyoto Karasuma reservado · 1 día a Nara |
 | 4 | 10–12 oct | 2 | Kanazawa | ✅ Smile Hotel Kanazawa Nishiguchi Ekimae reservado |
 | 5 | 12–14 oct | 2 | Takayama | ✅ Reservado completo: Ryokan Asunaro (12-13) + Hostel Fish in a River (13-14) |
-| 6 | 14–15 oct | 1 | Gifu | Pendiente |
+| 6 | 14–15 oct | 1 | Gifu | ✅ Sauna Hotel Gifu reservado |
 | 7 | 15–17 oct | 2 | Tokio (Ginza) | ✅ KOKO HOTEL Ginza-1chome reservado |
 
 **Cambio de estructura (julio 2026):** Takayama deja de ser parada con noche y pasa a excursión de día desde Kanazawa (junto con Shirakawa-go). Osaka pierde la noche (se ve de paso entre Koyasan y Kanazawa). Kioto pasa a 4 noches (incluye día a Nara). Tokio pasa a 4 noches repartidas 2+2. Kanazawa → Tokio ahora es shinkansen Hokuriku directo (~2h30).
@@ -88,7 +88,9 @@ Priorizan **experiencias culturales tradicionales** por encima de hoteles están
 
 ## Prioridades de reserva (por orden)
 
-1. **Alojamiento en Gifu** (14-15 oct, 1 noche)
+Todo el alojamiento está reservado.
+
+**Gifu (14-15 oct) — ✅ resuelto:** Sauna Hotel Gifu reservado.
 
 **Kanazawa (10-12 oct) — ✅ resuelto:** Smile Hotel Kanazawa Nishiguchi Ekimae reservado.
 **Tokio, última parada (15-17 oct) — ✅ resuelto:** KOKO HOTEL Ginza-1chome reservado.
@@ -142,13 +144,14 @@ Mapa standalone en `ruta_japon.html` (ver el archivo para el estado actual de ma
 - **Takayama, noche 13-14 resuelta (sept 2026):** reservado Hostel Fish in a River. Las 2 noches de Takayama quedan cubiertas (con alojamientos distintos cada noche).
 - **Nombre del usuario:** Jaime (Marina es la pareja). No inventar apellidos ni otros datos.
 - **Tokio, última parada resuelta (sept 2026):** reservado KOKO HOTEL Ginza-1chome (15-17 oct). Cambia la zona respecto al plan anterior (Asakusa/Ueno pensado para el Skyliner) — pendiente revisar la ruta al aeropuerto el 17 oct.
+- **Gifu resuelto (sept 2026):** reservado Sauna Hotel Gifu (14-15 oct). Con esto, todas las noches del viaje tienen alojamiento.
 - **Narai-juku sustituido por Gifu (sept 2026):** la parada 6 (14-15 oct) deja de ser Narai-juku y pasa a ser Gifu. Cambia también el transporte: Takayama→Gifu es tren directo JR Central (~1h54) en vez de bus+tren vía Matsumoto; Gifu→Tokio es tren a Nagoya + Tokaido Shinkansen en vez de tren local + Limited Express Azusa. Motivo del cambio no registrado explícitamente por Jaime, solo la decisión de sustituir la parada.
 
 ---
 
 ## Cosas pendientes concretas
 
-1. Cerrar alojamiento en Gifu (14-15 oct, 1 noche)
+1. Avisar al Sauna Hotel Gifu con antelación de la hora prevista de llegada (lo pide la reserva)
 2. Definir contenido de POIs para Kanazawa (Jaime irá pasando imágenes) — Takayama, Shirakawa-go y Gifu ya tienen contenido (sept 2026)
 3. Cuando toque: reservas de trenes y buses (Fujikyu, shinkansen Mishima-Kioto, Thunderbird+Hokuriku Kioto-Kanazawa, bus Nohi Kanazawa↔Takayama, bus Nohi Takayama↔Shirakawa-go, tren directo Takayama-Gifu, tren Gifu-Nagoya + Tokaido Shinkansen Nagoya-Tokio) — verificar horarios exactos
 4. Verificar si compensa algún pase regional (el Hokuriku Arch Pass vuelve a encajar con Kanazawa de nuevo con noche; valorar también Kansai para Nara)
