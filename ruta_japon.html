@@ -754,6 +754,10 @@
       Transporte
     </button>
 
+    <button class="converter-btn" id="gastronomia-btn" type="button">
+      Gastronomía
+    </button>
+
     <div class="timeline" id="timeline"></div>
 
     <div class="foot">
@@ -1550,6 +1554,47 @@ function initMap() {
     overlay.classList.add('visible');
   }
   document.getElementById('transporte-btn').addEventListener('click', showTransporte);
+
+  // Sitios para comer por ciudad. Cada sitio: { name: "...", url: "enlace de Google Maps" }
+  const GASTRONOMIA = [
+    { city: 'Tokio', places: [] },
+    { city: 'Nara', places: [] },
+    { city: 'Kioto', places: [] },
+    { city: 'Osaka', places: [] }
+  ];
+
+  function showGastronomia() {
+    clearTimeout(hideTimer);
+    pinned = true;
+    const tabsHtml = `
+      <div class="rm-tabs">
+        ${GASTRONOMIA.map((c, i) => `<button type="button" class="rm-tab-btn" data-tab="${i}">${c.city}</button>`).join('')}
+      </div>`;
+    const panelsHtml = GASTRONOMIA.map((c, i) => {
+      const body = c.places.length
+        ? `<div class="info-cta-row">${c.places.map(p => `<a href="${p.url.replace(/&/g, '&amp;')}" target="_blank" rel="noopener" class="info-cta">${p.name}</a>`).join('')}</div>`
+        : `<div class="info-eyebrow">Sin sitios todavía</div>`;
+      return `<div class="rm-tab-panel" data-tab-panel="${i}" hidden>${body}</div>`;
+    }).join('');
+    overlayContent.innerHTML = `
+      <button class="info-close" aria-label="Cerrar">×</button>
+      <div class="info-eyebrow">Herramienta</div>
+      <div class="info-title">Gastronomía</div>
+      ${tabsHtml}
+      ${panelsHtml}
+    `;
+    overlayContent.querySelectorAll('.rm-tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        overlayContent.querySelectorAll('.rm-tab-btn').forEach(b => b.classList.toggle('active', b === btn));
+        overlayContent.querySelectorAll('.rm-tab-panel').forEach(p => {
+          p.hidden = p.dataset.tabPanel !== btn.dataset.tab;
+        });
+      });
+    });
+    overlayContent.querySelector('.info-close').addEventListener('click', closeInfo);
+    overlay.classList.add('visible');
+  }
+  document.getElementById('gastronomia-btn').addEventListener('click', showGastronomia);
 
   const markerMap = {};
   const stopEls = {};
