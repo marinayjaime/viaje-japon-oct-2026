@@ -1008,6 +1008,7 @@
     },
     {
       n: 3, name: "Kioto", dates: "6 → 10 oct", nights: 4,
+      relatedTodo: "Osaka",
       lat: 35.0116, lng: 135.7681,
       notes: "4 noches (~3 días completos + partes). Uno de los días es excursión a Nara. Comprar bono de autobús.",
       todo: [
@@ -1544,15 +1545,19 @@ function initMap() {
     }
 
     // Pestaña "¿Qué hacer?"
-    tabs.push({
-      label: '¿Qué hacer?',
-      html: `<ul class="info-todo">${place.todo.map(t => `<li>${t}</li>`).join('')}</ul>
-        ${(place.guides || []).map(g => `
+    const todoHtml = p => `<ul class="info-todo">${p.todo.map(t => `<li>${t}</li>`).join('')}</ul>
+        ${(p.guides || []).map(g => `
           <div class="guide-block">
             <button type="button" class="guide-toggle" aria-expanded="false">${g.button}</button>
             <div hidden>${renderGuide(g)}</div>
-          </div>`).join('')}`
-    });
+          </div>`).join('')}`;
+    tabs.push({ label: '¿Qué hacer?', html: todoHtml(place) });
+
+    // Pestaña "Cosas en X": el "¿Qué hacer?" de una excursión relacionada.
+    if (place.relatedTodo) {
+      const rel = optionalStops.find(o => o.name === place.relatedTodo);
+      if (rel) tabs.push({ label: `Cosas en ${rel.name}`, html: todoHtml(rel) });
+    }
 
     // Pestaña "Alojamiento": reserva + cómo llegar al propio hotel de esta parada.
     if (bookingCta || directionsCta) {
