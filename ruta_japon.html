@@ -1590,7 +1590,7 @@ function initMap() {
             <button type="button" class="rm-toggle-btn" aria-expanded="false">${p.name}</button>
             <div class="food-detail" hidden>
               ${p.area ? `<div class="info-eyebrow">Barrio · ${p.area}</div>` : ''}
-              <p class="food-info">${p.info || 'Info pendiente.'}</p>
+              ${p.info ? `<p class="food-info">${p.info}</p>` : ''}
               <a href="${p.url.replace(/&/g, '&amp;')}" target="_blank" rel="noopener" class="info-cta">Cómo llegar</a>
             </div>
           </div>`).join('')
