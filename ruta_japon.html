@@ -348,6 +348,47 @@
     white-space: nowrap;
   }
   .rm-toggle-btn[aria-expanded="true"]::before { transform: rotate(90deg); }
+  .guide-block { margin-top: 14px; }
+  .guide-block:first-of-type { margin-top: 22px; }
+  .guide-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 10px;
+    background: transparent;
+    border: 1px solid var(--border-strong);
+    border-radius: 3px;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .guide-toggle:hover { border-color: var(--persimmon); color: var(--persimmon); }
+  .guide-toggle::before { content: '▸'; display: inline-block; transition: transform 0.15s ease; }
+  .guide-toggle[aria-expanded="true"] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+  .guide-toggle[aria-expanded="true"]::before { transform: rotate(90deg); }
+  .guide { margin: 16px 0 8px; padding: 18px 18px 8px; background: var(--paper-2); border: 1px solid var(--border); border-radius: 6px; }
+  .guide-title { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 500; line-height: 1.25; color: var(--ink); }
+  .guide-sub { font-family: 'Fraunces', serif; font-style: italic; font-size: 14px; color: var(--muted); margin: 6px 0 4px; }
+  .guide-heading { margin: 22px 0 8px; }
+  .guide-cols { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 14px 0 6px; }
+  .guide-row { display: grid; grid-template-columns: 96px 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px dotted var(--border); }
+  .guide-row:last-child, .guide-shop:last-child { border-bottom: none; }
+  .guide-time { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--persimmon); padding-top: 2px; }
+  .guide-plan { font-size: 14px; font-weight: 600; color: var(--ink); line-height: 1.35; }
+  .guide-dur { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 400; color: var(--moss); border: 1px solid var(--moss); border-radius: 3px; padding: 0 5px; margin-left: 4px; vertical-align: 1px; white-space: nowrap; }
+  .guide-note { font-size: 13px; color: var(--muted); line-height: 1.45; margin-top: 3px; }
+  .guide-shop { padding: 12px 0; border-bottom: 1px dotted var(--border); }
+  .guide-shop-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+  .guide-prio { font-size: 12px; white-space: nowrap; color: var(--muted); }
+  .guide-shop-meta { display: flex; flex-wrap: wrap; gap: 4px 14px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--moss); margin-top: 4px; }
+  .guide-p { font-size: 14px; line-height: 1.55; color: var(--ink); margin: 0 0 10px; }
+  @media (max-width: 480px) {
+    .guide { padding: 16px 14px 6px; }
+    .guide-row { grid-template-columns: 1fr; gap: 2px; }
+  }
   .food-place .rm-toggle-btn { margin: 0 0 10px; text-align: left; }
   .food-detail { margin: -2px 0 16px 14px; padding-left: 12px; border-left: 2px solid var(--border); }
   .food-info { margin: 6px 0 0; font-size: 14px; line-height: 1.5; color: var(--muted); }
@@ -1014,6 +1055,153 @@
     }
   ];
 
+  // Guías detalladas (transcritas íntegras de documentos de Jaime) que se
+  // muestran como desplegables dentro de la pestaña "¿Qué hacer?".
+  const osakaGuides = [
+    {
+      button: 'Nara → Osaka',
+      title: 'NARA → OSAKA · 26 de agosto de 2026',
+      subtitle: 'Salida de Kioto 08:30 · Llegada Kintetsu-Nara ~09:30 · Comida en Osaka',
+      blocks: [
+        {
+          type: 'schedule',
+          columns: ['Hora', 'Plan', 'Tiempo', 'Comentario'],
+          rows: [
+            ['09:30–09:40', 'Kintetsu-Nara + lockers', '10 min', 'Dejar las maletas y empezar la ruta.'],
+            ['09:40–10:00', 'Camino a Daibutsu-den', '20 min', 'Atravesáis parte del parque; ya aparecerán ciervos. Pasad por Nandaimon.'],
+            ['10:00–10:45', 'Daibutsu-den (Tōdai-ji)', '45 min', 'Imprescindible: Gran Buda y gran salón de madera.'],
+            ['10:45–11:15', 'Nara Park', '30 min', 'Tiempo para pasear, fotos y ciervos camino de Kasuga.'],
+            ['11:15–11:35', 'Camino a Kasuga Taisha', '20 min', 'El acceso con faroles de piedra forma parte de la visita.'],
+            ['11:35–12:15', 'Kasuga Taisha', '40 min', 'Ver el santuario principal y los característicos faroles.'],
+            ['12:15–12:35', 'Camino a Sagi-ike', '20 min', 'Paseo de regreso atravesando el parque.'],
+            ['12:35–12:50', 'Sagi-ike + Ukimido', '15 min', 'El pabellón sobre el estanque es el punto más fotogénico.'],
+            ['12:50–13:05', 'Camino a Kōfuku-ji', '15 min', 'Regreso progresivo hacia el centro de Nara.'],
+            ['13:05–13:30', 'Kōfuku-ji', '25 min', 'Para mantener el horario: exteriores y edificios principales.'],
+            ['13:30–13:40', 'Sarusawa Pond', '10 min', 'Está al lado de Kōfuku-ji; fotos y continuar.'],
+            ['13:40–13:45', 'Camino a Nakatanidō', '5 min', 'Muy cerca del estanque.'],
+            ['13:45–14:00', 'Nakatanidō', '15 min', 'Probar el yomogi mochi. El golpeado rápido no tiene horario fijo.'],
+            ['14:00–14:10', 'Vuelta a Kintetsu-Nara', '10 min', 'Regreso a la estación.'],
+            ['14:10–14:20', 'Recoger maletas', '10 min', 'Ir directamente al andén.'],
+            ['~14:20–14:30', 'Tren hacia Osaka-Namba', '~35–45 min', 'Priorizar Rapid Express/Express directo si encaja.'],
+            ['~15:00–15:15', 'Llegada a Osaka-Namba', '—', 'Llegada desde Kintetsu-Nara.'],
+            ['15:15–15:30', 'Ir a KOKO HOTEL Osaka Namba Sennichimae', '~10–15 min', 'Trayecto a pie desde la zona de Osaka-Namba.'],
+            ['15:30–15:45', 'Check-in + dejar maletas', '~15 min', 'Hacer el check-in y dejar el equipaje antes de comer.'],
+            ['15:45–16:00', 'Ir a Kobe Beef Steak Ken (Teppanyaki)', '~10–15 min', 'Ir desde el hotel al restaurante.'],
+            ['~16:00–17:15/17:30', 'Comida en Kobe Beef Steak Ken (Teppanyaki)', '~1–1,5 h', 'Comida tardía; después queda la tarde-noche para visitar Osaka.']
+          ]
+        },
+        {
+          type: 'text',
+          heading: 'Tren Nara → Osaka',
+          paragraphs: [
+            'Sí, hay muchísimos trenes. Kintetsu-Nara tiene varias salidas por hora hacia Osaka; no hace falta organizar toda la visita alrededor de un único tren. Para llegar a Namba, buscad preferentemente un Rapid Express o Express hacia Osaka-Namba/Kobe-Sannomiya. Como referencia, los servicios rápidos suelen hacer Kintetsu-Nara → Osaka-Namba en unos 35–45 minutos.',
+            '<strong>Objetivo práctico:</strong> estar de vuelta en Kintetsu-Nara sobre las 14:10–14:20, recoger las maletas y coger el siguiente servicio rápido conveniente. Así deberíais llegar a Osaka-Namba sobre las 15:00–15:15, hacer el check-in en KOKO HOTEL Osaka Namba Sennichimae y estar comiendo en Kobe Beef Steak Ken (Teppanyaki) alrededor de las 16:00.',
+            '<strong>Fuente de transporte:</strong> horario oficial vigente de Kintetsu Railway (consultado el 25/08/2026).'
+          ]
+        }
+      ]
+    },
+    {
+      button: 'Tarde de compras',
+      title: 'TARDE DE COMPRAS EN OSAKA · NAMBA & SHINSAIBASHI',
+      subtitle: 'Después de Nara · Prioridad a tiendas con cierre temprano',
+      blocks: [
+        {
+          type: 'schedule',
+          heading: 'Orden recomendado',
+          columns: ['Hora aprox.', 'Parada', 'Comentario'],
+          rows: [
+            ['17:30', 'Pokémon Center Osaka DX', null, 'Empezar aquí porque cierra a las 20:00.'],
+            ['18:10', 'Shinsaibashi PARCO + Hands', null, 'Compras japonesas, regalos, papelería, personajes y diseño.'],
+            ['19:10', 'Shinsaibashi-suji', null, 'Paseo de compras hacia Dotonbori.'],
+            ['20:00', 'Dotonbori + Glico + Hozenji', null, 'Ver la zona ya iluminada.'],
+            ['20:40', 'Bic Camera Namba', null, 'Electrónica, videojuegos, juguetes y cosmética; cierra más tarde.'],
+            ['21:20', 'Namba Parks: Village Vanguard + Gashapon', null, 'Dos tiendas curiosas juntas, en plantas 5F y 6F.'],
+            ['Después', 'Don Quijote Dotonbori', null, 'Dejar para el final: abierto 24 h.']
+          ]
+        },
+        {
+          type: 'shops',
+          heading: 'Tiendas y zonas',
+          columns: ['Tienda', 'Cierre', 'Zona / localización', 'Qué comprar / por qué verla', 'Prioridad'],
+          rows: [
+            ['Pokémon Center Osaka DX', '20:00', 'Shinsaibashi · Daimaru 9F', 'Peluches, cartas, figuras, ropa, papelería, accesorios y merchandising oficial Pokémon.', '⭐⭐⭐'],
+            ['Shinsaibashi PARCO', '20:00', 'Shinsaibashi', 'Moda, diseño, cultura japonesa, personajes y merchandising.', '⭐⭐⭐'],
+            ['Hands Shinsaibashi', '20:00', 'Shinsaibashi PARCO 9–11F', 'Papelería, cosmética, cocina, hogar, gadgets, viaje y regalos japoneses.', '⭐⭐⭐'],
+            ['Shinsaibashi-suji', '~20:00–21:00 según tienda', 'Shinsaibashi', 'Ropa, zapatillas, cosmética, droguerías, souvenirs, Uniqlo/GU y cadenas japonesas.', '⭐⭐'],
+            ['Amerikamura', '~20:00 según tienda', 'Oeste de Shinsaibashi', 'Vintage, streetwear, segunda mano, zapatillas y moda alternativa.', '⭐⭐'],
+            ['Bic Camera Namba', '22:00', 'Namba / Sennichimae', 'Electrónica, cámaras, videojuegos, juguetes, relojes, belleza y gadgets.', '⭐⭐⭐'],
+            ['Don Quijote Dotonbori', '24 h', 'Dotonbori', 'Snacks, KitKat, cosmética, souvenirs, regalos curiosos, maletas, ropa y electrónica.', '⭐⭐⭐'],
+            ['Nintendo OSAKA', '20:00', 'Umeda', 'Merchandising oficial de Mario, Zelda, Animal Crossing, Pikmin, Splatoon, etc.', '⭐ por distancia'],
+            ['Village Vanguard Namba Parks', '21:00', 'Namba Parks · 5F', 'Bazar/librería japonesa caótica: manga, personajes, regalos raros, kawaii, accesorios y snacks.', '⭐⭐⭐'],
+            ['Gashapon Department Store Namba Parks', '22:00', 'Namba Parks · 6F', 'Unas 800 máquinas de cápsulas: personajes, anime, animales, miniaturas y objetos rarísimos.', '⭐⭐⭐'],
+            ['Mandarake Grand Chaos', '20:00', 'Nipponbashi', 'Coleccionismo, manga antiguo, juguetes vintage, figuras, cartas, videojuegos y cosplay.', '⭐⭐'],
+            ['Jungle Mecha Store', '20:00', 'Nipponbashi', 'Robots, mechas, figuras y coleccionismo japonés.', '⭐⭐'],
+            ['Guf Namba Dotonbori', '02:00', 'Dotonbori', 'Merchandising de personajes y cultura japonesa; útil porque cierra muy tarde.', '⭐⭐']
+          ]
+        },
+        {
+          type: 'text',
+          heading: 'Namba Parks: las dos tiendas curiosas',
+          paragraphs: [
+            'Dirección: Namba Parks, 2-10-70 Nanbanaka, Naniwa-ku, Osaka. Está junto a Nankai Namba Station.',
+            '<strong>Village Vanguard:</strong> 5F · hasta las 21:00 · calcular 15–25 min.',
+            '<strong>Gashapon Department Store:</strong> 6F · hasta las 22:00 · calcular 20–30 min. Están una encima de la otra, por lo que conviene hacerlas juntas.'
+          ]
+        },
+        {
+          type: 'text',
+          heading: 'Nota sobre Nintendo',
+          paragraphs: [
+            'Nintendo OSAKA está en Umeda y se desvía bastante de esta ruta. Para una única tarde, priorizaría Pokémon Center Osaka DX, Hands, Village Vanguard, Gashapon y Don Quijote. Así aprovecháis mejor Namba/Shinsaibashi sin perder tiempo en desplazamientos.'
+          ]
+        }
+      ]
+    }
+  ];
+
+  function renderGuide(g) {
+    const blocks = g.blocks.map(b => {
+      const heading = b.heading ? `<div class="info-todo-title guide-heading">${b.heading}</div>` : '';
+      if (b.type === 'schedule') {
+        return `${heading}
+          <div class="guide-cols">${b.columns.join(' · ')}</div>
+          <div class="guide-schedule">
+            ${b.rows.map(([time, plan, dur, note]) => `
+              <div class="guide-row">
+                <div class="guide-time">${time}</div>
+                <div>
+                  <div class="guide-plan">${plan}${dur ? ` <span class="guide-dur">${dur}</span>` : ''}</div>
+                  <div class="guide-note">${note}</div>
+                </div>
+              </div>`).join('')}
+          </div>`;
+      }
+      if (b.type === 'shops') {
+        return `${heading}
+          <div class="guide-cols">${b.columns.join(' · ')}</div>
+          <div class="guide-shops">
+            ${b.rows.map(([name, close, zone, why, prio]) => `
+              <div class="guide-shop">
+                <div class="guide-shop-head">
+                  <span class="guide-plan">${name}</span>
+                  <span class="guide-prio">${prio}</span>
+                </div>
+                <div class="guide-shop-meta"><span>${b.columns[1]} · ${close}</span><span>${zone}</span></div>
+                <div class="guide-note">${why}</div>
+              </div>`).join('')}
+          </div>`;
+      }
+      return `${heading}${b.paragraphs.map(t => `<p class="guide-p">${t}</p>`).join('')}`;
+    }).join('');
+    return `
+      <div class="guide">
+        <div class="guide-title">${g.title}</div>
+        <div class="guide-sub">${g.subtitle}</div>
+        ${blocks}
+      </div>`;
+  }
+
   const optionalStops = [
     {
       name: "Nara", label: "Na", tag: "Excursión desde Kioto · planificada",
@@ -1069,7 +1257,8 @@
       todo: [
         "Dotonbori",
         "Castillo de Osaka (si da tiempo)"
-      ]
+      ],
+      guides: osakaGuides
     },
     {
       name: "Kobe", label: "Kb", tag: "Excursión desde Osaka · opcional",
@@ -1320,7 +1509,12 @@ function initMap() {
     // Pestaña "¿Qué hacer?"
     tabs.push({
       label: '¿Qué hacer?',
-      html: `<ul class="info-todo">${place.todo.map(t => `<li>${t}</li>`).join('')}</ul>`
+      html: `<ul class="info-todo">${place.todo.map(t => `<li>${t}</li>`).join('')}</ul>
+        ${(place.guides || []).map(g => `
+          <div class="guide-block">
+            <button type="button" class="guide-toggle" aria-expanded="false">${g.button}</button>
+            <div hidden>${renderGuide(g)}</div>
+          </div>`).join('')}`
     });
 
     // Pestaña "Alojamiento": reserva + cómo llegar al propio hotel de esta parada.
@@ -1436,6 +1630,13 @@ function initMap() {
         incomingDirLink.href
       );
     }
+    overlayContent.querySelectorAll('.guide-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const open = btn.getAttribute('aria-expanded') !== 'true';
+        btn.setAttribute('aria-expanded', String(open));
+        btn.nextElementSibling.hidden = !open;
+      });
+    });
     overlayContent.querySelectorAll('.rm-toggle-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const row = btn.closest('.rm-btn-row');
